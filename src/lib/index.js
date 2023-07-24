@@ -5,3 +5,4 @@ export const myFunction = () => {
   console.log('Hola mundo!');
 };
 console.log("Prueba configuracion remota")
+console.log("Prueba configuracion remota en VSC")
