@@ -4,7 +4,7 @@ function home(navigateTo) {
   //Logo
   const logo = document.createElement('img');
   logo.id = 'logoBienvenida';
-  logo.src = 'img/Logo.png';
+  logo.src = 'img/logo.png';
   // section caja de bienvenida
   const sectionBienvenida = document.createElement('section');
   sectionBienvenida.id = 'sectionBienvenida';
