@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#logoBienvenida {
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-bottom: 100px;
+}
+
+div#Home {
+    
+    width: 100vw;
+    height: 100dvh;
+    background-image: url('/img/fondomobile.png' );
+    background-size: cover;
+}
+
+#sectionBienvenida {
+    width: 100%;
+    height: 40%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: rgba(252, 250, 250, 0.7);
+    position: relative;
+    display: grid;
+
+}
+#titleBienvenida {
+    position: absolute;
+    margin: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: justify;
+}
+#buttonLogin {
+    margin-top: 200px;
+    grid-column-start: 2;
+    width: 110px;
+    height: 40px;
+    border-radius: 25px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 20px;
+    font-weight: 400px;
+    background: linear-gradient(90deg, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
+}
