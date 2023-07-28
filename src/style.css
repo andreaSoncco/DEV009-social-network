@@ -50,3 +50,32 @@ div#Home {
     font-weight: 400px;
     background: linear-gradient(90deg, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
 }
+/*-----------------------------Ventana login----------------------------------------------------*/
+#first {
+    background-image: url(img/fondoInicio.png);
+}
+
+#login {
+    background-color: aqua;
+    border: solid 5px;
+    margin: 20px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 30% 10% 10% 10%;
+    row-gap: 10px;
+    width: 50%;
+    height: 500px;
+}
+
+#login> #logoLogin {
+    grid-column: 2;
+    width: 100px;
+    height: 100px;
+    grid-column: 2;
+}
+
+#logintitle {
+    grid-row: 2;
+    grid-column: 2;
+}
