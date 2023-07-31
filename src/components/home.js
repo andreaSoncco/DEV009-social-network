@@ -1,6 +1,8 @@
 function home(navigateTo) {
   const divHome = document.createElement('div');
-  divHome.id = 'homePage';
+  // Cambio de nombre homePage a Page
+  divHome.classList = 'page';
+
   // Seccion para la caja de bienvenida
   const bienvenida = document.createElement('section');
   bienvenida.id = 'bienvenida';
@@ -18,6 +20,7 @@ function home(navigateTo) {
   const textoBienvenida = document.createElement('p');
   textoBienvenida.id = 'textoBienvenida';
   textoBienvenida.innerText = 'Descubre una comunidad de artistas amateur y emplea el arte para compartir tus sentimientos';
+
   // botón de entrar
   const buttonLogin = document.createElement('button');
   buttonLogin.id = 'buttonLogin';

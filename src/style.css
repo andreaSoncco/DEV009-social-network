@@ -11,7 +11,7 @@
 }
 /*---------------------HOME------------------------*/
 
-#homePage {
+.page {
     width: 100vw;
     height: 100dvh;
     background-image: url('/img/blureado.png' );
@@ -124,4 +124,38 @@ div#formPass {
 }
 button#botonMail {
     background: var(--color-button);
+}
+/*----------------------Crear Cuenta---------*/
+section#newAccount {
+    height: 100vh;
+    position: relative;
+}
+
+#newAccountTitle {
+    position: relative;
+    text-align: center;
+    top: 10%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+}
+
+#newAccountTitle2 {
+    position: relative;
+    text-align: center;
+    top: 14%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+#sectionNewAccount {
+    height: 100vh;
+    width: 80%;
+    height: 55%;
+    position: absolute;
+    top: 55%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra horizontal y verticalmente */
+    text-align: center;
+    background-color: rgba(252, 250, 250, 0.7);
+    border-radius: 5%;
 }

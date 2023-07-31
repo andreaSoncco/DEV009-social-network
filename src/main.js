@@ -4,6 +4,8 @@ import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
 import forgotPassword from './components/forgotPass.js';
+import newAccount from './components/newAccount.js';
+import wall from './components/wall.js';
 
 const root = document.getElementById('root');
 
@@ -12,6 +14,8 @@ const routes = [
   { path: '/login', component: login },
   { path: '/error', component: error },
   { path: '/forgotPassword', component: forgotPassword },
+  { path: '/newAccount', component: newAccount },
+  { path: '/wall', component: wall },
 ];
 
 const defaultRoute = '/';
