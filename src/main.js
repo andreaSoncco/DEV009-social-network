@@ -3,6 +3,9 @@
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
+//cambio newAccount
+import newAccount from './components/newAccount.js';
+import wall from './components/wall.js';
 
 const root = document.getElementById('root');
 
@@ -10,6 +13,8 @@ const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/error', component: error },
+  { path: '/newAccount', component: newAccount },
+  { path: '/wall', component: wall },
 ];
 
 const defaultRoute = '/';
