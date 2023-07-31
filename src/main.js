@@ -3,6 +3,7 @@
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
+import forgotPassword from './components/forgotPass.js';
 
 const root = document.getElementById('root');
 
@@ -10,6 +11,7 @@ const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/error', component: error },
+  { path: '/forgotPassword', component: forgotPassword },
 ];
 
 const defaultRoute = '/';
