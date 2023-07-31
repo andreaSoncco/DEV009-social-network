@@ -22,8 +22,19 @@ function login(navigateTo) {
   const buttonLogin = document.createElement('button');
   buttonLogin.textContent = 'Login';
 
+  // Cambio newAccount
+  buttonLogin.addEventListener('click', () => {
+    navigateTo('/wall');
+  });
+  
+  const buttonNewAccount = document.createElement('button');
+  buttonNewAccount.textContent = 'Crear Cuenta';
+  buttonNewAccount.addEventListener('click', () => {
+    navigateTo('/newAccount');
+  });
+
   firstSection.appendChild(section);
-  section.append(img, title, inputEmail, inputPassword, buttonLogin, buttonHome);
+  section.append(img, title, inputEmail, inputPassword, buttonLogin, buttonNewAccount, buttonHome);
 
   return firstSection;
 }
