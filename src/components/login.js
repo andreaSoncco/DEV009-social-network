@@ -1,4 +1,6 @@
 function login(navigateTo) {
+  const firstSection = document.createElement('section');
+  firstSection.id = 'first';
   const section = document.createElement('section');
   section.id = 'login';
   const img = document.createElement('img');
@@ -19,11 +21,10 @@ function login(navigateTo) {
   inputPassword.placeholder = 'Password';
   const buttonLogin = document.createElement('button');
   buttonLogin.textContent = 'Login';
-  const firstSection = document.createElement('section');
-  firstSection.id = 'first';
+
   firstSection.appendChild(section);
   section.append(img, title, inputEmail, inputPassword, buttonLogin, buttonHome);
-  
+
   return firstSection;
 }
 export default login;

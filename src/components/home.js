@@ -1,7 +1,10 @@
 function home(navigateTo) {
   const divHome = document.createElement('div');
-  divHome.id = 'Home';
-  //Logo
+  divHome.id = 'homePage';
+  // Seccion para la caja de bienvenida
+  const bienvenida = document.createElement('section');
+  bienvenida.id = 'bienvenida';
+  // Logo
   const logo = document.createElement('img');
   logo.id = 'logoBienvenida';
   logo.src = 'img/logo.png';
@@ -10,16 +13,21 @@ function home(navigateTo) {
   sectionBienvenida.id = 'sectionBienvenida';
   const title = document.createElement('h1');
   title.id = 'titleBienvenida';
-  title.innerText = 'Emplea el arte para expresar tus sentimientos y forma parte de la mejor comunidad de artistas';
+  title.innerText = '¡Exprésate!';
+  // Texto de bienvenida
+  const textoBienvenida = document.createElement('p');
+  textoBienvenida.id = 'textoBienvenida';
+  textoBienvenida.innerText = 'Descubre una comunidad de artistas amateur y emplea el arte para compartir tus sentimientos';
   // botón de entrar
   const buttonLogin = document.createElement('button');
   buttonLogin.id = 'buttonLogin';
-  buttonLogin.innerText = 'Entrar';
+  buttonLogin.innerText = 'Empecemos';
   buttonLogin.addEventListener('click', () => {
     navigateTo('/login');
   });
-  divHome.append(logo, sectionBienvenida);
-  sectionBienvenida.append(title, buttonLogin);
+  divHome.append(bienvenida);
+  bienvenida.append(logo, sectionBienvenida);
+  sectionBienvenida.append(title, textoBienvenida, buttonLogin);
   return divHome;
 }
 export default home;

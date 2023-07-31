@@ -3,7 +3,18 @@
     margin: 0px;
     padding: 0px;
 }
+/*---------------------HOME------------------------*/
 
+#homePage {
+    width: 100vw;
+    height: 100dvh;
+    background-image: url('/img/blureado.png' );
+    background-size: cover;
+    
+}
+section#bienvenida {
+    height: 100dvh;
+}
 #logoBienvenida {
     width: 300px;
     height: 300px;
@@ -12,43 +23,42 @@
     margin-bottom: 100px;
 }
 
-div#Home {
-    
-    width: 100vw;
-    height: 100dvh;
-    background-image: url('/img/fondomobile.png' );
-    background-size: cover;
-}
-
 #sectionBienvenida {
     width: 100%;
     height: 40%;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     background-color: rgba(252, 250, 250, 0.7);
-    position: relative;
-    display: grid;
-
 }
 #titleBienvenida {
-    position: absolute;
-    margin: 50px;
+    
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    text-align: justify;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    
+}
+p#textoBienvenida {
+grid-row: 2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 250px;
+text-align: justify;
+margin: 20px;
+align-items: center;
 }
 #buttonLogin {
-    margin-top: 200px;
-    grid-column-start: 2;
-    width: 110px;
+    margin-top: 5px;
+    margin-left: 100px;
+    width: 130px;
     height: 40px;
     border-radius: 25px;
     font-family: 'Roboto', sans-serif;
     color: white;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 400px;
     background: linear-gradient(90deg, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
+    grid-row: 3;
 }
 /*-----------------------------Ventana login----------------------------------------------------*/
 #first {
@@ -78,4 +88,9 @@ div#Home {
 #logintitle {
     grid-row: 2;
     grid-column: 2;
+}
+/*----------------------Error---------*/
+#error404 {
+    margin-top: 150px;
+    width: 100vw;
 }
