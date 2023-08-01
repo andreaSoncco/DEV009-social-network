@@ -6,6 +6,7 @@ import error from './components/error.js';
 import forgotPassword from './components/forgotPass.js';
 import newAccount from './components/newAccount.js';
 import wall from './components/wall.js';
+import registrarUsuario from './lib/index.js';
 
 const root = document.getElementById('root');
 
@@ -42,3 +43,8 @@ window.onpopstate = () => {
 };
 
 navigateTo(window.location.pathname || defaultRoute);
+
+const email = 'usuario@gmail.com';
+const password = '12345678';
+
+registrarUsuario(email, password);
