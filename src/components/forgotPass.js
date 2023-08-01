@@ -15,6 +15,10 @@ function forgotPassword(navigateTo) {
   const buttonMail = document.createElement('button');
   buttonMail.id = 'botonMail';
   buttonMail.textContent = 'Enviar link';
+  // boton temporal
+  buttonMail.addEventListener('click', () => {
+    navigateTo('/login');
+  });
   formDiv.append(titlePass, textPass, inputMail, buttonMail);
   forgotPassPage.appendChild(formDiv);
   return forgotPassPage;

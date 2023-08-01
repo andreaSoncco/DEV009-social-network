@@ -41,6 +41,7 @@ function login(navigateTo) {
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
   btnCreateAccount.addEventListener('click', () => {
+    
     navigateTo('/newAccount');
   });
 

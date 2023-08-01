@@ -1,3 +1,4 @@
+import { registrarUsuario } from "../lib/initializeFirebase.js";
 function newAccount(navigateTo) {
   const divNewAccount = document.createElement('div');
   divNewAccount.classList = 'page';
@@ -41,7 +42,11 @@ function newAccount(navigateTo) {
   buttonLogin.id = 'buttonLogin';
   buttonLogin.innerText = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
-    navigateTo('/login');
+    const email = 'usuario@gmail.com';
+    const password = '12345678';
+    registrarUsuario(email, password);
+
+    //navigateTo('/login');
   });
 
   divNewAccount.append(title, title3, sectionNewAccount);
