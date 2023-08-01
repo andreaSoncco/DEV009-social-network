@@ -16,41 +16,54 @@ function newAccount(navigateTo) {
   // section caja de Crear Cuenta
   const sectionNewAccount = document.createElement('section');
   sectionNewAccount.id = 'sectionNewAccount';
+  const formNewAccount = document.createElement('form');
+  formNewAccount.id = 'formNewAccount';
 
   const pUser = document.createElement('p');
   pUser.classList = 'pNewAccount';
   pUser.innerText = 'USUARIO';
   const inputUser = document.createElement('input');
   inputUser.id = 'user';
+  inputUser.type = 'text';
   inputUser.placeholder = 'Nombre de usuario';
+  inputUser.setAttribute('required', '');
+
 
   const pEmail = document.createElement('p');
   pEmail.classList = 'pNewAccount';
   pEmail.innerText = 'CORREO ELECTRÓNICO';
   const inputEmail = document.createElement('input');
+  inputEmail.type = 'email';
   inputEmail.id = 'email';
   inputEmail.placeholder = 'Correo electrónico';
+  inputEmail.setAttribute('required', '');
+
 
   const pPassword = document.createElement('p');
   pPassword.classList = 'pNewAccount';
   pPassword.innerText = 'CONTRASEÑA';
   const inputPassword = document.createElement('input');
+  inputPassword.id = 'Contraseña';
+  inputPassword.type = 'password';
   inputPassword.placeholder = 'Contraseña';
+  inputPassword.setAttribute('required', '');
+
 
   // botón de entrar
   const buttonLogin = document.createElement('button');
   buttonLogin.id = 'buttonLogin';
   buttonLogin.innerText = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
-    const email = 'usuario@gmail.com';
-    const password = '12345678';
-    registrarUsuario(email, password);
-
-    //navigateTo('/login');
+  const email = inputEmail.value;
+  const password =  inputPassword.value;
+  registrarUsuario(email, password);
+  navigateTo('/login')
   });
 
   divNewAccount.append(title, title3, sectionNewAccount);
-  sectionNewAccount.append(pUser, inputUser, pEmail, inputEmail, pPassword, inputPassword, buttonLogin);
+  sectionNewAccount.append(formNewAccount);
+  formNewAccount.append(pUser, inputUser, pEmail, inputEmail, pPassword,  inputPassword, buttonLogin);
+
 
   return divNewAccount;
 }
