@@ -87,6 +87,7 @@ main {
     align-self: center;
 
 }
+
 @media only screen and (max-width: 550px){
    .formLogin {
      margin: 0px 10px;
@@ -178,3 +179,14 @@ section#newAccount {
     color: black;
     font-family: 'Roboto', sans-serif;
 }
+
+
+/*----------------------Wall--------------*/
+#headerWall {
+    background-image: url(img/banner.png);
+    background-size: cover;
+    display: grid;
+    justify-items: center; 
+    padding: 6%;
+}
+
