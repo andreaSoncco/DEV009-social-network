@@ -103,7 +103,7 @@ input {
     height: 30px;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
-    color: white;
+    color: black;
     font-size: 17px;
     
 }
@@ -172,4 +172,9 @@ section#newAccount {
     text-align: center;
     background-color: rgba(252, 250, 250, 0.7);
     border-radius: 5%;
+}
+
+.pNewAccount {
+    color: black;
+    font-family: 'Roboto', sans-serif;
 }
