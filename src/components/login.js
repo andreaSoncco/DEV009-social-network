@@ -1,6 +1,8 @@
+import { GoogleAuthProvider } from "firebase/auth";
+import {registerGoogle} from "../lib/initializeFirebase.js";
 function login(navigateTo) {
-  const Login = document.createElement('main');
-  Login.classList.add('login');
+  const logIn = document.createElement('main');
+  logIn.classList.add('login');
   const formLogin = document.createElement('form');
   formLogin.classList.add('formLogin');
   const logintitle = document.createElement('h2');
@@ -31,13 +33,6 @@ function login(navigateTo) {
   buttonLogin.addEventListener('click', () => {
     navigateTo('/wall');
   });
-
-  const buttonHome = document.createElement('button');
-  buttonHome.textContent = 'Back Home';
-  buttonHome.addEventListener('click', () => {
-    navigateTo('/');
-  });
-
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
   btnCreateAccount.addEventListener('click', () => {
@@ -49,20 +44,18 @@ function login(navigateTo) {
   btnGoogle.setAttribute('id', 'btnGoogle');
   btnGoogle.setAttribute('src', 'img/google.png');
   btnGoogle.addEventListener('click', () => {
-    navigateTo('/google');
+    registerGoogle = (callback, GoogleAuthProvider)
   });
-
   const forgPassw = document.createElement('p');
   forgPassw.innerHTML = '<a href="/forgotPassword">¿Olvidaste la contraseña?</a>';
 
   const createAccount = document.createElement('p');
   createAccount.innerHTML = '¿No tienes cuenta?';
 
-  const option = document.createElement('p');
-  option.innerHTML = 'o';
+ 
 
-  Login.appendChild(formLogin);
-  formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, option, btnGoogle, buttonHome);
-  return Login;
+  logIn.appendChild(formLogin);
+  formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
+  return logIn;
 }
 export default login;

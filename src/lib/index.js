@@ -9,3 +9,4 @@ export const registrarUsuario = (email, password) => {
     throw error.message;
   }
 };
+
