@@ -18,7 +18,8 @@ export const registrarUsuario = (email, password) => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    // ...
+    validarUsuario(auth)
+    console.log(user);
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -27,8 +28,15 @@ export const registrarUsuario = (email, password) => {
   });
 };
 
-export const validarUsuario = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
+export const validarUsuario = (auth) => {
+  sendEmailVerification(auth.currentUser)
+  .then(() => {
+    // Email verification sent!
+    alert('se envio correo de verificacion');
+  });
+};
+
+signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
@@ -37,9 +45,8 @@ export const validarUsuario = (email, password) => {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    // ..
   });
-};
+
 /*const auth = firebase.auth();
 const email = "user@example.com";
 const password = "password123";
@@ -65,7 +72,23 @@ user.sendEmailVerification()
   .catch((error) => {
     console.error(error);
   }); */
-const provider = new GoogleAuthProvider();
+
+  /*--------------login--------- */
+
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
+
+
+  const provider = new GoogleAuthProvider();
 
 export const registerGoogle = (callback) => {
   signInWithPopup(auth, provider)

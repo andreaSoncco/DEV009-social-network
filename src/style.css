@@ -67,7 +67,7 @@ p#textoBienvenida {
     align-content: center;
 }
 #buttonLogin {
-    margin-top: 5px;
+    margin-top: 15px;
     width: 130px;
     height: 40px;
     border-radius: 25px;
@@ -220,7 +220,7 @@ section#newAccount {
     color: black;
     font-family: 'Roboto', sans-serif;
 }
-#confirmar {
+#user, #email, #Contraseña, #confirmar {
     margin-top: 15px;
 }
 /*----------------------Wall--------------*/

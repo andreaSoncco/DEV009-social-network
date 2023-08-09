@@ -67,16 +67,17 @@ function newAccount(navigateTo) {
   if (password !== confirmPassword) {
     alert("Las contraseñas no coinciden.");
   }
+  //agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
   else {
     alert("Cuenta creada exitosamente.");
   registrarUsuario(email, password);
-  
+  const user = auth.currentUser;
   navigateTo('/login')}
   });
 
   divNewAccount.append(title, title3, sectionNewAccount);
   sectionNewAccount.append(formNewAccount);
-  formNewAccount.append(pUser, inputUser, pEmail, inputEmail, pPassword,  inputPassword, inputConfirmPassword, buttonLogin);
+  formNewAccount.append( inputUser, inputEmail,  inputPassword, inputConfirmPassword, buttonLogin);
 
 
   return divNewAccount;
