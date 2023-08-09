@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import {registerGoogle} from "../lib/initializeFirebase.js";
 function login(navigateTo) {
-  const logIn = document.createElement('main');
+  const logIn = document.createElement('div');
   logIn.classList.add('login');
   const formLogin = document.createElement('form');
   formLogin.classList.add('formLogin');
@@ -29,12 +29,14 @@ function login(navigateTo) {
 
   const buttonLogin = document.createElement('button');
   buttonLogin.setAttribute('type', 'submit');
+  buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
   buttonLogin.addEventListener('click', () => {
     navigateTo('/wall');
   });
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
+  btnCreateAccount.id = 'crear';
   btnCreateAccount.addEventListener('click', () => {
     
     navigateTo('/newAccount');
@@ -43,6 +45,7 @@ function login(navigateTo) {
   const btnGoogle = document.createElement('button');
   btnGoogle.id = 'btnGoogle';
   const divContentButtonGoogle = document.createElement('div');
+  divContentButtonGoogle.textContent = 'Entrar con Google';
   const logoGoogle = document.createElement('img');
   logoGoogle.src = 'img/google.png';
   logoGoogle.id = 'logoGoogle';
@@ -51,15 +54,17 @@ function login(navigateTo) {
     registerGoogle = (callback, GoogleAuthProvider)
   });
   const forgPassw = document.createElement('p');
+  forgPassw.id = 'forgPassLink';
   forgPassw.innerHTML = '<a href="/forgotPassword">¿Olvidaste la contraseña?</a>';
 
   const createAccount = document.createElement('p');
+  createAccount.id = 'ntcuenta';
   createAccount.innerHTML = '¿No tienes cuenta?';
 
  
 
   logIn.appendChild(formLogin);
-  btnGoogle.appendChild(logoGoogle);
+  btnGoogle.append(logoGoogle, divContentButtonGoogle);
   formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
   return logIn;
 }

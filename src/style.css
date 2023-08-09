@@ -25,13 +25,16 @@
 }
 section#bienvenida {
     height: 100dvh;
-    padding: 20px;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
 }
 #logoBienvenida {
     width: 300px;
     height: 300px;
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 #sectionBienvenida {
@@ -55,7 +58,7 @@ section#bienvenida {
 }
 p#textoBienvenida {
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     text-align: justify;
     margin: 20px;
     align-items: center;
@@ -68,6 +71,7 @@ p#textoBienvenida {
     width: 130px;
     height: 40px;
     border-radius: 25px;
+    font-size: 20px;
     font-family: var(--font-button);
     color: white;
     font-size: 17px;
@@ -83,17 +87,19 @@ p#textoBienvenida {
     transform: translateY(4px);
   }
 /*-----------------------------Ventana login----------------------------------------------------*/
-main {
+div.login {
     background-image: url(img/fondoInicio.png);
     background-size: cover;
     display: grid;
     justify-items: center; 
     width: 100vw;
-    height: 127dvh;   
+    height: 100dvh;
+   
 }
 
 .formLogin {
     display: grid;
+    width: 320px;
     background-color: var(--color-background);
     padding: 5px;
     row-gap: 15px;
@@ -113,7 +119,14 @@ main {
     width: 180px;
     height: 180px;
 }
-
+h2 {
+    font-family: var(--font-button);
+    font-size: 25px;
+}
+p#forgPassLink, p#ntcuenta, p#textoPass {
+    font-family: var(--font-button);
+    font-size: 17px;
+}
 input {
     width: 90%;
     height: 30px;
@@ -123,43 +136,50 @@ input {
     background: white;
     
 }
-button {
-    width: 130px;
+#btnlogin, #crear, #btnGoogle, #botonMail {
+    width: 200px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 25px;
-    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-family: var(--font-button);
     color: white;
     font-size: 17px;
-    border: none;
     background: var(--color-button);
+    cursor: pointer;
 }
+
 #logoGoogle {
     width: 20px;
     height: 20px;
-}
-#logoGoogle::after{
-    content: "Entrar con Google";
+    margin: 5px;
 }
 /*------------------------Contrasena olvidada --------------------------------*/
 div#forgotPage {
-    margin: 0px;
-    background-image: url('/img/blureado.png');
-    background-size: contain;
+    background-image: url(img/fondoInicio.png);
+    background-size: cover;
+    display: grid;
+    justify-items: center; 
     width: 100vw;
     height: 100dvh;
-    text-align: center;
 }
 div#formPass {
-    width: 300px;
-    height: 600px;
-    
-    margin: 0px auto;
-    background: var(--color-background);
+    display: grid;
+    width: 320px;
+    height: 400px;
+    background-color: var(--color-background);
+    padding: 5px;
+    row-gap: 15px;
     border-radius: 25px;
+    justify-items: center;
     align-self: center;
 }
-button#botonMail {
-    background: var(--color-button);
+h1#tituloPass {
+    font-family: var(--font-button);
+    font-size: 25px;
+    margin: 15px;
 }
 /*----------------------Crear Cuenta---------*/
 section#newAccount {
