@@ -29,8 +29,8 @@ function home(navigateTo) {
     navigateTo('/login');
   });
   divHome.append(bienvenida);
-  bienvenida.append(logo, sectionBienvenida);
-  sectionBienvenida.append(title, textoBienvenida, buttonLogin);
+  bienvenida.appendChild( sectionBienvenida);
+  sectionBienvenida.append(logo, title, textoBienvenida, buttonLogin);
   return divHome;
 }
 export default home;

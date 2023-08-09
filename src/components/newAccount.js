@@ -48,6 +48,13 @@ function newAccount(navigateTo) {
   inputPassword.placeholder = 'Contraseña';
   inputPassword.setAttribute('required', '');
 
+  const inputConfirmPassword = document.createElement('input');
+  inputConfirmPassword.id = 'confirmar';
+  inputConfirmPassword.type = 'password';
+  inputConfirmPassword.placeholder = 'Confirmar contraseña';
+  inputConfirmPassword.setAttribute('required', '');
+
+
 
   // botón de entrar
   const buttonLogin = document.createElement('button');
@@ -56,13 +63,20 @@ function newAccount(navigateTo) {
   buttonLogin.addEventListener('click', () => {
   const email = inputEmail.value;
   const password =  inputPassword.value;
+  const confirmPassword = inputConfirmPassword.value;
+  if (password !== confirmPassword) {
+    alert("Las contraseñas no coinciden.");
+  }
+  else {
+    alert("Cuenta creada exitosamente.");
   registrarUsuario(email, password);
-  navigateTo('/login')
+  
+  navigateTo('/login')}
   });
 
   divNewAccount.append(title, title3, sectionNewAccount);
   sectionNewAccount.append(formNewAccount);
-  formNewAccount.append(pUser, inputUser, pEmail, inputEmail, pPassword,  inputPassword, buttonLogin);
+  formNewAccount.append(pUser, inputUser, pEmail, inputEmail, pPassword,  inputPassword, inputConfirmPassword, buttonLogin);
 
 
   return divNewAccount;

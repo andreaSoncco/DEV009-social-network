@@ -40,9 +40,13 @@ function login(navigateTo) {
     navigateTo('/newAccount');
   });
 
-  const btnGoogle = document.createElement('img');
-  btnGoogle.setAttribute('id', 'btnGoogle');
-  btnGoogle.setAttribute('src', 'img/google.png');
+  const btnGoogle = document.createElement('button');
+  btnGoogle.id = 'btnGoogle';
+  const divContentButtonGoogle = document.createElement('div');
+  const logoGoogle = document.createElement('img');
+  logoGoogle.src = 'img/google.png';
+  logoGoogle.id = 'logoGoogle';
+  
   btnGoogle.addEventListener('click', () => {
     registerGoogle = (callback, GoogleAuthProvider)
   });
@@ -55,6 +59,7 @@ function login(navigateTo) {
  
 
   logIn.appendChild(formLogin);
+  btnGoogle.appendChild(logoGoogle);
   formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
   return logIn;
 }

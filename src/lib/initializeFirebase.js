@@ -1,11 +1,11 @@
 // Import the functions you need from import { initializeApp } from 'firebase/app';the SDKs you need
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import { app } from "./credentialsFirebase.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Initialize Firebase
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 /*export {
   auth,
@@ -27,7 +27,44 @@ export const registrarUsuario = (email, password) => {
   });
 };
 
+export const validarUsuario = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+};
+/*const auth = firebase.auth();
+const email = "user@example.com";
+const password = "password123";
+auth.createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Send email verification
+    userCredential.user.sendEmailVerification()
+      .then(() => {
+        // Email verification sent!
+      });
+  })
+  .catch((error) => {
+    console.error(error);
+  }); */
 
+
+  /*const auth = firebase.auth();
+const user = auth.currentUser;
+user.sendEmailVerification()
+  .then(() => {
+    // Email verification sent!
+  })
+  .catch((error) => {
+    console.error(error);
+  }); */
 const provider = new GoogleAuthProvider();
 
 export const registerGoogle = (callback) => {
@@ -55,3 +92,5 @@ export const registerGoogle = (callback) => {
     });
 
 };
+
+//export { createUserWithEmailAndPassword, sendEmailVerification};
