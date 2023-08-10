@@ -71,7 +71,6 @@ function newAccount(navigateTo) {
   else {
     alert("Cuenta creada exitosamente.");
   registrarUsuario(email, password);
-  const user = auth.currentUser;
   navigateTo('/login')}
   });
 
