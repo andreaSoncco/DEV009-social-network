@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import {registerGoogle} from "../lib/initializeFirebase.js";
+import {registerGoogle, loginEmailPassword} from "../lib/initializeFirebase.js";
 function login(navigateTo) {
   const logIn = document.createElement('div');
   logIn.classList.add('login');
@@ -31,9 +31,7 @@ function login(navigateTo) {
   buttonLogin.setAttribute('type', 'submit');
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
-  buttonLogin.addEventListener('click', () => {
-    navigateTo('/wall');
-  });
+    
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
   btnCreateAccount.id = 'crear';
@@ -61,11 +59,24 @@ function login(navigateTo) {
   createAccount.id = 'ntcuenta';
   createAccount.innerHTML = '¿No tienes cuenta?';
 
- 
+  formLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const alertaLogin = (valid) => {
+      if (valid) {
+        navigateTo('/wall');
+      } else {
+      }
+    };
+    loginEmailPassword(email, password, alertaLogin);
+  });
 
   logIn.appendChild(formLogin);
   btnGoogle.append(logoGoogle, divContentButtonGoogle);
   formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
   return logIn;
+
+  
 }
 export default login;

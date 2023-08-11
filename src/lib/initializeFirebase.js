@@ -1,5 +1,5 @@
 // Import the functions you need from import { initializeApp } from 'firebase/app';the SDKs you need
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { app } from "./credentialsFirebase.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -41,7 +41,26 @@ export const validarUsuario = (auth) => {
 
 
   /*--------------login--------- */
-
+  export const loginEmailPassword = (email, password, callback) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        callback(true);
+       
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+  
+        if (errorCode === 'auth/user-not-found') {
+          alert('usuario no registrado');
+  
+        } else if (errorCode === 'auth/wrong-password') {
+          alert('Contraseña incorrecta');
+        }
+        callback(false);
+      });
+    }
   
 
 
