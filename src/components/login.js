@@ -1,5 +1,6 @@
 
-import { toggleSignIn } from "../lib/initializeFirebase.js";
+import { toggleSignIn, loginEmailPassword } from "../lib/initializeFirebase.js";
+
 function login(navigateTo) {
   const logIn = document.createElement('div');
   logIn.classList.add('login');
@@ -31,12 +32,18 @@ function login(navigateTo) {
   buttonLogin.setAttribute('type', 'submit');
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
-  //-----------------------------------Evento login------------------------------------
-  buttonLogin.addEventListener('click', (e) => {
-   e.preventDefault()
-   const email = inputEmail.value;
-   const password = inputPassword.value;
-   loginUser(email, password);
+  //-----------------------Evento de login------------------------------------
+formLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const alertaLogin = (valid) => {
+      if (valid) {
+        navigateTo('/wall');
+      } else {
+      }
+    };
+    loginEmailPassword(email, password, alertaLogin);
   });
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
@@ -68,11 +75,13 @@ function login(navigateTo) {
   createAccount.id = 'ntcuenta';
   createAccount.innerHTML = '¿No tienes cuenta?';
 
- 
+  
 
   logIn.appendChild(formLogin);
   btnGoogle.append(logoGoogle, divContentButtonGoogle);
   formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
   return logIn;
+
+  
 }
 export default login;
