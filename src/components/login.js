@@ -1,5 +1,5 @@
-import { GoogleAuthProvider } from "firebase/auth";
-import {registerGoogle} from "../lib/initializeFirebase.js";
+
+import { toggleSignIn } from "../lib/initializeFirebase.js";
 function login(navigateTo) {
   const logIn = document.createElement('div');
   logIn.classList.add('login');
@@ -31,12 +31,17 @@ function login(navigateTo) {
   buttonLogin.setAttribute('type', 'submit');
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
-  buttonLogin.addEventListener('click', () => {
-    navigateTo('/wall');
+  //-----------------------------------Evento login------------------------------------
+  buttonLogin.addEventListener('click', (e) => {
+   e.preventDefault()
+   const email = inputEmail.value;
+   const password = inputPassword.value;
+   loginUser(email, password);
   });
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
   btnCreateAccount.id = 'crear';
+  //---------------------------Evento ir a crear cuenta---------------------------------
   btnCreateAccount.addEventListener('click', () => {
     
     navigateTo('/newAccount');
@@ -49,10 +54,12 @@ function login(navigateTo) {
   const logoGoogle = document.createElement('img');
   logoGoogle.src = 'img/google.png';
   logoGoogle.id = 'logoGoogle';
-  
-  btnGoogle.addEventListener('click', () => {
-    registerGoogle = (callback, GoogleAuthProvider)
+  //-------------------------------------Evento iniciar sesion con google----------------------------------
+  btnGoogle.addEventListener('click', (event) => {
+    event.preventDefault()
+    toggleSignIn();
   });
+
   const forgPassw = document.createElement('p');
   forgPassw.id = 'forgPassLink';
   forgPassw.innerHTML = '<a href="/forgotPassword">¿Olvidaste la contraseña?</a>';
