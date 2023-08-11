@@ -1,5 +1,6 @@
-import { GoogleAuthProvider } from "firebase/auth";
-import {registerGoogle, loginEmailPassword} from "../lib/initializeFirebase.js";
+
+import { toggleSignIn, loginEmailPassword } from "../lib/initializeFirebase.js";
+
 function login(navigateTo) {
   const logIn = document.createElement('div');
   logIn.classList.add('login');
@@ -31,10 +32,23 @@ function login(navigateTo) {
   buttonLogin.setAttribute('type', 'submit');
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
-    
+  //-----------------------Evento de login------------------------------------
+formLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const alertaLogin = (valid) => {
+      if (valid) {
+        navigateTo('/wall');
+      } else {
+      }
+    };
+    loginEmailPassword(email, password, alertaLogin);
+  });
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
   btnCreateAccount.id = 'crear';
+  //---------------------------Evento ir a crear cuenta---------------------------------
   btnCreateAccount.addEventListener('click', () => {
     
     navigateTo('/newAccount');
@@ -47,10 +61,12 @@ function login(navigateTo) {
   const logoGoogle = document.createElement('img');
   logoGoogle.src = 'img/google.png';
   logoGoogle.id = 'logoGoogle';
-  
-  btnGoogle.addEventListener('click', () => {
-    registerGoogle = (callback, GoogleAuthProvider)
+  //-------------------------------------Evento iniciar sesion con google----------------------------------
+  btnGoogle.addEventListener('click', (event) => {
+    event.preventDefault()
+    toggleSignIn();
   });
+
   const forgPassw = document.createElement('p');
   forgPassw.id = 'forgPassLink';
   forgPassw.innerHTML = '<a href="/forgotPassword">¿Olvidaste la contraseña?</a>';
@@ -59,18 +75,7 @@ function login(navigateTo) {
   createAccount.id = 'ntcuenta';
   createAccount.innerHTML = '¿No tienes cuenta?';
 
-  formLogin.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const alertaLogin = (valid) => {
-      if (valid) {
-        navigateTo('/wall');
-      } else {
-      }
-    };
-    loginEmailPassword(email, password, alertaLogin);
-  });
+  
 
   logIn.appendChild(formLogin);
   btnGoogle.append(logoGoogle, divContentButtonGoogle);
