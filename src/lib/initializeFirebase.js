@@ -6,7 +6,8 @@ import { getAuth,
    sendEmailVerification, 
    sendPasswordResetEmail, 
    signInWithEmailAndPassword, 
-   signInWithPopup } from "firebase/auth";
+   signInWithPopup, 
+   getIdToken} from "firebase/auth";
 import { getFirestore,addDoc,collection,query, where, getDocs } from "firebase/firestore"; 
 import { app } from "./credentialsFirebase.js";
 import { async } from "regenerator-runtime";
@@ -17,7 +18,7 @@ import { async } from "regenerator-runtime";
 export const auth = getAuth(app);
 const db = getFirestore(app)
 
-let userEmail = auth.currentUser;
+let userEmail = "Prueba usuario";
 
 
 
@@ -145,14 +146,17 @@ export const  toggleSignIn = () => {
 
 /*-------------------------------Nuevo post ligado al usuario-------------- */
     export const createPost = async (postMuro) => {
-
+      const authObject = auth;
       //alert(userEmail);
+      console.log(getIdToken);
         // Add a new document in collection "cities"
        const muroUsuario = "wall_"+userEmail;
         const docRef = await addDoc(collection(db, muroUsuario), {
           post: postMuro,
           likes:1,
-          comments:0
+          comments:0,
+          uidUser: userCredential.uid,
+          
         });
 
       };
