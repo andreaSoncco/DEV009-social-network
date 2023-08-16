@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 
-/*const firebaseConfig = {
+/*-------------------firebase Laura
+const firebaseConfig = {
   apiKey: "AIzaSyD5wodv6ntAsyxnEr_9dk-PcVz90fBMZKc",
   authDomain: "drawing-lovers.firebaseapp.com",
   projectId: "drawing-lovers",
@@ -9,15 +10,17 @@ import { initializeApp } from "firebase/app";
   appId: "1:654743966381:web:3600de41b8b1c61a982c24",
   measurementId: "G-LT53MKX495"
 };*/
+//------------------firebase Andy--------------------------
 const firebaseConfig = {
-  apiKey: "AIzaSyD4Z01irvRj_97MATMhoOWU4198v-qWVAc",
-  authDomain: "pruebassn-91c1e.firebaseapp.com",
-  projectId: "pruebassn-91c1e",
-  storageBucket: "pruebassn-91c1e.appspot.com",
-  messagingSenderId: "185372772865",
-  appId: "1:185372772865:web:3e379e1ba56a9146a30e00",
-  measurementId: "G-NG34LBBK87"
+  apiKey: "AIzaSyAvK-G6Zn0IMxuPMfb3Og06ChSyXysy4Yc",
+  authDomain: "art-lovers-6da8d.firebaseapp.com",
+  projectId: "art-lovers-6da8d",
+  storageBucket: "art-lovers-6da8d.appspot.com",
+  messagingSenderId: "699730503953",
+  appId: "1:699730503953:web:2901d420711ce0a99dc4b0",
+  measurementId: "G-GFXS2L0C5T"
 };
+
 
 export const app = initializeApp(firebaseConfig);
 

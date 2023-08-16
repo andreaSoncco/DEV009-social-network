@@ -1,6 +1,12 @@
 // Import the functions you need from import { initializeApp } from 'firebase/app';the SDKs you need
 
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getAuth,
+   createUserWithEmailAndPassword, 
+   GoogleAuthProvider, 
+   sendEmailVerification, 
+   sendPasswordResetEmail, 
+   signInWithEmailAndPassword, 
+   signInWithPopup } from "firebase/auth";
 import { getFirestore,addDoc,collection,query, where, getDocs } from "firebase/firestore"; 
 import { app } from "./credentialsFirebase.js";
 import { async } from "regenerator-runtime";
@@ -10,15 +16,12 @@ import { async } from "regenerator-runtime";
 // Initialize Firebase
 export const auth = getAuth(app);
 const db = getFirestore(app)
-let userEmail = "";
 
-/*export {
-  auth,
-  app,
-  createUserWithEmailAndPassword,
-};*/
+let userEmail = auth.currentUser;
 
-export const registrarUsuario = (email, password) => {
+
+
+export const registrarUsuario = ( email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     console.log(userCredential);
@@ -80,6 +83,17 @@ export const validarUsuario = (auth) => {
     }
   };*/
 
+
+//restablecer contraseña
+export const resetPassword = (userEmail) => {
+  console.log("recuperar contraseña antes");
+  const resultado = sendPasswordResetEmail(auth, userEmail).then((a) => {
+    alert("Password reset email sent"+ a);
+  })
+  console.log(resultado);
+  
+  return resultado;
+};
 /*---------------------------Google------------------------ */
 /**
      * Function called when clicking the Login/Logout button.
@@ -128,6 +142,8 @@ export const  toggleSignIn = () => {
     };
   
 
+
+/*-------------------------------Nuevo post ligado al usuario-------------- */
     export const createPost = async (postMuro) => {
 
       //alert(userEmail);
@@ -138,15 +154,15 @@ export const  toggleSignIn = () => {
           likes:1,
           comments:0
         });
-  
 
-      }
+      };
 
 
-      export const getPostsByUser = async () => {
+//---------------------------------Obtener post-------------------------
+      /*export const getPostsByUser = async () => {
 
-        const muroUsuario = "wall_"+userEmail;
-        const q = query(collection(db, muroUsuario)/*, where("capital", "==", true)*/);
+        const muroUsuario = "wall_1"+userEmail;
+        const q = query(collection(db, muroUsuario), where("capital", "==", true));
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -154,7 +170,7 @@ export const  toggleSignIn = () => {
           console.log(doc.id, " => ", doc.data());
         });
   
-        }
+        }; */
 
 /*export const registerGoogle = (callback) => {
   signInWithPopup(auth, provider)

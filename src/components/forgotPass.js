@@ -1,3 +1,4 @@
+import { resetPassword } from "../lib/initializeFirebase"; 
 function forgotPassword(navigateTo) {
   const forgotPassPage = document.createElement('div');
   forgotPassPage.id = 'forgotPage';
@@ -17,6 +18,7 @@ function forgotPassword(navigateTo) {
   buttonMail.textContent = 'Enviar link';
   // boton temporal
   buttonMail.addEventListener('click', () => {
+    resetPassword(inputMail.value);
     navigateTo('/login');
   });
   formDiv.append(titlePass, textPass, inputMail, buttonMail);

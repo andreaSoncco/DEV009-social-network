@@ -1,9 +1,9 @@
-import { createPost,getPostsByUser } from "../lib/initializeFirebase.js";
+import { createPost, auth } from "../lib/initializeFirebase.js";
 
 
 function wall(navigateTo) {
-  const divWall = document.createElement('div');
-  divWall.id = 'timeLine';
+  const sectionWall = document.createElement('section');
+  sectionWall.id = 'timeLine';
 
   /* section banner
   const sectionBanner = document.createElement('section');
@@ -48,7 +48,7 @@ const divNewPost = document.createElement('div');
 divNewPost.id = "newPostArea";
 const inputNewPost = document.createElement('input');
 inputNewPost.type = "text";
-inputNewPost.placeholder = "¿Qué te ispiró hoy?";
+inputNewPost.placeholder = "¿Qué te inspiró hoy?";
 const buttonPublishNewPost = document.createElement('button');
 buttonPublishNewPost.id = 'buttonPublish';
 buttonPublishNewPost.innerText = 'Publicar';
@@ -83,26 +83,27 @@ divAllPosts.appendChild(divPost);
   const addPostOnFireBase = document.createElement('button');
   addPostOnFireBase.textContent = 'Agregar documento en firebase';
   addPostOnFireBase.addEventListener('click', () => {
-    createPost("Cuarto post");
+    createPost(inputNewPost.value);
    
   });
 
   const getPostFromFireBase = document.createElement('button');
   getPostFromFireBase.textContent = 'Obtener Documentos en firebase por usuario';
   getPostFromFireBase.addEventListener('click', () => {
-    getPostsByUser();
+    console.log(auth);
+    //getPostsByUser();
    
   });
   
  /* divWall.append(sectionBanner, sectionTimeLine);
   sectionBanner.append(header)
   sectionTimeLine.append( buttonHome);*/
-  divWall.append(header, divNewPost, section, divAllPosts);
+  sectionWall.append(header, divNewPost, section, divAllPosts);
   header.append(logoWall, menuSelect);
   section.append(buttonHome, addPostOnFireBase, getPostFromFireBase);
   
   
 
-  return divWall;
+  return sectionWall;
 }
 export default wall;

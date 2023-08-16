@@ -61,7 +61,8 @@ function newAccount(navigateTo) {
   buttonLogin.id = 'buttonLogin';
   buttonLogin.innerText = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
-  const email = inputEmail.value;
+    //const newUser = inputUser.value;
+    const email = inputEmail.value;
   const password =  inputPassword.value;
   const confirmPassword = inputConfirmPassword.value;
   if (password !== confirmPassword) {
