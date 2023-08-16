@@ -1,13 +1,16 @@
 // Import the functions you need from import { initializeApp } from 'firebase/app';the SDKs you need
 
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-
+import { getFirestore,addDoc,collection,query, where, getDocs } from "firebase/firestore"; 
 import { app } from "./credentialsFirebase.js";
+import { async } from "regenerator-runtime";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Initialize Firebase
 export const auth = getAuth(app);
+const db = getFirestore(app)
+let userEmail = "";
 
 /*export {
   auth,
@@ -45,6 +48,10 @@ export const validarUsuario = (auth) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+       
+        userEmail = user.email;
+
+        console.log(userEmail);
         callback(true);
        
       })
@@ -121,6 +128,33 @@ export const  toggleSignIn = () => {
     };
   
 
+    export const createPost = async (postMuro) => {
+
+      //alert(userEmail);
+        // Add a new document in collection "cities"
+       const muroUsuario = "wall_"+userEmail;
+        const docRef = await addDoc(collection(db, muroUsuario), {
+          post: postMuro,
+          likes:1,
+          comments:0
+        });
+  
+
+      }
+
+
+      export const getPostsByUser = async () => {
+
+        const muroUsuario = "wall_"+userEmail;
+        const q = query(collection(db, muroUsuario)/*, where("capital", "==", true)*/);
+
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+        });
+  
+        }
 
 /*export const registerGoogle = (callback) => {
   signInWithPopup(auth, provider)

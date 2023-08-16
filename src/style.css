@@ -224,15 +224,47 @@ section#newAccount {
     margin-top: 15px;
 }
 /*----------------------Wall--------------*/
+
+#wall {
+    margin: 0;
+    box-sizing: border-box;
+}
 #headerWall {
-    background-image: url(img/banner.png);
+    background-image: url(img/banerdiv.png);
     background-size: cover;
-    display: grid;
+    display: flex;
     justify-items: center; 
-    padding: 6%;
+    padding: 18%;
+    position: relative;
+}
+
+#logoWall {
+    position: absolute;
+    top: 0.05em;
+    left: 0.1em;
+    width: 7em;
+    height: 7em;
+}
+
+#toggleWall {
+    top: 0.4em;
+    right: 0.4em;
+    position: absolute;
+    font-size: 2em;
 }
 img#logoWall {
     width: 60px;
     height: 60px;
 }
 
+/*------------------seccion post-----------*/
+div#newPostArea{
+    width: 100%;
+    height: 80px;
+    background: grey;
+}
+div#post {
+    width: 100%;
+    height: 100px;
+    background-color: lightblue;
+}

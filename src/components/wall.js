@@ -1,8 +1,11 @@
+import { createPost,getPostsByUser } from "../lib/initializeFirebase.js";
+
+
 function wall(navigateTo) {
   const divWall = document.createElement('div');
   divWall.id = 'timeLine';
 
-  // section banner
+  /* section banner
   const sectionBanner = document.createElement('section');
   sectionBanner.id = 'banner'; 
   const header = document.createElement('img');
@@ -12,16 +15,93 @@ function wall(navigateTo) {
   
   //section wall updates
   const sectionTimeLine = document.createElement('section');
-  sectionTimeLine.id = 'sectionTimeLine';
+  sectionTimeLine.id = 'sectionTimeLine';*/
+  // section General
+  const section = document.createElement('section');
+  section.id = 'sectionWall'; 
+
+  const header = document.createElement('header');
+  header.id = 'headerWall'; 
+  
+  const logoWall = document.createElement('img');
+  logoWall.id = 'logoWall';
+  logoWall.src = 'img/logo.png';
+/*-------------------------------menu desplegable------------------------------- */
+  const menuSelect = document.createElement('select');
+  menuSelect.id = "menuSelect";
+  menuSelect.classList.add("selectRoute");
+  const optionSelectAnOption = document.createElement('option');
+  optionSelectAnOption.id = "value1";
+  optionSelectAnOption.innerText = "Selecciona una opcion";
+  const optionWall = document.createElement('option');
+  optionWall.id = "value2";
+  optionWall.innerText = "Inicio";
+  const optionTimeLine = document.createElement('option');
+  optionTimeLine.id = "value3";
+  optionTimeLine.innerText = "Perfil";
+  const optionLogOut = document.createElement('option');
+  optionLogOut.id = "value4";
+  optionLogOut.innerText = "Cerrar sesion";
+  menuSelect.append(optionSelectAnOption, optionWall, optionTimeLine, optionLogOut);
+/*-----------------------------------Input caja de texto para publicacion----------------------- */
+const divNewPost = document.createElement('div');
+divNewPost.id = "newPostArea";
+const inputNewPost = document.createElement('input');
+inputNewPost.type = "text";
+inputNewPost.placeholder = "¿Qué te ispiró hoy?";
+const buttonPublishNewPost = document.createElement('button');
+buttonPublishNewPost.id = 'buttonPublish';
+buttonPublishNewPost.innerText = 'Publicar';
+buttonPublishNewPost.addEventListener('click', () =>{
+
+})
+divNewPost.append(inputNewPost, buttonPublishNewPost);
+
+/*-----------------------------------------Cajas para despligue de publicaciones------------------------ */
+const divAllPosts = document.createElement('div');
+divAllPosts.id = "allPosts";
+const divPost = document.createElement('div');
+divPost.id = "divPost";
+divPost.innerHTML = `
+<div id="userPost"><p>aqui va el usuario</p></div>
+<div id="textPost"><p>aqui va el texto de la publicacion</p></div>
+<div id="postInteractions">
+<button id="postComments>Comentarios</button>
+<button id="readComments>Leer comentarios</button>
+<button id="postLikes">Likes<button>
+</div>
+`
+divAllPosts.appendChild(divPost);
+
+/*-----------------------------------BOTONES------------------------------------ */
   const buttonHome = document.createElement('button');
   buttonHome.textContent = 'Volver atrás';
   buttonHome.addEventListener('click', () => {
     navigateTo('/');
   });
+
+  const addPostOnFireBase = document.createElement('button');
+  addPostOnFireBase.textContent = 'Agregar documento en firebase';
+  addPostOnFireBase.addEventListener('click', () => {
+    createPost("Cuarto post");
+   
+  });
+
+  const getPostFromFireBase = document.createElement('button');
+  getPostFromFireBase.textContent = 'Obtener Documentos en firebase por usuario';
+  getPostFromFireBase.addEventListener('click', () => {
+    getPostsByUser();
+   
+  });
   
-  divWall.append(sectionBanner, sectionTimeLine);
+ /* divWall.append(sectionBanner, sectionTimeLine);
   sectionBanner.append(header)
-  sectionTimeLine.append( buttonHome);
+  sectionTimeLine.append( buttonHome);*/
+  divWall.append(header, divNewPost, section, divAllPosts);
+  header.append(logoWall, menuSelect);
+  section.append(buttonHome, addPostOnFireBase, getPostFromFireBase);
+  
+  
 
   return divWall;
 }
