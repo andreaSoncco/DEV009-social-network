@@ -263,8 +263,17 @@ div#newPostArea{
     height: 80px;
     background: grey;
 }
-div#post {
-    width: 100%;
+#sectionWall{
+    background: lightblue;
+    padding: 20px;
+}
+div#divPost {
+    width: 60%;
     height: 100px;
-    background-color: lightblue;
+    background-color: pink;
+    margin: 2px;
+    justify-self: center;
+}
+img#underConstruction{
+    width: 200px;
 }

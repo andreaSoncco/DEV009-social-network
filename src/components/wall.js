@@ -5,6 +5,7 @@ function wall(navigateTo) {
   const sectionWall = document.createElement('section');
   sectionWall.id = 'timeLine';
 
+  
   /* section banner
   const sectionBanner = document.createElement('section');
   sectionBanner.id = 'banner'; 
@@ -17,9 +18,13 @@ function wall(navigateTo) {
   const sectionTimeLine = document.createElement('section');
   sectionTimeLine.id = 'sectionTimeLine';*/
   // section General
-  const section = document.createElement('section');
-  section.id = 'sectionWall'; 
+  const sectionBotonesDePrueba = document.createElement('section');
+  sectionBotonesDePrueba.id = 'sectionWall'; 
 
+  const imagenTemporal = document.createElement('img');
+  imagenTemporal.id = 'underConstruction';
+  imagenTemporal.src = 'img/enConstruccion.png';
+  
   const header = document.createElement('header');
   header.id = 'headerWall'; 
   
@@ -98,9 +103,9 @@ divAllPosts.appendChild(divPost);
  /* divWall.append(sectionBanner, sectionTimeLine);
   sectionBanner.append(header)
   sectionTimeLine.append( buttonHome);*/
-  sectionWall.append(header, divNewPost, section, divAllPosts);
+  sectionWall.append(header, divNewPost, sectionBotonesDePrueba, divAllPosts);
   header.append(logoWall, menuSelect);
-  section.append(buttonHome, addPostOnFireBase, getPostFromFireBase);
+  sectionBotonesDePrueba.append(buttonHome, addPostOnFireBase, getPostFromFireBase, imagenTemporal);
   
   
 
