@@ -1,4 +1,4 @@
-import { createPost, auth } from "../lib/initializeFirebase.js";
+import { createPost, getPostsByUser, auth, getAllPosts } from "../lib/initializeFirebase.js";
 
 
 function wall(navigateTo) {
@@ -95,8 +95,9 @@ divAllPosts.appendChild(divPost);
   const getPostFromFireBase = document.createElement('button');
   getPostFromFireBase.textContent = 'Obtener Documentos en firebase por usuario';
   getPostFromFireBase.addEventListener('click', () => {
-    console.log(auth);
+    //console.log(auth);
     //getPostsByUser();
+    getAllPosts();
    
   });
   

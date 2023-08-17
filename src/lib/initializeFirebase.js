@@ -19,7 +19,8 @@ export const auth = getAuth(app);
 const db = getFirestore(app)
 
 let userEmail = "Prueba usuario";
-
+let currentUid = "no user";
+const artLoversWall = "artLoversWall";
 
 
 export const registrarUsuario = ( email, password) => {
@@ -54,7 +55,7 @@ export const validarUsuario = (auth) => {
         const user = userCredential.user;
        
         userEmail = user.email;
-
+        currentUid = user.uid;
         console.log(userEmail);
         callback(true);
        
@@ -107,12 +108,15 @@ export const  toggleSignIn = () => {
   
         signInWithPopup(auth, provider)
         .then(function(result) {
-        
+          
             // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             // The signed-in user info.
-            const user = result.user;
+            const user = credential.user;
+            console.log(credential);
+            //userEmail = user.email;
+           // currentUid = user.uid;
       
             window.location.href = `${window.location.origin}/wall`;
             console.log(credential, token, user);
@@ -148,14 +152,16 @@ export const  toggleSignIn = () => {
     export const createPost = async (postMuro) => {
       const authObject = auth;
       //alert(userEmail);
-      console.log(getIdToken);
+      console.log(currentUid);
+      /*console.log(userEmail);
+      console.log(authObject);*/
         // Add a new document in collection "cities"
-       const muroUsuario = "wall_"+userEmail;
-        const docRef = await addDoc(collection(db, muroUsuario), {
+       //const muroUsuario = "wall_"+userEmail;
+        const docRef = await addDoc(collection(db, artLoversWall), {
           post: postMuro,
           likes:1,
           comments:0,
-          uidUser: userCredential.uid,
+          uidUser: currentUid
           
         });
 
@@ -163,18 +169,59 @@ export const  toggleSignIn = () => {
 
 
 //---------------------------------Obtener post-------------------------
-      /*export const getPostsByUser = async () => {
-
-        const muroUsuario = "wall_1"+userEmail;
-        const q = query(collection(db, muroUsuario), where("capital", "==", true));
-
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
+      export const getAllPosts = async () => {
+        console.log(auth.currentUser.uid);
+        currentUid = auth.currentUser.uid;
+        let postOnJSON = "{";
+        //const muroUsuario = "wall_1"+userEmail;
+        try {
+          //Se inicializa la busqueda de todos los documentos en firestore en la coleccion artLoversWall
+          const colRef = collection(db, artLoversWall);
+          //Se ejecuta la consulta de todos los documentos en firestore sobre la coleccion artLoversWall
+        const docsSnapshot = await getDocs(colRef);
+        //Se recorre la lista de documentos que se obtuvode la consulta en firestore sobre la coleccion artLoversWall
+        docsSnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
+          let postJSON = "";
           console.log(doc.id, " => ", doc.data());
+          postJSON = "{" + "idPost:" + doc.id + "," + "post:" + doc.data().post + "," + "uidUser:" + doc.data().uidUser + "," + "Comments:" + doc.data().comments
+                     + "," + "likes:" + doc.data().likes + "}";
+          postOnJSON+= postJSON;
+            postOnJSON+= ",";
         });
-  
-        }; */
+        postOnJSON=postOnJSON.substring(0, postOnJSON.length - 1);
+        postOnJSON+= "}";
+        alert(postOnJSON);
+        console.log(postOnJSON);
+      }
+      catch (error){
+        console.log(error);
+      }
+        }; 
+
+//---------------------------------------------Obtener posts por usuarios--------------------
+        export const getPostsByUser = async () => {
+          console.log(auth.currentUser.uid);
+          currentUid = auth.currentUser.uid;
+          let postOnJSON = "{";
+          //const muroUsuario = "wall_1"+userEmail;
+          try {
+          const q = query(collection(db, artLoversWall), where("uidUser", "==", currentUid));
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            postOnJSON.concat(doc.data());
+            postOnJSON.concat(",");
+          });
+          postOnJSON.concat("}");
+          console.log(postOnJSON);
+        }
+        catch (error){
+          console.log(error);
+        }
+          }; 
+
 
 /*export const registerGoogle = (callback) => {
   signInWithPopup(auth, provider)
