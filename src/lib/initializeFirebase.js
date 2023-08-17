@@ -172,7 +172,8 @@ export const  toggleSignIn = () => {
       export const getAllPosts = async () => {
         console.log(auth.currentUser.uid);
         currentUid = auth.currentUser.uid;
-        let postOnJSON = "{";
+        let postOnJSON = "{ \"posts\": [";
+        let objJSONPost = "";
         //const muroUsuario = "wall_1"+userEmail;
         try {
           //Se inicializa la busqueda de todos los documentos en firestore en la coleccion artLoversWall
@@ -184,19 +185,21 @@ export const  toggleSignIn = () => {
           // doc.data() is never undefined for query doc snapshots
           let postJSON = "";
           console.log(doc.id, " => ", doc.data());
-          postJSON = "{" + "idPost:" + doc.id + "," + "post:" + doc.data().post + "," + "uidUser:" + doc.data().uidUser + "," + "Comments:" + doc.data().comments
-                     + "," + "likes:" + doc.data().likes + "}";
+          postJSON = "{" + "\"idPost\": \"" + doc.id + "\", " + "\"post\": \"" + doc.data().post + "\", " + "\"uidUser\": \"" + doc.data().uidUser + "\", " + "\"Comments\": \"" + doc.data().comments
+                     + "\" ," + "\"likes\":" + doc.data().likes + "}";
           postOnJSON+= postJSON;
             postOnJSON+= ",";
         });
         postOnJSON=postOnJSON.substring(0, postOnJSON.length - 1);
-        postOnJSON+= "}";
-        alert(postOnJSON);
+        postOnJSON+= "]}";
         console.log(postOnJSON);
+        objJSONPost = JSON.parse(postOnJSON);
+        console.log(objJSONPost);
       }
       catch (error){
         console.log(error);
       }
+      return objJSONPost;
         }; 
 
 //---------------------------------------------Obtener posts por usuarios--------------------

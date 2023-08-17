@@ -1,3 +1,4 @@
+import { async } from "regenerator-runtime";
 import { createPost, getPostsByUser, auth, getAllPosts } from "../lib/initializeFirebase.js";
 
 
@@ -94,12 +95,38 @@ divAllPosts.appendChild(divPost);
 
   const getPostFromFireBase = document.createElement('button');
   getPostFromFireBase.textContent = 'Obtener Documentos en firebase por usuario';
-  getPostFromFireBase.addEventListener('click', () => {
+  getPostFromFireBase.addEventListener('click', async () => {
     //console.log(auth);
     //getPostsByUser();
-    getAllPosts();
+    const postJSON = await getAllPosts();
+    const allPosts = postJSON.posts;
+    postList(allPosts);
+    console.log("esto deberia ser lo ultimo en consola");
+    console.log(postJSON);
+    //getAllPosts();
    
   });
+  const postList = (list) => {
+    // let countPokemon = 0;
+  
+    list.forEach(objPost => {
+      const content = document.createElement("div");
+      //content.classList.add("content-principal");
+      content.innerHTML = `
+           <div >
+           <p >${objPost.post}</p>
+           </div>`;
+      /*content.addEventListener('click', () => {
+        const viewModal = showModal(pokemon);
+        viewModal.classList.add('modal--show');
+        content.appendChild(contentModal);
+      });*/
+  
+      //countPokemon += 1;
+      sectionWall.appendChild(content);
+  
+    });
+  };
   
  /* divWall.append(sectionBanner, sectionTimeLine);
   sectionBanner.append(header)
