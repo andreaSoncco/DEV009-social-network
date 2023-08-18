@@ -277,3 +277,11 @@ div#divPost {
 img#underConstruction{
     width: 200px;
 }
+.postContent {
+    border: 2px solid salmon;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+.heart{
+    cursor: pointer;
+}

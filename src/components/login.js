@@ -1,5 +1,5 @@
 
-import { toggleSignIn, loginEmailPassword } from "../lib/initializeFirebase.js";
+import { toggleSignIn, loginEmailPassword } from "../lib/index";
 
 function login(navigateTo) {
   const logIn = document.createElement('div');
@@ -27,6 +27,7 @@ function login(navigateTo) {
   inputPassword.setAttribute('minlength', '6');
   inputPassword.setAttribute('maxlength', '12');
   inputPassword.setAttribute('required', '');
+  inputPassword.setAttribute('autocomplete', 'off');
 
   const buttonLogin = document.createElement('button');
   buttonLogin.setAttribute('type', 'submit');
@@ -50,8 +51,8 @@ formLogin.addEventListener("submit", (e) => {
   btnCreateAccount.id = 'crear';
   //---------------------------Evento ir a crear cuenta---------------------------------
   btnCreateAccount.addEventListener('click', () => {
-    
     navigateTo('/newAccount');
+    
   });
 
   const btnGoogle = document.createElement('button');

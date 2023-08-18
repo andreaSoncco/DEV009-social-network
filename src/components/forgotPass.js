@@ -1,4 +1,4 @@
-import { resetPassword } from "../lib/initializeFirebase"; 
+import { resetPassword } from "../lib/index"; 
 function forgotPassword(navigateTo) {
   const forgotPassPage = document.createElement('div');
   forgotPassPage.id = 'forgotPage';

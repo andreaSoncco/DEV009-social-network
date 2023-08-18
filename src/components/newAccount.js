@@ -1,4 +1,4 @@
-import { registrarUsuario } from "../lib/initializeFirebase.js";
+import { registrarUsuario } from "../lib/index";
 function newAccount(navigateTo) {
   const divNewAccount = document.createElement('div');
   divNewAccount.classList = 'page';
