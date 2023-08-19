@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 
+
 /*-------------------firebase Laura
 const firebaseConfig = {
   apiKey: "AIzaSyD5wodv6ntAsyxnEr_9dk-PcVz90fBMZKc",
@@ -21,6 +22,6 @@ const firebaseConfig = {
   measurementId: "G-GFXS2L0C5T"
 };
 
-
 export const app = initializeApp(firebaseConfig);
+
 
