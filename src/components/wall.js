@@ -42,13 +42,19 @@ function wall(navigateTo) {
   const optionWall = document.createElement('option');
   optionWall.id = "value2";
   optionWall.innerText = "Inicio";
+  optionWall.value = "/";
   const optionTimeLine = document.createElement('option');
   optionTimeLine.id = "value3";
   optionTimeLine.innerText = "Perfil";
   const optionLogOut = document.createElement('option');
   optionLogOut.id = "value4";
   optionLogOut.innerText = "Cerrar sesion";
+  optionLogOut.value = "/login";
   menuSelect.append(optionSelectAnOption, optionWall, optionTimeLine, optionLogOut);
+  menuSelect.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+    navigateTo(selectedValue);
+  });
 /*-----------------------------------Input caja de texto para publicacion----------------------- */
 const divNewPost = document.createElement('div');
 divNewPost.id = "newPostArea";
