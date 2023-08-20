@@ -1,6 +1,7 @@
 import { doc } from "firebase/firestore";
-import { createPost, getPostsByUser, getAllPosts, getPostsbyUid, dismissLikesbyUid } from "../lib/index";
+import { createPost, getPostsByUser, getAllPosts, addLike, dismissLikesbyUid ,getPostsOrderByDateTime} from "../lib/index";
 import { auth } from "../firebase/initializeFirebase";
+import { async } from "regenerator-runtime";
 
 function wall(navigateTo) {
   const sectionWall = document.createElement('section');
@@ -63,11 +64,12 @@ buttonPublishNewPost.addEventListener('click', async () =>{
 // crea un nuevo post
   createPost(inputNewPost.value);
   //obtiene todos los posts publicados de todos los usuarios
-  const postJSON = await getAllPosts();
+  //const postJSON = await getAllPosts();
   //obtiene el arreglo de posts
-  const allPosts = postJSON.posts;
+  //const allPosts = postJSON.posts;
   // muestra todos los posts 
-  postList(allPosts);
+  //postList(allPosts);
+  loadAllPostStart();
 
 });
 
@@ -122,11 +124,26 @@ divAllPosts.appendChild(divPost);
     // let countPokemon = 0;
     console.log("dibujando");
     
+
+    
     divAllPosts.innerHTML = '';
     //console.log(auth);
     list.forEach(doc => {
       const content = document.createElement("div");
-      content.classList.add("postContent");       
+      content.classList.add("postContent"); 
+      let likeCount = 0;
+      let userLikePost = 0;
+      
+      if (doc.data().likeCount != 0)
+      {
+          if(doc.data().likeCount.includes(auth.currentUser.uid))
+          {
+            userLikePost = 1;
+          }
+          likeCount = doc.data().likeCount.length;
+      }
+
+      
       content.innerHTML = `  
       <div class="postHeader" id = ${doc.id}>
       <img src="./img/user.png" alt="user-img" class="user-img">
@@ -149,34 +166,35 @@ divAllPosts.appendChild(divPost);
 
       
       <div class="likes">
-        <svg  class="heart feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        <div class="likes-count">
-          ${doc.data().likeCount.length}
+      <svg  class="heart feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="${userLikePost>0 ? "red" : "none"}"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="heart feather feather-heart sc-dnqmqq jxshSx"  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>        <div class="likes-count">
+        ${likeCount}
         </div>
       </div>
 
     </div>`;
     
-    content.addEventListener('click', e => {
+    content.addEventListener('click', async (e) => {
       console.log(doc.data().likeCount);
       console.log(auth.currentUser.uid);
+      e.preventDefault();
       if(e.target.classList.contains('heart')) {
-        if(!doc.data().likeCount.includes(auth.currentUser.uid)) {
-          console.log(doc.data().uidUser);
-          
-         getPostsbyUid(doc.id).then(() => postList(list));
-        } else {
-          const likeActualizados = doc.data().likeCount.filter(like => like !== auth.currentUser.uid)
-          console.log(likeActualizados);
-         dismissLikesbyUid(doc.id, likeActualizados).then(() => postList(list));
-        }
 
+          if((doc.data().likeCount==0)||(!doc.data().likeCount.includes(auth.currentUser.uid))) 
+          {
+
+              console.log(doc.data().uidUser);          
+              addLike(doc.id);//.then(() => postList(list));
+        } else {
+              const likeActualizados = doc.data().likeCount.filter(like => like !== auth.currentUser.uid)
+              console.log(likeActualizados);
+              dismissLikesbyUid(doc.id, likeActualizados);//.then(() => postList(list));
+        }
+        
        
       }
       
-      
-       
-      
+      loadAllPostStart();
+             
     });
       divAllPosts.appendChild(content);
   
@@ -196,8 +214,8 @@ alert(postId);
   {
     
     //const postJSON = await getAllPosts();
-    //const postJSON = await getPostsOrderByDateTime();
-    const allPosts = await getAllPosts();
+    const allPosts = await getPostsOrderByDateTime();
+    //const allPosts = await getAllPosts();
     //console.log(allPosts);
     postList(allPosts);
     

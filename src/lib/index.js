@@ -257,7 +257,7 @@ export const registrarUsuario = ( email, password) => {
            }; */
  
  
-       export const getPostsbyUid =  (documentId) => {
+       export const addLike =  (documentId) => {
              
                const postRef = doc(db, artLoversWall, documentId);
                return updateDoc(postRef, {
@@ -270,7 +270,29 @@ export const registrarUsuario = ( email, password) => {
              export const dismissLikesbyUid = (documentId, arrayOfLikes) => {
               
                 const postRef = doc(db, artLoversWall, documentId);
-               return updateDoc(postRef, {
-                  likeCount: arrayOfLikes
-                });
+                if (arrayOfLikes.length == 0)
+                {
+                    return updateDoc(postRef, {
+                        likeCount: 0
+                      });
+                }else {
+                  return updateDoc(postRef, {
+                    likeCount: arrayOfLikes
+                  });
+                }
               };
+
+              export const getPostsOrderByDateTime = async () => {
+
+                let objJSONPost = "";
+                try {
+                      const q = query(collection(db, artLoversWall), orderBy("postDateTime", "desc"));
+                      const querySnapshot = await getDocs(q);
+                      return querySnapshot;
+                    }
+                    catch (error){
+                      console.log(error);
+                    }
+             
+                }; 
+      
