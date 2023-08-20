@@ -260,7 +260,7 @@ export const registrarUsuario = ( email, password) => {
        export const getPostsbyUid =  (documentId) => {
              
                const postRef = doc(db, artLoversWall, documentId);
-               updateDoc(postRef, {
+               return updateDoc(postRef, {
                  likeCount: arrayUnion(auth.currentUser.uid)
                });
           
@@ -270,7 +270,7 @@ export const registrarUsuario = ( email, password) => {
              export const dismissLikesbyUid = (documentId, arrayOfLikes) => {
               
                 const postRef = doc(db, artLoversWall, documentId);
-                 updateDoc(postRef, {
+               return updateDoc(postRef, {
                   likeCount: arrayOfLikes
                 });
               };

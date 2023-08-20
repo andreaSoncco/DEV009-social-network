@@ -1,6 +1,6 @@
 import { doc } from "firebase/firestore";
 import { createPost, getPostsByUser, getAllPosts, getPostsbyUid, dismissLikesbyUid } from "../lib/index";
-
+import { auth } from "../firebase/initializeFirebase";
 
 function wall(navigateTo) {
   const sectionWall = document.createElement('section');
@@ -157,21 +157,19 @@ divAllPosts.appendChild(divPost);
 
     </div>`;
     
-    content.addEventListener('click', async e => {
+    content.addEventListener('click', e => {
       console.log(doc.data().likeCount);
+      console.log(auth.currentUser.uid);
       if(e.target.classList.contains('heart')) {
-        if(!doc.data().likeCount.includes(doc.data().uidUser)){
+        if(!doc.data().likeCount.includes(auth.currentUser.uid)) {
           console.log(doc.data().uidUser);
-         await getPostsbyUid(doc.id);
-         postList(list);
-        }
-
-         else {
-          const likeActualizados = doc.data().likeCount.filter(like => like !== doc.data().uidUser)
+          
+         getPostsbyUid(doc.id).then(() => postList(list));
+        } else {
+          const likeActualizados = doc.data().likeCount.filter(like => like !== auth.currentUser.uid)
           console.log(likeActualizados);
-         await dismissLikesbyUid(doc.id, likeActualizados);
-         postList(list);
-         }
+         dismissLikesbyUid(doc.id, likeActualizados).then(() => postList(list));
+        }
 
        
       }
