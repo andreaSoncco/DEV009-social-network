@@ -10,13 +10,14 @@ import {
   signInWithPopup, 
   getIdToken, 
   getFirestore,addDoc,collection,query, where, getDocs, orderBy, doc, updateDoc,
-  auth, db, arrayUnion} from '../firebase/initializeFirebase';
+  auth, db, arrayUnion, signOut} from '../firebase/initializeFirebase';
 
 let uidUserSesion = "noUser";
 let userEmailSesion = "sinEmail";
 let userDisplayNameSesion = "noDisplayUserName";
 const artLoversWall = "artLoversWall";
 
+/* ---------------------------------Nuevo Usuario----------------------------------- */
 export const registrarUsuario = ( email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
@@ -37,11 +38,11 @@ export const registrarUsuario = ( email, password) => {
   sendEmailVerification(auth.currentUser)
   .then(() => {
     // Email verification sent!
-    alert('se envio correo de verificacion');
+    alert('Se envió correo de verificación. Revisa en la carpeta de correo no deseado.');
   });
  };
  
- 
+ /* ---------------------------------Info del usuario----------------------------- */
  export const initSessionVariables = () =>
  {
        
@@ -52,7 +53,7 @@ export const registrarUsuario = ( email, password) => {
  console.log(uidUserSesion);
  }
  
-  /*--------------login--------- */
+ /* ------------------------------Login con email y contraseña------------------------------ */
  
   export const loginEmailPassword = (email, password, callback) => {
     signInWithEmailAndPassword(auth, email, password)
@@ -68,7 +69,7 @@ export const registrarUsuario = ( email, password) => {
         const errorMessage = error.message;
   
         if (errorCode === 'auth/user-not-found') {
-          alert('usuario no registrado');
+          alert('Usuario no registrado');
   
         } else if (errorCode === 'auth/wrong-password') {
           alert('Contraseña incorrecta');
@@ -77,31 +78,18 @@ export const registrarUsuario = ( email, password) => {
       });
     }
  
-  /*export const loginUser = async (email, password) => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log(user);
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    }
-  };*/
- 
- //restablecer contraseña
+ /* ------------------------------------Restablecer contraseña---------------------------------- */
  export const resetPassword = (userEmail) => {
   console.log("recuperar contraseña antes");
   const resultado = sendPasswordResetEmail(auth, userEmail).then((userEmail) => {
-    alert("Password reset email sent"+ userEmail);
+    alert("Correo para restablecimiento de contraseña enviado a"+ userEmail);
   })
   console.log(resultado);
   
   return resultado;
  };
- /*---------------------------Google------------------------ */
- /**
-     * Function called when clicking the Login/Logout button.
-     */
+ /*---------------------------Inicio de sesion con Google------------------------ */
+ /* Function called when clicking the Login/Logout button. */
  const provider = new GoogleAuthProvider();
  export const  toggleSignIn = () => {
  
@@ -123,12 +111,12 @@ export const registrarUsuario = ( email, password) => {
   
           }).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            const errorCode = error.code;
+            const errorMessage = error.message;
             // The email of the user's account used.
-            var email = error.email;
+            const email = error.email;
             // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
+            const credential = error.credential;
             if (errorCode === 'auth/account-exists-with-different-credential') {
               alert('You have already signed up with a different auth provider for that email.');
               // If you are using multiple auth providers on your app you should handle linking
@@ -146,6 +134,19 @@ export const registrarUsuario = ( email, password) => {
       }
     };
   
+    /* -----------------------------------Cierre de sesion--------------------------- */
+
+    export const logOutFromSession = () => {
+      if (auth.currentUser) {
+
+      signOut(auth).then(() => {
+        alert("Saliste de tu sesion exitosamente.")
+      }).catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+    }
+    };
  
  /*-------------------------------Nuevo post ligado al usuario-------------- */
     export const createPost = async (postMuro) => {

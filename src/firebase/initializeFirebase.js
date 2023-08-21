@@ -9,7 +9,7 @@ import { getAuth,
   signInWithPopup, 
   getIdToken,
   setPersistence,
-  browserSessionPersistence } from "firebase/auth";
+  browserSessionPersistence, signOut } from "firebase/auth";
 import { getFirestore,addDoc,collection,query, where, getDocs, orderBy, doc, updateDoc, arrayUnion } from "firebase/firestore"; 
 
 import { app } from "./credentialsFirebase.js";
@@ -30,7 +30,7 @@ export {getAuth,
   signInWithPopup, 
   getIdToken, 
   getFirestore,addDoc,collection,query, where, getDocs, orderBy, doc, updateDoc,
-  auth, db, arrayUnion
+  auth, db, arrayUnion, signOut
 }
 
 setPersistence(auth, browserSessionPersistence)

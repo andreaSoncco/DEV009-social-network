@@ -1,4 +1,3 @@
-
 import { toggleSignIn, loginEmailPassword } from "../lib/index";
 
 function login(navigateTo) {
@@ -34,7 +33,7 @@ function login(navigateTo) {
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
   //-----------------------Evento de login------------------------------------
-formLogin.addEventListener("submit", (e) => {
+  formLogin.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -76,13 +75,9 @@ formLogin.addEventListener("submit", (e) => {
   createAccount.id = 'ntcuenta';
   createAccount.innerHTML = '¿No tienes cuenta?';
 
-  
-
   logIn.appendChild(formLogin);
   btnGoogle.append(logoGoogle, divContentButtonGoogle);
   formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
   return logIn;
-
-  
 }
 export default login;
