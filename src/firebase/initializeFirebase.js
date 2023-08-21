@@ -1,6 +1,7 @@
 // Import the functions you need from import { initializeApp } from 'firebase/app';the SDKs you need
 
 import { getAuth,
+  signOut,
   createUserWithEmailAndPassword,
   GoogleAuthProvider, 
   sendEmailVerification, 
@@ -9,7 +10,9 @@ import { getAuth,
   signInWithPopup, 
   getIdToken,
   setPersistence,
-  browserSessionPersistence } from "firebase/auth";
+  browserSessionPersistence
+} from "firebase/auth";
+
 import { getFirestore,addDoc,collection,query, where, getDocs, orderBy, doc, updateDoc, arrayUnion } from "firebase/firestore"; 
 
 import { app } from "./credentialsFirebase.js";
@@ -22,31 +25,21 @@ import { app } from "./credentialsFirebase.js";
  const db = getFirestore(app)
 
 export {getAuth,
+  signOut,
   createUserWithEmailAndPassword, 
   GoogleAuthProvider, 
   sendEmailVerification, 
   sendPasswordResetEmail, 
   signInWithEmailAndPassword, 
   signInWithPopup, 
+  setPersistence,
+  browserSessionPersistence,
   getIdToken, 
   getFirestore,addDoc,collection,query, where, getDocs, orderBy, doc, updateDoc,
   auth, db, arrayUnion
 }
 
-setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-    return signInWithEmailAndPassword(auth, email, password);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+
 
 
 
