@@ -1,5 +1,5 @@
 import { doc } from "firebase/firestore";
-import { createPost, getPostsByUser, getAllPosts, addLike, dismissLikesbyUid ,getPostsOrderByDateTime} from "../lib/index";
+import { logOut, createPost, getPostsByUser, getAllPosts, addLike, dismissLikesbyUid ,getPostsOrderByDateTime} from "../lib/index";
 import { auth } from "../firebase/initializeFirebase";
 import { async } from "regenerator-runtime";
 
@@ -53,6 +53,9 @@ function wall(navigateTo) {
   menuSelect.append(optionSelectAnOption, optionWall, optionTimeLine, optionLogOut);
   menuSelect.addEventListener('change', (event) => {
     const selectedValue = event.target.value;
+    if (selectedValue === "/login" || selectedValue === "/") {
+      logOut(auth);
+    }
     navigateTo(selectedValue);
   });
 /*-----------------------------------Input caja de texto para publicacion----------------------- */

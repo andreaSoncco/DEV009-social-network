@@ -33,6 +33,7 @@ function login(navigateTo) {
   buttonLogin.setAttribute('type', 'submit');
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
+  
   //-----------------------Evento de login------------------------------------
 formLogin.addEventListener("submit", (e) => {
     e.preventDefault();
