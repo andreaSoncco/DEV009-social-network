@@ -103,7 +103,7 @@ buttonPublishNewPost.innerText = 'Publicar';
         <div class="comment-count">${doc.data().comments}</div>
       </div>
         <div class="likes">
-        <svg  class="likeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="${userLikePost > 0 ? "red" : "none"}"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="heart feather feather-heart sc-dnqmqq jxshSx"  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>        <div class="likes-count">
+        <svg  class="likeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="${userLikePost > 0 ? "red" : "none"}"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="likeIcon"  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>        <div class="likes-count">
         ${likeCount}
         </div>
       </div>
@@ -116,15 +116,15 @@ buttonPublishNewPost.innerText = 'Publicar';
         if (e.target.classList.contains('likeIcon')) {
           if ((doc.data().likeCount == 0)||(!doc.data().likeCount.includes(auth.currentUser.uid))) {
             console.log(doc.data().uidUser);
-            addLike(doc.id); /* .then(() => postList(list)); */
+            addLike(doc.id).then(() => loadAllPostStart());
           }
           else {
             const likeActualizados = doc.data().likeCount.filter(like => like !== auth.currentUser.uid);
             console.log(likeActualizados);
-            dismissLikesbyUid(doc.id, likeActualizados); /* .then(() => postList(list)); */
+            dismissLikesbyUid(doc.id, likeActualizados).then(() => loadAllPostStart());
           }
         }
-        loadAllPostStart();
+        //loadAllPostStart();
       });
       divAllPosts.appendChild(content);
     });
