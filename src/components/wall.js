@@ -1,5 +1,5 @@
 import { doc } from "firebase/firestore";
-import { createPost, getPostsByUser, getAllPosts, addLike, dismissLikesbyUid ,getPostsOrderByDateTime } from "../lib/index";
+import { logOut, createPost, getPostsByUser, getAllPosts, addLike, dismissLikesbyUid ,getPostsOrderByDateTime} from "../lib/index";
 import { auth } from "../firebase/initializeFirebase";
 
 function wall(navigateTo) {
@@ -30,24 +30,33 @@ function wall(navigateTo) {
   const optionWall = document.createElement('option');
   optionWall.id = "value2";
   optionWall.innerText = "Inicio";
+  optionWall.value = "/";
   const optionTimeLine = document.createElement('option');
   optionTimeLine.id = "value3";
   optionTimeLine.innerText = "Perfil";
   const optionLogOut = document.createElement('option');
   optionLogOut.id = "value4";
-  optionLogOut.innerText = "Cerrar sesión";
-  menuSelect.append(optionSelectAnOption, optionWall, optionTimeLine, optionLogOut);
-  /* -----------------------------------Input caja de texto para publicacion--------------------- */
-  const divNewPost = document.createElement('div');
-  divNewPost.id = "newPostArea";
-  const inputNewPost = document.createElement('input');
-  inputNewPost.type = "text";
-  inputNewPost.placeholder = "¿Qué te inspiró hoy?";
-  const buttonPublishNewPost = document.createElement('button');
-  buttonPublishNewPost.id = 'buttonPublish';
-  buttonPublishNewPost.innerText = 'Publicar';
 
-  // con esta instucción, publica y de inmediato se muestra en el muro la publicación
+  optionLogOut.innerText = "Cerrar sesion";
+  optionLogOut.value = "/login";
+  menuSelect.append(optionSelectAnOption, optionWall, optionTimeLine, optionLogOut);
+  menuSelect.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+    if (selectedValue === "/login" || selectedValue === "/") {
+      logOut(auth);
+    }
+    navigateTo(selectedValue);
+  });
+/*-----------------------------------Input caja de texto para publicacion----------------------- */
+const divNewPost = document.createElement('div');
+divNewPost.id = "newPostArea";
+const inputNewPost = document.createElement('input');
+inputNewPost.type = "text";
+inputNewPost.placeholder = "¿Qué te inspiró hoy?";
+const buttonPublishNewPost = document.createElement('button');
+buttonPublishNewPost.id = 'buttonPublish';
+buttonPublishNewPost.innerText = 'Publicar';
+  // con esta instrucción, publica y de inmediato se muestra en el muro la publicación
   buttonPublishNewPost.addEventListener('click', async () => {
   // crea un nuevo post
     createPost(inputNewPost.value);

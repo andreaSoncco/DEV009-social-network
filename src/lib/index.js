@@ -2,15 +2,18 @@
 
 
 import {
-  createUserWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  signOut,
   GoogleAuthProvider, 
   sendEmailVerification, 
   sendPasswordResetEmail, 
   signInWithEmailAndPassword, 
   signInWithPopup, 
+  setPersistence,
+  browserSessionPersistence,
   getIdToken, 
   getFirestore,addDoc,collection,query, where, getDocs, orderBy, doc, updateDoc,
-  auth, db, arrayUnion, signOut} from '../firebase/initializeFirebase';
+  auth, db, arrayUnion } from '../firebase/initializeFirebase';
 
 let uidUserSesion = "noUser";
 let userEmailSesion = "sinEmail";
@@ -53,32 +56,51 @@ export const registrarUsuario = ( email, password) => {
  console.log(uidUserSesion);
  }
  
- /* ------------------------------Login con email y contraseña------------------------------ */
- 
-  export const loginEmailPassword = (email, password, callback) => {
-    signInWithEmailAndPassword(auth, email, password)
+  /*--------------login y Persistencia de datos--------- */
+
+  export function loginEmailPassword(email, password, callback) {
+    setPersistence(auth, browserSessionPersistence)
+      .then(() => signInWithEmailAndPassword(auth, email, password))
       .then((userCredential) => {
-        const user = userCredential.user;
-        initSessionVariables();
- 
+        const { user } = userCredential;
         callback(true);
-       
+        console.log(setPersistence);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-  
         if (errorCode === 'auth/user-not-found') {
           alert('Usuario no registrado');
-  
-        } else if (errorCode === 'auth/wrong-password') {
+        } 
+        else if (errorCode === 'auth/wrong-password') {
           alert('Contraseña incorrecta');
         }
+
         callback(false);
       });
-    }
+  }
  
- /* ------------------------------------Restablecer contraseña---------------------------------- */
+
+  /*--------------- LogOut -------------------- */
+  export function logOut(auth) {
+  signOut(auth).then(() => {
+    console.log("se cerro sesión");
+  }).catch((error) => {
+    // An error happened.
+  });
+ };
+  /*export const loginUser = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log(user);
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    }
+  };*/
+ 
+ //restablecer contraseña
  export const resetPassword = (userEmail) => {
   console.log("recuperar contraseña antes");
   const resultado = sendPasswordResetEmail(auth, userEmail).then((userEmail) => {
