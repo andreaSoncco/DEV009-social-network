@@ -7,7 +7,6 @@ import forgotPassword from './components/forgotPass.js';
 import newAccount from './components/newAccount.js';
 import wall from './components/wall.js';
 
-
 const root = document.getElementById('root');
 
 const routes = [
@@ -43,4 +42,3 @@ window.onpopstate = () => {
 };
 
 navigateTo(window.location.pathname || defaultRoute);
-

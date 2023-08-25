@@ -1,6 +1,6 @@
-import { toggleSignIn, loginEmailPassword } from "../lib/index";
+import { toggleSignIn, loginEmailPassword } from '../lib/index';
 
-function login(navigateTo) {
+export function login(navigateTo) {
   const logIn = document.createElement('div');
   logIn.classList.add('login');
   const formLogin = document.createElement('form');
@@ -32,16 +32,17 @@ function login(navigateTo) {
   buttonLogin.setAttribute('type', 'submit');
   buttonLogin.id = 'btnlogin';
   buttonLogin.textContent = 'Login';
-  
-  //-----------------------Evento de login------------------------------------
-  formLogin.addEventListener("submit", (e) => {
+
+  // -----------------------Evento de login------------------------------------
+  formLogin.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
     const alertaLogin = (valid) => {
       if (valid) {
         navigateTo('/wall');
       } else {
+        alert('Usuario o Contraseña Invalido. Intenta Nuevamente'); // eslint-disable-line no-alert
       }
     };
     loginEmailPassword(email, password, alertaLogin);
@@ -49,10 +50,9 @@ function login(navigateTo) {
   const btnCreateAccount = document.createElement('button');
   btnCreateAccount.textContent = 'Crear Cuenta';
   btnCreateAccount.id = 'crear';
-  //---------------------------Evento ir a crear cuenta---------------------------------
+  // ---------------------------Evento ir a crear cuenta---------------------------------
   btnCreateAccount.addEventListener('click', () => {
     navigateTo('/newAccount');
-    
   });
 
   const btnGoogle = document.createElement('button');
@@ -62,9 +62,9 @@ function login(navigateTo) {
   const logoGoogle = document.createElement('img');
   logoGoogle.src = 'img/google.png';
   logoGoogle.id = 'logoGoogle';
-  //-------------------------------------Evento iniciar sesion con google----------------------------------
+  // ---------------------Evento iniciar sesion con google--------------
   btnGoogle.addEventListener('click', (event) => {
-    event.preventDefault()
+    event.preventDefault();
     toggleSignIn();
   });
 
@@ -78,7 +78,7 @@ function login(navigateTo) {
 
   logIn.appendChild(formLogin);
   btnGoogle.append(logoGoogle, divContentButtonGoogle);
-  formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle);
+  formLogin.append(img, logintitle, inputEmail, inputPassword, buttonLogin, forgPassw, createAccount, btnCreateAccount, btnGoogle); // eslint-disable-line
   return logIn;
 }
 export default login;
