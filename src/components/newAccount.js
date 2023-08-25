@@ -1,4 +1,5 @@
-import { registrarUsuario } from "../lib/index";
+import { registrarUsuario } from '../lib/index';
+
 function newAccount(navigateTo) {
   const divNewAccount = document.createElement('div');
   divNewAccount.classList = 'page';
@@ -28,7 +29,6 @@ function newAccount(navigateTo) {
   inputUser.placeholder = 'Nombre de usuario';
   inputUser.setAttribute('required', '');
 
-
   const pEmail = document.createElement('p');
   pEmail.classList = 'pNewAccount';
   pEmail.innerText = 'CORREO ELECTRÓNICO';
@@ -37,7 +37,6 @@ function newAccount(navigateTo) {
   inputEmail.id = 'email';
   inputEmail.placeholder = 'Correo electrónico';
   inputEmail.setAttribute('required', '');
-
 
   const pPassword = document.createElement('p');
   pPassword.classList = 'pNewAccount';
@@ -54,32 +53,28 @@ function newAccount(navigateTo) {
   inputConfirmPassword.placeholder = 'Confirmar contraseña';
   inputConfirmPassword.setAttribute('required', '');
 
-
-
   // botón de entrar
   const buttonLogin = document.createElement('button');
   buttonLogin.id = 'buttonLogin';
   buttonLogin.innerText = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
-    //const newUser = inputUser.value;
+    // const newUser = inputUser.value;
     const email = inputEmail.value;
-  const password =  inputPassword.value;
-  const confirmPassword = inputConfirmPassword.value;
-  if (password !== confirmPassword) {
-    alert("Las contraseñas no coinciden.");
-  }
-  //agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
-  else {
-    alert("Cuenta creada exitosamente.");
-  registrarUsuario(email, password);
-  navigateTo('/login')}
+    const password = inputPassword.value;
+    const confirmPassword = inputConfirmPassword.value;
+    if (password !== confirmPassword) {
+      alert('Las contraseñas no coinciden.');
+    } else {
+      // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
+      alert('Cuenta creada exitosamente.');
+      registrarUsuario(email, password);
+      navigateTo('/login');
+    }
   });
 
   divNewAccount.append(title, title3, sectionNewAccount);
   sectionNewAccount.append(formNewAccount);
-  formNewAccount.append( inputUser, inputEmail,  inputPassword, inputConfirmPassword, buttonLogin);
-
-
+  formNewAccount.append(inputUser, inputEmail, inputPassword, inputConfirmPassword, buttonLogin);
   return divNewAccount;
 }
 export default newAccount;

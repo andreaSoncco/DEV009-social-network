@@ -29,7 +29,7 @@ function home(navigateTo) {
     navigateTo('/login');
   });
   divHome.append(bienvenida);
-  bienvenida.appendChild( sectionBienvenida);
+  bienvenida.appendChild(sectionBienvenida);
   sectionBienvenida.append(logo, title, textoBienvenida, buttonLogin);
   return divHome;
 }

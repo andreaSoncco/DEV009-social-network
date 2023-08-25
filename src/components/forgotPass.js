@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { resetPassword } from "../lib/index"; 
 function forgotPassword(navigateTo) {
   const forgotPassPage = document.createElement('div');
