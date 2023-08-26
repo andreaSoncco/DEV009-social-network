@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { doc } from 'firebase/firestore';
-import { logOut, createPost, getPostsByUser, getAllPosts, addLike, dismissLikesbyUid, getPostsOrderByDateTime } from '../lib/index';
+import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime } from '../lib/index';
 import { auth } from '../firebase/initializeFirebase';
 
 function wall(navigateTo) {

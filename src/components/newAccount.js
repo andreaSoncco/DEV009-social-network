@@ -58,7 +58,7 @@ function newAccount(navigateTo) {
   buttonLogin.id = 'buttonLogin';
   buttonLogin.innerText = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
-    // const newUser = inputUser.value;
+    const newUser = inputUser.value;
     const email = inputEmail.value;
     const password = inputPassword.value;
     const confirmPassword = inputConfirmPassword.value;
@@ -67,7 +67,7 @@ function newAccount(navigateTo) {
     } else {
       // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
       alert('Cuenta creada exitosamente.');
-      registrarUsuario(email, password);
+      registrarUsuario(email, password, newUser);
       navigateTo('/login');
     }
   });

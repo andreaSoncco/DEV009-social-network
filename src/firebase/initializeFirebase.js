@@ -12,6 +12,7 @@ import {
   getIdToken,
   setPersistence,
   browserSessionPersistence,
+  updateProfile,
 } from 'firebase/auth';
 
 import {
@@ -48,6 +49,17 @@ export {
   setPersistence,
   browserSessionPersistence,
   getIdToken,
-  getFirestore, addDoc, collection, query, where, getDocs, orderBy, doc, updateDoc,
-  auth, db, arrayUnion,
+  getFirestore,
+  addDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+  orderBy,
+  doc,
+  updateDoc,
+  auth,
+  db,
+  arrayUnion,
+  updateProfile,
 };
