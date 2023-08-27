@@ -75,7 +75,6 @@ p#textoBienvenida {
     font-size: 20px;
     font-family: var(--font-button);
     color: white;
-    font-size: 17px;
     background: var(--color-button);
     cursor: pointer;
 }
@@ -144,7 +143,6 @@ input {
     font-size: 20px;
     font-family: var(--font-button);
     color: white;
-    font-size: 17px;
     background: var(--color-button);
     cursor: pointer;
 }
@@ -206,7 +204,6 @@ section#newAccount {
 #sectionNewAccount {
     height: 100vh;
     width: 80%;
-    height: 55%;
     position: absolute;
     top: 55%; /* Centra verticalmente */
     left: 50%; /* Centra horizontalmente */
@@ -231,19 +228,18 @@ section#newAccount {
 }
 #headerWall {
     background-image: url(img/banerdiv.png);
-    background-size: cover;
-    display: flex;
-    justify-items: center; 
-    padding: 18%;
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 150px;
     position: relative;
 }
 
-#logoWall {
+img#logoWall {
     position: absolute;
-    top: 0.05em;
-    left: 0.1em;
-    width: 7em;
-    height: 7em;
+    top: 5px;
+    left: 5px;
+    width: 100px;
+    
 }
 
 #toggleWall {
@@ -251,10 +247,6 @@ section#newAccount {
     right: 0.4em;
     position: absolute;
     font-size: 2em;
-}
-img#logoWall {
-    width: 60px;
-    height: 60px;
 }
 
 /*------------------seccion post-----------*/
