@@ -40,6 +40,7 @@ export const validarUsuario = (auth) => {
 export const registrarUsuario = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      console.log(auth);
       console.log(userCredential);
       const user = userCredential.user;
       validarUsuario(auth);
