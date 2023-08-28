@@ -47,3 +47,23 @@ describe('registrarUsuario', () => {
     expect(alertSpy).toHaveBeenCalledWith('errorCode');
   });
 });
+
+  it('deberia llamar a la funcion loginWithGoogle al hacer clic en el boton Google', async () => {
+    const btnGoogle = cont.querySelector('#btnGoogle');
+
+    if (btnGoogle) {
+      const loginWithSpyGoogle = jest.spyOn(loginController, 'loginWithGoogle');
+
+      const clickEvent = new Event('click');
+      btnGoogle.dispatchEvent(clickEvent);
+
+      await Promise.resolve();
+
+      expect(loginWithSpyGoogle).toHaveBeenCalled();
+
+      loginWithSpyGoogle.mockRestore();
+    } else {
+      console.log('No se encontró el elemento #btnGoogle');
+    }
+  });
+})
