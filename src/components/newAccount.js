@@ -54,7 +54,7 @@ function newAccount(navigateTo) {
     } else {
       // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
       alert('Cuenta creada exitosamente.');
-      registrarUsuario(email, password, newUser);
+      registrarUsuario(email, password);
       navigateTo('/login');
     }
   });

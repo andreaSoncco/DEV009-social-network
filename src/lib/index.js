@@ -3,6 +3,7 @@
 import {
   createUserWithEmailAndPassword,
   signOut,
+  provider,
   GoogleAuthProvider,
   sendEmailVerification,
   sendPasswordResetEmail,
@@ -38,8 +39,8 @@ export const validarUsuario = (auth) => {
 };
 
 export const registrarUsuario = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+  createUserWithEmailAndPassword(auth, email, password);
+  /* .then((userCredential) => {
       console.log(auth);
       console.log(userCredential);
       const user = userCredential.user;
@@ -52,6 +53,7 @@ export const registrarUsuario = (email, password) => {
       const errorMessage = error.message;
       alert(errorMessage);
     });
+    */
 };
 /* ---------------------------------Info del usuario----------------------------- */
 export const initSessionVariables = () => {
@@ -110,7 +112,7 @@ export const resetPassword = (userEmail) => {
 };
 /* ---------------------------Inicio de sesion con Google------------------------ */
 /* Function called when clicking the Login/Logout button. */
-const provider = new GoogleAuthProvider();
+
 export const toggleSignIn = () => {
   try {
     if (!auth.currentUser) {

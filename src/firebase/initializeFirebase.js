@@ -37,10 +37,13 @@ import { app } from './credentialsFirebase.js';
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const provider = new GoogleAuthProvider();
+
 export {
   getAuth,
   signOut,
   createUserWithEmailAndPassword,
+  provider,
   GoogleAuthProvider,
   sendEmailVerification,
   sendPasswordResetEmail,
