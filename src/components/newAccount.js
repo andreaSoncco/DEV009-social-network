@@ -12,7 +12,7 @@ function newAccount(navigateTo) {
   title.textContent = 'Crear una cuenta';
   const title3 = document.createElement('h4');
   title3.id = 'newAccountTitle2';
-  title3.textContent = '¿Ya tienes una? Entra aquí';
+  title3.innerHTML = 'Ya tienes una? <a href="/login">Entra aqui</a>';
 
   // section caja de Crear Cuenta
   const sectionNewAccount = document.createElement('section');
@@ -20,35 +20,23 @@ function newAccount(navigateTo) {
   const formNewAccount = document.createElement('form');
   formNewAccount.id = 'formNewAccount';
 
-  const pUser = document.createElement('p');
-  pUser.classList = 'pNewAccount';
-  pUser.innerText = 'USUARIO';
-  const inputUser = document.createElement('input');
-  inputUser.id = 'user';
-  inputUser.type = 'text';
-  inputUser.placeholder = 'Nombre de usuario';
-  inputUser.setAttribute('required', '');
-
-  const pEmail = document.createElement('p');
-  pEmail.classList = 'pNewAccount';
-  pEmail.innerText = 'CORREO ELECTRÓNICO';
   const inputEmail = document.createElement('input');
   inputEmail.type = 'email';
   inputEmail.id = 'email';
+  inputEmail.classList = 'inputsNewAccount';
   inputEmail.placeholder = 'Correo electrónico';
   inputEmail.setAttribute('required', '');
 
-  const pPassword = document.createElement('p');
-  pPassword.classList = 'pNewAccount';
-  pPassword.innerText = 'CONTRASEÑA';
   const inputPassword = document.createElement('input');
   inputPassword.id = 'Contraseña';
+  inputPassword.classList = 'inputsNewAccount';
   inputPassword.type = 'password';
   inputPassword.placeholder = 'Contraseña';
   inputPassword.setAttribute('required', '');
 
   const inputConfirmPassword = document.createElement('input');
   inputConfirmPassword.id = 'confirmar';
+  inputConfirmPassword.classList = 'inputsNewAccount';
   inputConfirmPassword.type = 'password';
   inputConfirmPassword.placeholder = 'Confirmar contraseña';
   inputConfirmPassword.setAttribute('required', '');
@@ -58,7 +46,6 @@ function newAccount(navigateTo) {
   buttonLogin.id = 'buttonLogin';
   buttonLogin.innerText = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
-    const newUser = inputUser.value;
     const email = inputEmail.value;
     const password = inputPassword.value;
     const confirmPassword = inputConfirmPassword.value;
@@ -72,9 +59,9 @@ function newAccount(navigateTo) {
     }
   });
 
-  divNewAccount.append(title, title3, sectionNewAccount);
-  sectionNewAccount.append(formNewAccount);
-  formNewAccount.append(inputUser, inputEmail, inputPassword, inputConfirmPassword, buttonLogin);
+  divNewAccount.appendChild(sectionNewAccount);
+  sectionNewAccount.append(title, title3, formNewAccount);
+  formNewAccount.append(inputEmail, inputPassword, inputConfirmPassword, buttonLogin);
   return divNewAccount;
 }
 export default newAccount;

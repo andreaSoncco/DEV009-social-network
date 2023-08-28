@@ -1,19 +1,10 @@
 /* eslint-disable */
-import { doc } from 'firebase/firestore';
 import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime } from '../lib/index';
 import { auth } from '../firebase/initializeFirebase';
 
 function wall(navigateTo) {
   const sectionWall = document.createElement('section');
   sectionWall.id = 'timeLine';
-
-  // section General
-  const sectionBotonesDePrueba = document.createElement('section');
-  sectionBotonesDePrueba.id = 'sectionWall';
-
-  const imagenTemporal = document.createElement('img');
-  imagenTemporal.id = 'underConstruction';
-  imagenTemporal.src = 'img/enConstruccion.png';
 
   const header = document.createElement('header');
   header.id = 'headerWall';
@@ -22,41 +13,27 @@ function wall(navigateTo) {
   logoWall.id = 'logoWall';
   logoWall.src = 'img/logo.png';
   /* -------------------------------menu desplegable------------------------------- */
-  const menuSelect = document.createElement('select');
-  menuSelect.id = 'menuSelect';
-  menuSelect.classList.add('selectRoute');
-  const optionSelectAnOption = document.createElement('option');
-  optionSelectAnOption.id = 'value1';
-  optionSelectAnOption.innerText = 'Selecciona una opción';
-  const optionWall = document.createElement('option');
-  optionWall.id = 'value2';
-  optionWall.innerText = 'Inicio';
-  optionWall.value = '/';
-  const optionTimeLine = document.createElement('option');
-  optionTimeLine.id = 'value3';
-  optionTimeLine.innerText = 'Perfil';
-  const optionLogOut = document.createElement('option');
-  optionLogOut.id = 'value4';
-
-  optionLogOut.innerText = 'Cerrar sesion';
-  optionLogOut.value = '/login';
-  menuSelect.append(optionSelectAnOption, optionWall, optionTimeLine, optionLogOut);
-  menuSelect.addEventListener('change', (event) => {
-    const selectedValue = event.target.value;
-    if (selectedValue === '/login'||selectedValue === '/') {
-      logOut(auth);
-    }
-    navigateTo(selectedValue);
+  const logOutButton = document.createElement('button');
+  logOutButton.id = 'logOut';
+  logOutButton.title = 'Cerrar sesion';
+  logOutButton.addEventListener('click', () => {
+    logOut(auth);
+    navigateTo('/login');
   });
   /*-----------------------------------Input caja de texto para publicacion----------------------- */
   const divNewPost = document.createElement('div');
   divNewPost.id = 'newPostArea';
   const inputNewPost = document.createElement('input');
+  inputNewPost.id = 'newPost';
   inputNewPost.type = 'text';
   inputNewPost.placeholder = '¿Qué te inspiró hoy?';
   const buttonPublishNewPost = document.createElement('button');
   buttonPublishNewPost.id = 'buttonPublish';
   buttonPublishNewPost.innerText = 'Publicar';
+  const imgSend = document.createElement('img');
+  imgSend.classList = 'sendIcon';
+  imgSend.src = 'img/enviar.png';
+  buttonPublishNewPost.appendChild(imgSend);
   // con esta instrucción, publica y de inmediato se muestra en el muro la publicación
   buttonPublishNewPost.addEventListener('click', async () => {
     // crea un nuevo post
@@ -143,8 +120,8 @@ function wall(navigateTo) {
   // esta función hace que se carguen todos los posts al inicio
   loadAllPostStart();
 
-  sectionWall.append(header, divNewPost, sectionBotonesDePrueba, divAllPosts);
-  header.append(logoWall, menuSelect);
+  sectionWall.append(header, divNewPost, divAllPosts);
+  header.append(logoWall, logOutButton);
   return sectionWall;
 }
 export default wall;

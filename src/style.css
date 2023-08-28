@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
     text-align: center;
-           
 }
 /*------------------Colores frecuentes------------------*/
 :root {
@@ -12,7 +11,7 @@
     --color-button: linear-gradient(90deg, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
     --color-hover: radial-gradient(circle, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
     --font-button: 'Roboto', sans-serif;
-
+    --wall-color: #f1f1f1;
 }
 /*---------------------HOME------------------------*/
 
@@ -33,13 +32,12 @@ section#bienvenida {
 #logoBienvenida {
     width: 300px;
     height: 300px;
-    margin-top: 50px;
-    margin-bottom: 60px;
+    margin-top: 45px;
+    margin-bottom: 30px;
 }
 
 #sectionBienvenida {
     display: grid;
-
     background-color: var(--color-background);
     padding: 5px;
     row-gap: 15px;
@@ -51,28 +49,28 @@ section#bienvenida {
 #titleBienvenida {
     
     font-family: var(--font-button);
-    font-size: 25px;
+    font-size: 2em;
     font-weight: bold;
     text-align: center;
     
 }
 p#textoBienvenida {
     font-family: var(--font-button);
-    font-size: 20px;
+    font-size: 1.5em;
     text-align: justify;
-    margin: 20px;
+    margin: 15px;
     align-items: center;
     display: grid;
     justify-content: space-around;
     align-content: center;
 }
 #buttonLogin {
-    margin-top: 15px;
+    margin: 30px;
     width: 130px;
     height: 40px;
     border-radius: 25px;
     border: 1px solid white;
-    font-size: 20px;
+    font-size: 1.2em;
     font-family: var(--font-button);
     color: white;
     background: var(--color-button);
@@ -117,20 +115,20 @@ div.login {
 }
 h2 {
     font-family: var(--font-button);
-    font-size: 25px;
+    font-size: 1.5em;
 }
 p#forgPassLink, p#ntcuenta, p#textoPass {
     font-family: var(--font-button);
-    font-size: 17px;
+    font-size: 1.2em;
+    text-align: justify;
 }
 input {
     width: 90%;
     height: 30px;
     border-radius: 10px;
     font-family: var(--font-button);
-    font-size: 17px;
-    background: white;
-    
+    font-size: 1.2em;
+    background: white; 
 }
 #btnlogin, #crear, #btnGoogle, #botonMail {
     width: 200px;
@@ -140,7 +138,7 @@ input {
     align-items: center;
     border-radius: 25px;
     border: 1px solid white;
-    font-size: 20px;
+    font-size: 1.2em;
     font-family: var(--font-button);
     color: white;
     background: var(--color-button);
@@ -176,21 +174,18 @@ div#formPass {
 }
 h1#tituloPass {
     font-family: var(--font-button);
-    font-size: 25px;
+    font-size: 1.7em;
     margin: 15px;
 }
 /*----------------------Crear Cuenta---------*/
-section#newAccount {
-    height: 100vh;
-    position: relative;
-}
 
 #newAccountTitle {
     position: relative;
     text-align: center;
     top: 10%;
     font-family: var(--font-button);
-    font-size: 35px;
+    font-size: 2em;
+    color: black;
 }
 
 #newAccountTitle2 {
@@ -198,19 +193,20 @@ section#newAccount {
     text-align: center;
     top: 14%;
     font-family: var(--font-button);
-    font-size: 15px;
+    font-size: 1.3em;
+    margin: 15px;
 }
 
 #sectionNewAccount {
-    height: 100vh;
+    height: 80%;
     width: 80%;
     position: absolute;
-    top: 55%; /* Centra verticalmente */
+    top: 50%; /* Centra verticalmente */
     left: 50%; /* Centra horizontalmente */
     transform: translate(-50%, -50%); /* Centra horizontal y verticalmente */
     text-align: center;
     background-color: rgba(252, 250, 250, 0.7);
-    border-radius: 5%;
+    border-radius: 25px;
 }
 
 .pNewAccount {
@@ -219,6 +215,9 @@ section#newAccount {
 }
 #user, #email, #Contraseña, #confirmar {
     margin-top: 15px;
+}
+#formNewAccount {
+  margin-top: 150px;
 }
 /*----------------------Wall--------------*/
 
@@ -238,25 +237,47 @@ img#logoWall {
     position: absolute;
     top: 5px;
     left: 5px;
-    width: 100px;
+    width: 120px;
     
 }
 
-#toggleWall {
-    top: 0.4em;
-    right: 0.4em;
+button#logOut {
+    background-image: url(img/cerrar-sesion.png);
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 0px;
+    cursor: pointer;
     position: absolute;
-    font-size: 2em;
+    top: 15px;
+    right: 15px;
 }
-
-/*------------------seccion post-----------*/
+button#logOut:hover {
+    transform: scale(1.1);
+  }
+  
+button#logOut:active {
+    transform: scale(0.9);
+  }
+div.allPosts {
+  background-color: var(--wall-color);
+  width: 80%;
+}
+div#postContent {
+    background-color: white;
+}
 div#newPostArea{
     width: 100%;
     height: 80px;
-    background: grey;
+    background: white;
+}
+input#newPost {
+    background-color: var(--wall-color);
+    font-size: 1.1em;
 }
 #sectionWall{
-    background: lightblue;
+    background: var(--wall-color);
     padding: 20px;
 }
 div#divPost {
@@ -276,4 +297,8 @@ img#underConstruction{
 }
 .heart{
     cursor: pointer;
+}
+
+.sendIcon {
+    width: 20px;
 }
