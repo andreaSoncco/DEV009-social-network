@@ -225,12 +225,24 @@ h1#tituloPass {
     margin: 0;
     box-sizing: border-box;
 }
+
+#timeLine {
+    position: absolute;
+}
+
 #headerWall {
-    background-image: url(img/banerdiv.png);
-    background-size: auto;
+    background-image: url(img/encabezadoMobile.png);
+    background-size: cover;
     background-repeat: no-repeat;
     height: 150px;
     position: relative;
+    z-index: 1; /* Ajusta el valor según sea necesario */
+}
+  
+div#newPostArea {
+    flex-direction: row;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
 }
 
 img#logoWall {
@@ -260,22 +272,82 @@ button#logOut:hover {
 button#logOut:active {
     transform: scale(0.9);
   }
-div.allPosts {
-  background-color: var(--wall-color);
-  width: 80%;
+
+div#allPosts {
+    background-color: var(--wall-color);
+    top: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+    width: 100vw;
+    /* Esto es opcional, ajusta la altura según tu diseño */
 }
-div#postContent {
+  
+div.postContent {
     background-color: white;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+    width: 90vw;
+}
+
+div.postHeader {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+}
+
+div.counters {
+    background-color: white;
+    border-top: black solid 1px;
+    margin: 5px;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: right; /* Centrar verticalmente */
+    width: 89vw;
+    gap: 100px; /* Espacio entre elementos */
+}
+
+#iconoLogo {
+    position: relative;
+    top: -5px;
+    left: -18px;
 }
 div#newPostArea{
+    display: flex;
+    top: 50px;
     width: 100%;
     height: 80px;
     background: white;
+    gap: 10px;
 }
 input#newPost {
     background-color: var(--wall-color);
+    height: 60px;
+    width: 270px;
     font-size: 1.1em;
+    border: var(--wall-color);
 }
+
+#buttonPublish {
+    height: 60px;
+    width: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+    border-radius: 10px;
+    border: var(--wall-color);;
+    font-size: 0.9em;
+}
+
 #sectionWall{
     background: var(--wall-color);
     padding: 20px;
@@ -291,14 +363,31 @@ img#underConstruction{
     width: 200px;
 }
 .postContent {
-    border: 2px solid salmon;
-    border-radius: 8px;
-    margin-bottom: 4px;
-}
-.heart{
-    cursor: pointer;
+
+    margin-bottom: 0.5px;
 }
 
+div.comments {
+    display: flex;
+    flex-direction: row; /* Dos columnas automáticas */
+    justify-content: right; /* Justificar contenido hacia la derecha */
+    align-items: flex-end; /* Alinear contenido hacia abajo */
+    gap: 3px; 
+}
+
+div.likes {
+    display: flex;
+    flex-direction: row; /* Dos columnas automáticas */
+    justify-content: end; /* Justificar contenido hacia la derecha */
+    align-items: flex-end; /* Alinear contenido hacia abajo */
+    gap: 3px;
+}
+
+.heart {
+    cursor: pointer;
+}
+  
 .sendIcon {
     width: 20px;
 }
+  
