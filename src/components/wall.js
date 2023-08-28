@@ -69,7 +69,7 @@ function wall(navigateTo) {
 
       content.innerHTML = `  
       <div class="postHeader" id = ${doc.id}>
-        <img src="./img/user.png" alt="user-img" class="user-img">
+        <img src="./img/user.png" id="iconoLogo" alt="user-img" class="user-img">
         <div class="postHeaderUserInfo">
         ${doc.data().userDisplayName} <span>${doc.data().userEmail}</span>
         <p>${doc.data().post}</p>
