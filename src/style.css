@@ -320,14 +320,7 @@ div.counters {
     top: -5px;
     left: -18px;
 }
-div#newPostArea{
-    display: flex;
-    top: 50px;
-    width: 100%;
-    height: 80px;
-    background: white;
-    gap: 10px;
-}
+
 input#newPost {
     background-color: var(--wall-color);
     height: 60px;
@@ -344,7 +337,7 @@ input#newPost {
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
     border-radius: 10px;
-    border: var(--wall-color);;
+    border: var(--wall-color);
     font-size: 0.9em;
 }
 

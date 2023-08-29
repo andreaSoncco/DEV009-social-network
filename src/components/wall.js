@@ -39,7 +39,7 @@ function wall(navigateTo) {
     // crea un nuevo post
     createPost(inputNewPost.value);
     // muestra todos los posts
-
+    inputNewPost.value = '';
     loadAllPostStart();
   });
 
