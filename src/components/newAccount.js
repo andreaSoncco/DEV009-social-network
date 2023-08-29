@@ -1,4 +1,5 @@
-import { registrarUsuario } from '../lib/index';
+import { auth } from '../firebase/initializeFirebase';
+import { registrarUsuario, validarUsuario } from '../lib/index';
 
 function newAccount(navigateTo) {
   const divNewAccount = document.createElement('div');
@@ -54,7 +55,7 @@ function newAccount(navigateTo) {
     } else {
       // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
       alert('Cuenta creada exitosamente.');
-      registrarUsuario(email, password);
+      registrarUsuario(email, password).then(() => validarUsuario(auth));
       navigateTo('/login');
     }
   });

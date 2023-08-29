@@ -1,5 +1,4 @@
 // aqui exportaras las funciones que necesites
-
 import {
   createUserWithEmailAndPassword,
   signOut,
@@ -21,6 +20,7 @@ import {
   auth,
   db,
   arrayUnion,
+  deleteDoc,
 } from '../firebase/initializeFirebase';
 
 let uidUserSesion = 'noUser';
@@ -31,29 +31,24 @@ const artLoversWall = 'artLoversWall';
 /* ---------------------------------Nuevo Usuario----------------------------------- */
 // eslint-disable-next-line
 export const validarUsuario = (auth) => { 
-  sendEmailVerification(auth.currentUser)
-    .then(() => {
-      // Email verification sent!
-      alert('Se envió correo de verificación. Revisa en la carpeta de correo no deseado.');
-    });
+  sendEmailVerification(auth.currentUser).then(() => {
+    alert('Se envió correo de verificación. Revisa en la carpeta de correo no deseado.');
+  });
 };
 
-export const registrarUsuario = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
-  /* .then((userCredential) => {
-      console.log(auth);
-      console.log(userCredential);
-      const user = userCredential.user;
-      validarUsuario(auth);
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      alert(errorCode);
-      const errorMessage = error.message;
-      alert(errorMessage);
-    });
-    */
+export const registrarUsuario = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    // console.log(auth);
+    // console.log(userCredential);
+    const user = userCredential.user;
+    console.log(user);
+  } catch (error) {
+    const errorCode = error.code;
+    console.log(errorCode);
+    const errorMessage = error.message;
+    console.log(errorMessage);
+  }
 };
 /* ---------------------------------Info del usuario----------------------------- */
 export const initSessionVariables = () => {
@@ -181,6 +176,22 @@ export const createPost = async (postMuro) => {
     postDateTime: dateTime,
 
   });
+};
+
+// --------------------------Editar Post----------------------------
+
+export const editPost = (documentId, editedPost) => {
+  const postRef = doc(db, artLoversWall, documentId);
+  return updateDoc(postRef, {
+    post: editedPost,
+  });
+};
+
+// --------------------------Borrar Post----------------------
+
+export const deletePost = (documentId) => {
+  const postRef = doc(db, artLoversWall, documentId);
+  return deleteDoc(postRef);
 };
 
 // -------------------------Dar like---------------------------------

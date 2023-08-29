@@ -6,19 +6,18 @@ jest.mock('../src/firebase/initializeFirebase', () => ({
   auth: jest.fn(),
   sendPasswordResetEmail: jest.fn(),
 }));
-
+const email = 'test@test.com';
+const password = 'password';
 describe('registrarUsuario', () => {
   it('debería llamar a createUserWithEmailAndPassword con los parámetros recibidos', async () => {
-    const email = 'test@test.com';
-    const password = 'password';
     await registrarUsuario(email, password);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, email, password);
   });
-
-  it('debería mostrar una alerta con el código de error si ocurre un error', () => {
-    const alertSpy = jest.spyOn(window, 'alert');
-    registrarUsuario('nest@test.com', 'password', auth);
-    expect(alertSpy).toHaveBeenCalledWith('errorCode');
+  it('en caso de tener correo o contrasena invalida deberia salir un error', async () => {
+    const error = new Error('Error al crear usuario');
+    createUserWithEmailAndPassword.mockRejectedValue(error);
+    // Llama a la función registrarUsuario con credenciales inválidas
+    await expect(registrarUsuario('email invalido', 'contrasena invalida')).rejects.toThrow(error);
   });
 });
 

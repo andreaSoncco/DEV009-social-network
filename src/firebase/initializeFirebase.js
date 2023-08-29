@@ -26,6 +26,7 @@ import {
   doc,
   updateDoc,
   arrayUnion,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import { app } from './credentialsFirebase.js';
@@ -65,4 +66,5 @@ export {
   db,
   arrayUnion,
   updateProfile,
+  deleteDoc,
 };
