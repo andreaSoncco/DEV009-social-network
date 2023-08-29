@@ -1,51 +1,24 @@
-import { createUserWithEmailAndPassword } from '../src/firebase/initializeFirebase';
+import { createUserWithEmailAndPassword, auth } from '../src/firebase/initializeFirebase';
 import { registrarUsuario } from '../src/lib/index.js';
 
 jest.mock('../src/firebase/initializeFirebase', () => ({
   createUserWithEmailAndPassword: jest.fn(),
+  auth: jest.fn(),
 }));
-
-// jest.mock('firebase/auth');
-/* getAuth.mockReturnValue({
-  createUserWithEmailAndPassword: jest.fn(),
-});
-*/
 
 describe('registrarUsuario', () => {
   it('debería llamar a createUserWithEmailAndPassword con los parámetros recibidos', async () => {
-    // const mockCreateUserWithEmailAndPassword = jest.mock('firebase/auth', () => ({
-    //   createUserWithEmailAndPassword: jest.fn(),
-    // }));
-    // const mockAuth = jest.mock('firebase/auth', () => ({
-    //   auth: jest.fn(),
-    // }));
     const email = 'test@test.com';
     const password = 'password';
-
     await registrarUsuario(email, password);
-
-    expect(createUserWithEmailAndPassword).toHaveBeenCalled();
-  });
-
-  /* it('debería llamar a validarUsuario después de que se haya registrado el usuario', () => {
-    // const mockCreateUserWithEmailAndPassword = jest.fn().mockResolvedValue('userCredential');
-    // const mockAuth = { createUserWithEmailAndPassword: mockCreateUserWithEmailAndPassword };
-    const mockValidarUsuario = jest.fn();
-    const consoleSpy = jest.spyOn(console, 'log');
-
-    registrarUsuario('test@test.com', 'password', auth, mockValidarUsuario);
-
-    expect(mockValidarUsuario).toHaveBeenCalled();
-    expect(consoleSpy).toHaveBeenCalledWith('userCredential');
+    expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, email, password);
   });
 
   it('debería mostrar una alerta con el código de error si ocurre un error', () => {
     const alertSpy = jest.spyOn(window, 'alert');
-    registrarUsuario('test@test.com', 'password', auth);
+    registrarUsuario('nest@test.com', 'password', auth);
     expect(alertSpy).toHaveBeenCalledWith('errorCode');
   });
-
-  */
 });
 
 // it('deberia llamar a la funcion loginWithGoogle al hacer clic en el boton Google', async () => {
