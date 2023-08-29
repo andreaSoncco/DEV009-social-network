@@ -103,12 +103,6 @@ div.login {
 
 }
 
-@media only screen and (max-width: 550px){
-   .formLogin {
-     margin: 0px 10px;
-     padding-bottom: 100px;
-    }
-}
 #logoLogin {
     width: 180px;
     height: 180px;
@@ -246,20 +240,19 @@ h1#tituloPass {
     background-color: var(--wall-color);
 }
   
-
 #headerWall {
     display: flex;
-    background-color: #f1f1f1;
+    background-color: rgba(241, 241, 241, 0.5); /* Fondo semi-transparente */
     height: 150px;
     position: relative;
     min-width: 400px; /* Ancho mínimo */
     justify-content: center;
     z-index: 1; /* Ajusta el valor según sea necesario */
 }
-  
+
 #headerWall::before {
     content: "";
-    background-image: url(img/encabezadoMobile.png);
+    background-image: url(img/encabezado1Mobile.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -269,6 +262,7 @@ h1#tituloPass {
     height: 100%;
     z-index: -1;
 }
+
   
 
 img#logoWall {
@@ -316,8 +310,8 @@ div.postContent {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    min-width: 330px; /* Ancho mínimo */
-    
+    min-width: 350px; /* Ancho mínimo */
+    max-width: 350px;
     justify-content: center;
 }
 
@@ -330,9 +324,12 @@ div.postHeader {
 }
 
 #iconoLogo {
+    margin: 3px 3px 3px 5px;
+    display: flex;
     position: relative;
-    top: -5px;
-    left: -18px;
+    justify-content: flex-start; /* Justificar contenido hacia la derecha */
+    align-items: flex-start;
+
 }
 
 #newPostArea {
@@ -355,7 +352,7 @@ div#newPostAreaTop {
     top: 5.5px;
     height: 80px;
     background: white;
-    min-width: 340px; /* Ancho mínimo */
+    min-width: 350px; /* Ancho mínimo */
     margin: 0 auto; /* Centrar horizontalmente */
     gap: 10px;
     align-items: center; /* Centrar verticalmente */
@@ -365,7 +362,7 @@ div#newPostAreaTop {
 #newPost {
     background-color: var(--wall-color);
     height: 60px;
-    width: 250px;
+    width: 260px;
     font-size: 1.1em;
     border: var(--wall-color);
     display: flex;
@@ -410,7 +407,7 @@ img#underConstruction{
     flex-direction: row;
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
-    min-width: 330px; /* Ancho mínimo */
+    min-width: 350px; /* Ancho mínimo */
     
     gap: 100px; /* Espacio entre elementos */
 }
@@ -444,3 +441,77 @@ div.likes {
     width: 20px;
 }
   
+@media (min-width:640px){
+    .formLogin {
+      margin: 0px 10px;
+      padding-bottom: 100px;
+     }
+
+     #containerWall {
+        min-width: 400px;
+    }
+
+     #headerWall::before {
+        background-image: url(img/encabezadoAncho.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    img#logoWall {
+        left: 10px;
+    }
+    
+    button#logOut {
+        right: 30px;
+    }
+
+    #allPosts {
+        min-width: 800px; /* Ancho mínimo */
+    }
+      
+    div.postContent {
+        min-width: 650px; /* Ancho mínimo */
+        min-height: 80px;
+        max-height: auto;
+    }
+    
+    #iconoLogo {
+        margin-bottom: auto;
+        margin-top: 0;
+    }
+    
+    #newPostArea {
+        width: 800px;
+    }
+      
+    div#newPostAreaTop {
+        min-width: 650px; /* Ancho mínimo */
+        gap: 15px;
+    }
+      
+    #newPost {
+        width: 560px;
+    }
+      
+  
+    img#underConstruction{
+        width: 200px;
+    }
+    
+    .iconBar {
+        min-width: 650px; /* Ancho mínimo */
+        gap: 200px; /* Espacio entre elementos */
+    }
+    
+    div.edit {
+        display: flex;
+        justify-content: right; /* Justificar contenido hacia la derecha */
+        align-items: start; /* Alinear contenido hacia abajo */
+    }
+    
+    div.trash {
+        display: flex;
+        justify-content: start; /* Justificar contenido hacia la derecha */
+        align-items: start; /* Alinear contenido hacia abajo */
+    }
+ }
