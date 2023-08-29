@@ -343,7 +343,6 @@ div.postHeader {
     margin: 0 auto; /* Centrar horizontalmente */
     gap: 10px;
 }
-
   
 div#newPostAreaTop {
     padding: 5px;
@@ -361,10 +360,6 @@ div#newPostAreaTop {
 }
   
 #newPost {
-
-
-input#newPost {
-
     background-color: var(--wall-color);
     height: 60px;
     width: 260px;
@@ -519,5 +514,4 @@ div.likes {
         justify-content: start; /* Justificar contenido hacia la derecha */
         align-items: start; /* Alinear contenido hacia abajo */
     }
- }
- 
+}
