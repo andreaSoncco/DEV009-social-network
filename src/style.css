@@ -343,6 +343,7 @@ div.postHeader {
     margin: 0 auto; /* Centrar horizontalmente */
     gap: 10px;
 }
+
   
 div#newPostAreaTop {
     padding: 5px;
@@ -360,6 +361,10 @@ div#newPostAreaTop {
 }
   
 #newPost {
+
+
+input#newPost {
+
     background-color: var(--wall-color);
     height: 60px;
     width: 260px;
