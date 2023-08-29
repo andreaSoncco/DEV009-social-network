@@ -18,10 +18,16 @@ function forgotPassword(navigateTo) {
   buttonMail.id = 'botonMail';
   buttonMail.textContent = 'Enviar link';
   // boton temporal
-  buttonMail.addEventListener('click', () => {
-    resetPassword(inputMail.value);
-    navigateTo('/login');
+  buttonMail.addEventListener('click', async () => {
+    try {
+      await resetPassword(inputMail.value);
+      alert(`Correo para restablecimiento de contraseña enviado a ${inputMail.value}, revisa en la bandeja de correo no deseado.`);
+      navigateTo('/login');
+    } catch (error) {
+      console.error('Error al restablecer la contraseña:', error);
+    }
   });
+
   formDiv.append(titlePass, textPass, inputMail, buttonMail);
   forgotPassPage.appendChild(formDiv);
   return forgotPassPage;

@@ -100,15 +100,8 @@ export function logOut(auth) {
 
 // ---------------------------------restablecer contraseña
 export const resetPassword = (userEmail) => {
-  console.log('recuperar contraseña antes');
-  // eslint-disable-next-line
-  const resultado = sendPasswordResetEmail(auth, userEmail).then(() => {
-    alert(`Correo para restablecimiento de contraseña enviado a ${userEmail}, revisa en la bandeja de correo no deseado.`);
-    return userEmail;
-  });
-  console.log(resultado);
-
-  return resultado;
+  sendPasswordResetEmail(auth, userEmail);
+  return sendPasswordResetEmail;
 };
 /* ---------------------------Inicio de sesion con Google------------------------ */
 /* Function called when clicking the Login/Logout button. */
