@@ -103,12 +103,6 @@ div.login {
 
 }
 
-@media only screen and (max-width: 550px){
-   .formLogin {
-     margin: 0px 10px;
-     padding-bottom: 100px;
-    }
-}
 #logoLogin {
     width: 180px;
     height: 180px;
@@ -220,37 +214,62 @@ h1#tituloPass {
   margin-top: 150px;
 }
 /*----------------------Wall--------------*/
-
 #wall {
     margin: 0;
     box-sizing: border-box;
-}
-
-#timeLine {
-    position: absolute;
-}
-
-#headerWall {
-    background-image: url(img/encabezadoMobile.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 150px;
-    position: relative;
-    z-index: 1; /* Ajusta el valor según sea necesario */
+    
 }
   
-div#newPostArea {
-    flex-direction: row;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
+#timeLine {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--wall-color);
 }
+  
+#containerWall {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 400px;
+    margin: 0 auto; /* Alinear horizontalmente al centro */
+    justify-content: center;
+    background-color: var(--wall-color);
+}
+  
+#headerWall {
+    display: flex;
+    background-color: rgba(241, 241, 241, 0.5); /* Fondo semi-transparente */
+    height: 150px;
+    position: relative;
+    min-width: 400px; /* Ancho mínimo */
+    justify-content: center;
+    z-index: 1; /* Ajusta el valor según sea necesario */
+}
+
+#headerWall::before {
+    content: "";
+    background-image: url(img/encabezado1Mobile.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+  
 
 img#logoWall {
     position: absolute;
     top: 5px;
     left: 5px;
     width: 120px;
-    
 }
 
 button#logOut {
@@ -273,25 +292,27 @@ button#logOut:active {
     transform: scale(0.9);
   }
 
-div#allPosts {
-    background-color: var(--wall-color);
-    top: 300px;
+#allPosts {
     display: flex;
+    position: relative;
+    background-color: var(--wall-color);
+    top: 0px;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
-    width: 100vw;
+    min-width: 400px; /* Ancho mínimo */
+    justify-content: center;
     /* Esto es opcional, ajusta la altura según tu diseño */
 }
   
 div.postContent {
     background-color: white;
-    margin-top: 20px;
+    margin-bottom: 11px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
-    width: 90vw;
+    min-width: 350px; /* Ancho mínimo */
+    max-width: 350px;
+    justify-content: center;
 }
 
 div.postHeader {
@@ -302,44 +323,70 @@ div.postHeader {
     justify-content: center; /* Centrar verticalmente */
 }
 
-div.counters {
-    background-color: white;
-    border-top: black solid 1px;
-    margin: 5px;
-    padding: 3px;
+#iconoLogo {
+    margin: 3px 3px 3px 5px;
     display: flex;
-    flex-direction: row;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: right; /* Centrar verticalmente */
-    width: 89vw;
-    gap: 100px; /* Espacio entre elementos */
+    position: relative;
+    justify-content: flex-start; /* Justificar contenido hacia la derecha */
+    align-items: flex-start;
+
 }
 
-#iconoLogo {
+#newPostArea {
+    padding: 5px;
+    display: flex;
     position: relative;
-    top: -5px;
-    left: -18px;
+    top: 0px;
+    height: 100px;
+    background-color: var(--wall-color);
+    width: 370px;
+    margin: 0 auto; /* Centrar horizontalmente */
+    gap: 10px;
 }
+
+  
+div#newPostAreaTop {
+    padding: 5px;
+    display: flex; /* Añadido */
+    flex-direction: row; /* Asegura que los elementos estén en fila */
+    position: relative;
+    top: 5.5px;
+    height: 80px;
+    background: white;
+    min-width: 350px; /* Ancho mínimo */
+    margin: 0 auto; /* Centrar horizontalmente */
+    gap: 10px;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center;
+}
+  
+#newPost {
+
 
 input#newPost {
+
     background-color: var(--wall-color);
     height: 60px;
-    width: 270px;
+    width: 260px;
     font-size: 1.1em;
     border: var(--wall-color);
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
 }
-
+  
 #buttonPublish {
     height: 60px;
     width: 58px;
     display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
     flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
     border-radius: 10px;
     border: var(--wall-color);
     font-size: 0.9em;
 }
+  
 
 #sectionWall{
     background: var(--wall-color);
@@ -355,18 +402,33 @@ div#divPost {
 img#underConstruction{
     width: 200px;
 }
-.postContent {
 
-    margin-bottom: 0.5px;
-}
-
-div.comments {
+.iconBar {
+    background-color: white;
+    border-top: black solid 1px;
+    margin: 5px;
+    padding: 3px;
     display: flex;
-    flex-direction: row; /* Dos columnas automáticas */
-    justify-content: right; /* Justificar contenido hacia la derecha */
-    align-items: flex-end; /* Alinear contenido hacia abajo */
-    gap: 3px; 
+    flex-direction: row;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+    min-width: 350px; /* Ancho mínimo */
+    
+    gap: 100px; /* Espacio entre elementos */
 }
+
+div.edit {
+    display: flex;
+    justify-content: right; /* Justificar contenido hacia la derecha */
+    align-items: start; /* Alinear contenido hacia abajo */
+}
+
+div.trash {
+    display: flex;
+    justify-content: start; /* Justificar contenido hacia la derecha */
+    align-items: start; /* Alinear contenido hacia abajo */
+}
+
 
 div.likes {
     display: flex;
@@ -384,3 +446,77 @@ div.likes {
     width: 20px;
 }
   
+@media (min-width:640px){
+    .formLogin {
+      margin: 0px 10px;
+      padding-bottom: 100px;
+     }
+
+     #containerWall {
+        min-width: 400px;
+    }
+
+     #headerWall::before {
+        background-image: url(img/encabezadoAncho.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    img#logoWall {
+        left: 10px;
+    }
+    
+    button#logOut {
+        right: 30px;
+    }
+
+    #allPosts {
+        min-width: 800px; /* Ancho mínimo */
+    }
+      
+    div.postContent {
+        min-width: 650px; /* Ancho mínimo */
+        min-height: 80px;
+        max-height: auto;
+    }
+    
+    #iconoLogo {
+        margin-bottom: auto;
+        margin-top: 0;
+    }
+    
+    #newPostArea {
+        width: 800px;
+    }
+      
+    div#newPostAreaTop {
+        min-width: 650px; /* Ancho mínimo */
+        gap: 15px;
+    }
+      
+    #newPost {
+        width: 560px;
+    }
+      
+  
+    img#underConstruction{
+        width: 200px;
+    }
+    
+    .iconBar {
+        min-width: 650px; /* Ancho mínimo */
+        gap: 200px; /* Espacio entre elementos */
+    }
+    
+    div.edit {
+        display: flex;
+        justify-content: right; /* Justificar contenido hacia la derecha */
+        align-items: start; /* Alinear contenido hacia abajo */
+    }
+    
+    div.trash {
+        display: flex;
+        justify-content: start; /* Justificar contenido hacia la derecha */
+        align-items: start; /* Alinear contenido hacia abajo */
+    }
+ }
