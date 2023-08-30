@@ -20,7 +20,8 @@ import {
   auth,
   db,
   arrayUnion,
-  deleteDoc,
+  deleteDoc, 
+  getDoc
 } from '../firebase/initializeFirebase';
 
 let uidUserSesion = 'noUser';
@@ -223,6 +224,22 @@ export const getPostsOrderByDateTime = async () => {
     console.log(error);
   }
 };
+
+export const getDataPostByIdPost = async (idPost) => {
+
+                    
+  try {
+        //const q = query(collection(db, artLoversWall), where("id", "==",idPost));
+        const docRef = doc(db,artLoversWall,idPost);
+        const querySnapshot = await getDoc(docRef);
+       // console.log(querySnapshot.data());
+        return querySnapshot.data().post;
+      }
+      catch (error){
+        console.log(error);
+      }
+
+  };
 /* eslint-enable */
 /* ------------------------------FUNCIONES NO USADAS------------------------------------- */
 /* ------------------------------Concatena los posts dentro de un objeto------------------------ */

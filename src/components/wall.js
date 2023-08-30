@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime, editPost, deletePost } from '../lib/index';
+import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime, editPost, deletePost, getDataPostByIdPost } from '../lib/index';
 import { auth } from '../firebase/initializeFirebase';
 
 
@@ -51,6 +51,31 @@ function wall(navigateTo) {
 
   divNewPostTop.append(inputNewPost, buttonPublishNewPost);
   divNewPost.append(divNewPostTop);
+  /* --------------------------Estructura y eventos de cierre de la ventana modal ------------- */
+const modalContainer = document.createElement('section');
+modalContainer.classList.add('modalWindow');
+const modalContent = document.createElement('div');
+modalContent.classList.add('modalContent');
+const closeModal = document.createElement('span');
+closeModal.classList.add('close');
+closeModal.innerHTML = '&times';
+const inputModal = document.createElement('input');
+inputModal.id = 'inputModal';
+inputModal.type = 'text';
+inputModal.placeHolder = 'aqui va el contenido actual del post';
+const submitUpdatedPost = document.createElement('button');
+submitUpdatedPost.id = 'buttonUpdatedPost';
+submitUpdatedPost.innerText = 'Guardar';
+// boton de descartar cambio que podria cerrar la ventana modal
+const discardChanges = document.createElement('button');
+discardChanges.id = 'buttonDiscardChange';
+discardChanges.innerText = 'Descartar';
+discardChanges.addEventListener('click', function() {
+  modalContainer.style.display = 'none';
+});
+// Juntar los elementos en la ventana modal
+modalContent.append(closeModal, inputModal, submitUpdatedPost, discardChanges);
+modalContainer.appendChild(modalContent);
   /* -----------------------------------Cajas para despligue de publicaciones------------------- */
   const divAllPosts = document.createElement('div');
   divAllPosts.id = 'allPosts';
@@ -128,9 +153,18 @@ function wall(navigateTo) {
           if ((doc.data().uidUser.includes(auth.currentUser.uid))) {
             console.log(doc.data().uidUser);
             console.log('el userUid del documento coincide con el usuario logeado');
-            const inputEdit = document.createElement('input');
-            inputEdit.value = 'Pude editar post!'
-            editPost(doc.id, inputEdit.value).then(() => loadAllPostStart());
+            let textPost = await getDataPostByIdPost(doc.id);
+            //console.log(textPost);
+            inputModal.value = textPost;
+            modalContainer.style.display = 'block';
+            
+            submitUpdatedPost.addEventListener('click', async (e) => {
+              e.preventDefault();
+                  console.log(doc.data().uidUser);
+                  editPost(doc.id, inputModal.value).then(() => loadAllPostStart());
+                  modalContainer.style.display = 'none';
+                
+            });
           }
           else {
             console.log('no entro a la condicion');
@@ -166,8 +200,9 @@ function wall(navigateTo) {
   };
   // esta función hace que se carguen todos los posts al inicio
   loadAllPostStart();
-
-  sectionWall.append(header, divContainerWall);
+  
+  /* ---------------------Se adjuntan los elementos en sus secciones------- */
+  sectionWall.append(header, divContainerWall, modalContainer);
   divContainerWall.append(divNewPost, divAllPosts);
   header.append(logoWall, logOutButton);
   return sectionWall;
