@@ -55,6 +55,7 @@ function newAccount(navigateTo) {
     } else {
       // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
       alert('Cuenta creada exitosamente.');
+      // Corregir alerta en caso de error
       registrarUsuario(email, password).then(() => validarUsuario(auth));
       navigateTo('/login');
     }

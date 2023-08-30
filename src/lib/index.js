@@ -20,8 +20,8 @@ import {
   auth,
   db,
   arrayUnion,
-  deleteDoc, 
-  getDoc
+  deleteDoc,
+  getDoc,
 } from '../firebase/initializeFirebase';
 
 let uidUserSesion = 'noUser';
@@ -38,18 +38,9 @@ export const validarUsuario = (auth) => {
 };
 
 export const registrarUsuario = async (email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    // console.log(auth);
-    // console.log(userCredential);
-    const user = userCredential.user;
-    console.log(user);
-  } catch (error) {
-    const errorCode = error.code;
-    console.log(errorCode);
-    const errorMessage = error.message;
-    console.log(errorMessage);
-  }
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  const user = userCredential;
+  console.log(user);
 };
 /* ---------------------------------Info del usuario----------------------------- */
 export const initSessionVariables = () => {

@@ -17,7 +17,7 @@ describe('registrarUsuario', () => {
     const error = new Error('Error al crear usuario');
     createUserWithEmailAndPassword.mockRejectedValue(error);
     // Llama a la función registrarUsuario con credenciales inválidas
-    await expect(registrarUsuario('email invalido', 'contrasena invalida')).rejects.toThrow(error);
+    await expect(() => registrarUsuario('email invalido', '12345')).rejects.toThrow(error);
   });
 });
 
