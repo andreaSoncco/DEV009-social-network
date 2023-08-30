@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime, editPost, deletePost } from '../lib/index';
+import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime, editPost, deletePost, getDataPostByIdPost } from '../lib/index';
 import { auth } from '../firebase/initializeFirebase';
 
 
@@ -153,10 +153,18 @@ modalContainer.appendChild(modalContent);
           if ((doc.data().uidUser.includes(auth.currentUser.uid))) {
             console.log(doc.data().uidUser);
             console.log('el userUid del documento coincide con el usuario logeado');
+            let textPost = await getDataPostByIdPost(doc.id);
+            //console.log(textPost);
+            inputModal.value = textPost;
             modalContainer.style.display = 'block';
-            // const inputEdit = document.createElement('input');
-            // inputEdit.value = 'Pude editar post!'
-            // editPost(doc.id, inputEdit.value).then(() => loadAllPostStart());
+            
+            submitUpdatedPost.addEventListener('click', async (e) => {
+              e.preventDefault();
+                  console.log(doc.data().uidUser);
+                  editPost(doc.id, inputModal.value).then(() => loadAllPostStart());
+                  modalContainer.style.display = 'none';
+                
+            });
           }
           else {
             console.log('no entro a la condicion');
@@ -192,7 +200,8 @@ modalContainer.appendChild(modalContent);
   };
   // esta función hace que se carguen todos los posts al inicio
   loadAllPostStart();
-
+  
+  /* ---------------------Se adjuntan los elementos en sus secciones------- */
   sectionWall.append(header, divContainerWall, modalContainer);
   divContainerWall.append(divNewPost, divAllPosts);
   header.append(logoWall, logOutButton);
