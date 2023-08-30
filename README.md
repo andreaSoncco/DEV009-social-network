@@ -6,10 +6,7 @@
 * [2. Herramientas utilizadas.](#2-herramientas-utilizadas)
 * [3. Historias de usuario.](#3-historias-de-usuario)
 * [4. Prototipos.](#4-prototipos)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Hacker edition](#6-hacker-edition)
-* [7. Entrega](#7-entrega)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
+
 
 ## 1. Definición del producto.
 
