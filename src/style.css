@@ -2,7 +2,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     text-align: center;
 }
 /*------------------Colores frecuentes------------------*/
@@ -23,8 +22,9 @@
     
 }
 section#bienvenida {
-    height: 100dvh;
-    padding-top: 80px;
+    position: relative;
+    height: 60vh;
+    top: 55px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
@@ -32,8 +32,8 @@ section#bienvenida {
 #logoBienvenida {
     width: 300px;
     height: 300px;
-    margin-top: 45px;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #sectionBienvenida {
@@ -47,7 +47,6 @@ section#bienvenida {
 }
 
 #titleBienvenida {
-    
     font-family: var(--font-button);
     font-size: 2em;
     font-weight: bold;
@@ -58,14 +57,14 @@ p#textoBienvenida {
     font-family: var(--font-button);
     font-size: 1.5em;
     text-align: justify;
-    margin: 15px;
+    margin: 5px;
     align-items: center;
     display: grid;
     justify-content: space-around;
     align-content: center;
 }
 #buttonLogin {
-    margin: 30px;
+    margin: 20px 20px 45px 20px;
     width: 130px;
     height: 40px;
     border-radius: 25px;
@@ -194,6 +193,7 @@ h1#tituloPass {
 #sectionNewAccount {
     height: 80%;
     width: 80%;
+    max-width: 350px;
     position: absolute;
     top: 50%; /* Centra verticalmente */
     left: 50%; /* Centra horizontalmente */
@@ -209,32 +209,25 @@ h1#tituloPass {
 }
 #user, #email, #Contraseña, #confirmar {
     margin-top: 15px;
+    min-width: 250px;
+    max-width: 265px;
 }
 #formNewAccount {
   margin-top: 150px;
 }
 /*----------------------Wall--------------*/
-#wall {
-    margin: 0;
-    box-sizing: border-box;
-    
-}
-  
+
 #timeLine {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
     background-color: var(--wall-color);
+    min-height: 740px;
 }
   
 #containerWall {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-width: 400px;
+    min-width: 360px;
+    max-width: 100vh;
     margin: 0 auto; /* Alinear horizontalmente al centro */
     justify-content: center;
     background-color: var(--wall-color);
@@ -245,7 +238,7 @@ h1#tituloPass {
     background-color: rgba(241, 241, 241, 0.5); /* Fondo semi-transparente */
     height: 150px;
     position: relative;
-    min-width: 400px; /* Ancho mínimo */
+    min-width: 360px; /* Ancho mínimo */
     justify-content: center;
     z-index: 1; /* Ajusta el valor según sea necesario */
 }
@@ -253,8 +246,8 @@ h1#tituloPass {
 #headerWall::before {
     content: "";
     background-image: url(img/encabezado1Mobile.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: repeat-x; /* Repetición solo horizontal */
     position: absolute;
     top: 0;
     left: 0;
@@ -299,7 +292,8 @@ button#logOut:active {
     top: 0px;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    min-width: 400px; /* Ancho mínimo */
+    min-width: 360px; /* Ancho mínimo */
+    max-width: 100vh;
     justify-content: center;
     /* Esto es opcional, ajusta la altura según tu diseño */
 }
@@ -310,8 +304,8 @@ div.postContent {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
-    min-width: 350px; /* Ancho mínimo */
-    max-width: 350px;
+    min-width: 340px; /* Ancho mínimo */
+    max-width: 340px;
     justify-content: center;
 }
 
@@ -333,13 +327,13 @@ div.postHeader {
 }
 
 #newPostArea {
-    padding: 5px;
+    padding: 0px;
     display: flex;
     position: relative;
     top: 0px;
     height: 100px;
     background-color: var(--wall-color);
-    width: 370px;
+    width: 340px;
     margin: 0 auto; /* Centrar horizontalmente */
     gap: 10px;
 }
@@ -352,7 +346,7 @@ div#newPostAreaTop {
     top: 5.5px;
     height: 80px;
     background: white;
-    min-width: 350px; /* Ancho mínimo */
+    width: 340px; /* Ancho mínimo */
     margin: 0 auto; /* Centrar horizontalmente */
     gap: 10px;
     align-items: center; /* Centrar verticalmente */
@@ -362,7 +356,7 @@ div#newPostAreaTop {
 #newPost {
     background-color: var(--wall-color);
     height: 60px;
-    width: 260px;
+    width: 250px;
     font-size: 1.1em;
     border: var(--wall-color);
     display: flex;
@@ -394,6 +388,7 @@ div#divPost {
     margin: 2px;
     justify-self: center;
 }
+
 img#underConstruction{
     width: 200px;
 }
@@ -402,12 +397,12 @@ img#underConstruction{
     background-color: white;
     border-top: black solid 1px;
     margin: 5px;
-    padding: 3px;
+    padding: 0px;
     display: flex;
     flex-direction: row;
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
-    min-width: 350px; /* Ancho mínimo */
+    min-width: 340px; /* Ancho mínimo */
     
     gap: 100px; /* Espacio entre elementos */
 }
@@ -442,19 +437,25 @@ div.likes {
 }
   
 @media (min-width:640px){
+
+    #timeLine {
+        background-color: var(--wall-color);
+        width: auto;
+        min-height: 100vh;
+    }
     .formLogin {
       margin: 0px 10px;
       padding-bottom: 100px;
      }
 
-     #containerWall {
+    #containerWall {
         min-width: 400px;
     }
 
      #headerWall::before {
         background-image: url(img/encabezadoAncho.png);
         background-size: cover;
-        background-repeat: no-repeat;
+        
     }
     
     img#logoWall {
@@ -470,7 +471,8 @@ div.likes {
     }
       
     div.postContent {
-        min-width: 650px; /* Ancho mínimo */
+        min-width: 360px;
+        max-width: 660px; /* Ancho mínimo */
         min-height: 80px;
         max-height: auto;
     }
@@ -513,5 +515,22 @@ div.likes {
         display: flex;
         justify-content: start; /* Justificar contenido hacia la derecha */
         align-items: start; /* Alinear contenido hacia abajo */
+    }
+
+    /*----------------------Crear Cuenta---------*/
+    #sectionNewAccount {
+        max-width: 300px;
+        height: 600px;
+    }
+
+    #user, #email, #Contraseña, #confirmar {
+        margin-top: 15px;
+    }
+    #formNewAccount {
+    margin-top: 150px;
+    }
+    #buttonLogin {
+        margin-left: 50px;
+        margin-right: 50px;
     }
 }
