@@ -11,6 +11,8 @@
     --color-hover: radial-gradient(circle, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
     --font-button: 'Roboto', sans-serif;
     --wall-color: #f1f1f1;
+    --shadow-boxes: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 }
 /*---------------------HOME------------------------*/
 
@@ -256,8 +258,6 @@ h1#tituloPass {
     z-index: -1;
 }
 
-  
-
 img#logoWall {
     position: absolute;
     top: 5px;
@@ -295,18 +295,23 @@ button#logOut:active {
     min-width: 360px; /* Ancho mínimo */
     max-width: 100vh;
     justify-content: center;
+    margin-top: 10px;
+    
     /* Esto es opcional, ajusta la altura según tu diseño */
 }
   
 div.postContent {
     background-color: white;
     margin-bottom: 11px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
     min-width: 340px; /* Ancho mínimo */
     max-width: 340px;
     justify-content: center;
+    box-shadow: var(--shadow-boxes);
+    border-radius: 5px;
 }
 
 div.postHeader {
@@ -316,21 +321,34 @@ div.postHeader {
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
 }
-
+div.postHeaderUserInfo {
+    padding: 5px;
+    margin: 5px;
+}
+p.userEmail {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.1em;
+    text-align: left;
+}
+p.postContent {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    text-align: left;
+}
 #iconoLogo {
     margin: 3px 3px 3px 5px;
     display: flex;
     position: relative;
     justify-content: flex-start; /* Justificar contenido hacia la derecha */
     align-items: flex-start;
-
 }
 
 #newPostArea {
     padding: 0px;
     display: flex;
-    position: relative;
-    top: 0px;
+    justify-content: space-around;
     height: 100px;
     background-color: var(--wall-color);
     width: 340px;
@@ -347,10 +365,10 @@ div#newPostAreaTop {
     height: 80px;
     background: white;
     width: 340px; /* Ancho mínimo */
-    margin: 0 auto; /* Centrar horizontalmente */
     gap: 10px;
     align-items: center; /* Centrar verticalmente */
     justify-content: center;
+    box-shadow: var(--shadow-boxes);
 }
   
 #newPost {
@@ -375,7 +393,7 @@ div#newPostAreaTop {
     border: var(--wall-color);
     font-size: 0.9em;
 }
-  
+
 
 #sectionWall{
     background: var(--wall-color);
@@ -389,10 +407,6 @@ div#divPost {
     justify-self: center;
 }
 
-img#underConstruction{
-    width: 200px;
-}
-
 .iconBar {
     background-color: white;
     border-top: black solid 1px;
@@ -403,7 +417,6 @@ img#underConstruction{
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
     min-width: 340px; /* Ancho mínimo */
-    
     gap: 100px; /* Espacio entre elementos */
 }
 
@@ -411,12 +424,16 @@ div.edit {
     display: flex;
     justify-content: right; /* Justificar contenido hacia la derecha */
     align-items: start; /* Alinear contenido hacia abajo */
+    cursor: pointer;
+    margin-top: 5px;
 }
 
-div.trash {
+div.delete {
     display: flex;
     justify-content: start; /* Justificar contenido hacia la derecha */
     align-items: start; /* Alinear contenido hacia abajo */
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 
@@ -426,9 +443,10 @@ div.likes {
     justify-content: end; /* Justificar contenido hacia la derecha */
     align-items: flex-end; /* Alinear contenido hacia abajo */
     gap: 3px;
+    margin-top: 5px;
 }
 
-.heart {
+.likeIcon {
     cursor: pointer;
 }
   
@@ -550,18 +568,30 @@ div.likes {
     background-color: #fefefe;
       margin: 15% auto;
       padding: 20px;
+      border-radius: 15px;
       border: 1px solid #888;
       width: 80%;
+      box-shadow: var(--shadow-boxes)
   }
-  .close {
-    color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
+  button#buttonUpdatedPost, button#buttonDiscardChange {
+    margin: 15px;
+    padding: 5px;
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 1px solid white;
+    font-size: 1em;
+    font-family: var(--font-button);
+    color: white;
+    background: var(--color-button);
+    cursor: pointer;
   }
-  .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
+  button#buttonUpdatedPost:hover, button#buttonDiscardChange:hover {
+    background: var(--color-hover);
+}
+  input#inputModal {
+    margin-top: 10px;
+    height: 50px;
+    font-size: 1em;
+    font-family: var(--font-button);
+  }

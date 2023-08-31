@@ -56,9 +56,6 @@ const modalContainer = document.createElement('section');
 modalContainer.classList.add('modalWindow');
 const modalContent = document.createElement('div');
 modalContent.classList.add('modalContent');
-const closeModal = document.createElement('span');
-closeModal.classList.add('close');
-closeModal.innerHTML = '&times';
 const inputModal = document.createElement('input');
 inputModal.id = 'inputModal';
 inputModal.type = 'text';
@@ -74,7 +71,7 @@ discardChanges.addEventListener('click', function() {
   modalContainer.style.display = 'none';
 });
 // Juntar los elementos en la ventana modal
-modalContent.append(closeModal, inputModal, submitUpdatedPost, discardChanges);
+modalContent.append(inputModal, submitUpdatedPost, discardChanges);
 modalContainer.appendChild(modalContent);
   /* -----------------------------------Cajas para despligue de publicaciones------------------- */
   const divAllPosts = document.createElement('div');
@@ -103,8 +100,8 @@ modalContainer.appendChild(modalContent);
       <div class="postHeader" id = ${doc.id}>
         <img src="./img/user.png" id="iconoLogo" alt="user-img" class="user-img">
         <div class="postHeaderUserInfo">
-        <span>${doc.data().userEmail}</span>
-        <p>${doc.data().post}</p>
+        <p class="userEmail">${doc.data().userEmail}</p>
+        <p class="postContent">${doc.data().post}</p>
         </div>
       </div>
       <div class="iconBar">
