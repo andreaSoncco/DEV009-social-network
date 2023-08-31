@@ -54,16 +54,18 @@ function newAccount(navigateTo) {
       alert('Las contraseñas no coinciden.');
     } else {
       // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
-      alert('Cuenta creada exitosamente.');
       // Corregir alerta en caso de error
       registrarUsuario(email, password).then(() => validarUsuario(auth));
-      navigateTo('/login');
+      // navigateTo('/login');
     }
   });
+  const divError = document.createElement('div');
+  divError.id = 'error-message';
+  divError.style.color = 'red';
 
   divNewAccount.appendChild(sectionNewAccount);
   sectionNewAccount.append(title, title3, formNewAccount);
-  formNewAccount.append(inputEmail, inputPassword, inputConfirmPassword, buttonLogin);
+  formNewAccount.append(inputEmail, inputPassword, inputConfirmPassword, divError, buttonLogin);
   return divNewAccount;
 }
 export default newAccount;
