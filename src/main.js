@@ -9,7 +9,6 @@ import newAccount from './components/newAccount.js';
 import wall from './components/wall.js';
 
 const root = document.getElementById('root');
-
 const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
@@ -18,9 +17,7 @@ const routes = [
   { path: '/newAccount', component: newAccount },
   { path: '/wall', component: wall },
 ];
-
 const defaultRoute = '/';
-
 function navigateTo(hash) {
   const route = routes.find((routeFind) => routeFind.path === hash);
   if (route && route.component) {

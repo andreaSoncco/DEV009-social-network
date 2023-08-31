@@ -89,7 +89,6 @@ modalContainer.appendChild(modalContent);
   divAllPosts.appendChild(divPost);
 
   const postList = (list) => {
-    console.log('dibujando');
     divAllPosts.innerHTML = '';
     list.forEach(doc => {
       const content = document.createElement('div');
@@ -133,17 +132,13 @@ modalContainer.appendChild(modalContent);
 
       // Evento de like
       content.addEventListener('click', async (e) => {
-        console.log(doc.data().likeCount);
-        console.log(auth.currentUser.uid);
         e.preventDefault();
         if (e.target.classList.contains('likeIcon')) {
           if ((doc.data().likeCount === 0) || (!doc.data().likeCount.includes(auth.currentUser.uid))) {
-            console.log(doc.data().uidUser);
             addLike(doc.id).then(() => loadAllPostStart());
           }
           else {
             const likeActualizados = doc.data().likeCount.filter(like => like !== auth.currentUser.uid);
-            console.log(likeActualizados);
             dismissLikesbyUid(doc.id, likeActualizados).then(() => loadAllPostStart());
           }
         }
@@ -154,23 +149,18 @@ modalContainer.appendChild(modalContent);
         e.preventDefault();
         if (e.target.classList.contains('editIcon')) {
           if ((doc.data().uidUser.includes(auth.currentUser.uid))) {
-            console.log(doc.data().uidUser);
-            console.log('el userUid del documento coincide con el usuario logeado');
             let textPost = await getDataPostByIdPost(doc.id);
-            //console.log(textPost);
             inputModal.value = textPost;
             modalContainer.style.display = 'block';
-            
             submitUpdatedPost.addEventListener('click', async (e) => {
               e.preventDefault();
-                  console.log(doc.data().uidUser);
                   editPost(doc.id, inputModal.value).then(() => loadAllPostStart());
                   modalContainer.style.display = 'none';
                 
             });
           }
           else {
-            console.log('no entro a la condicion');
+            console.log('No puedes editar este post');
           }
         }
       });
@@ -179,8 +169,6 @@ modalContainer.appendChild(modalContent);
         e.preventDefault();
         if (e.target.classList.contains('deleteIcon')) {
           if ((doc.data().uidUser.includes(auth.currentUser.uid))) {
-            console.log(doc.data().uidUser);
-            console.log('el userUid del documento coincide con el usuario logeado');
             deletePost(doc.id).then(() => loadAllPostStart());
           }
           else {
@@ -194,12 +182,8 @@ modalContainer.appendChild(modalContent);
 
   // código que carga todos los posts al inicio, se están reultizando métodos
   const loadAllPostStart = async () => {
-    // const postJSON = await getAllPosts();
     const allPosts = await getPostsOrderByDateTime();
-    // const allPosts = await getAllPosts();
-    // console.log(allPosts);
     postList(allPosts);
-    // console.log(postJSON);
   };
   // esta función hace que se carguen todos los posts al inicio
   loadAllPostStart();

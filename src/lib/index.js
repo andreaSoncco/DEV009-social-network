@@ -58,8 +58,6 @@ export const initSessionVariables = () => {
   userEmailSesion = auth.currentUser.email;
   uidUserSesion = auth.currentUser.uid;
   userDisplayNameSesion = auth.currentUser.displayName;
-  console.log('funcion llamada');
-  console.log(uidUserSesion);
 };
 
 /* --------------login y Persistencia de datos--------- */
@@ -71,12 +69,9 @@ export function loginEmailPassword(email, password, callback) {
       const { user } = userCredential;
       console.log(user);
       callback(true);
-      console.log(setPersistence);
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
       if (errorCode === 'auth/user-not-found') {
         alert('Usuario no registrado');
       } else if (errorCode === 'auth/wrong-password') {
@@ -90,7 +85,6 @@ export function loginEmailPassword(email, password, callback) {
 // eslint-disable-next-line
 export function logOut(auth) {
   signOut(auth).then(() => {
-    console.log('se cerro sesión');
   }).catch((error) => {
     alert(error);
   });
@@ -159,7 +153,6 @@ export const logOutFromSession = () => {
 export const createPost = async (postMuro) => {
   // const authObject = auth;
   // alert(userEmail);
-  console.log(uidUserSesion);
   const today = new Date();
   const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
   const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
@@ -231,10 +224,8 @@ export const getDataPostByIdPost = async (idPost) => {
 
                     
   try {
-        //const q = query(collection(db, artLoversWall), where("id", "==",idPost));
         const docRef = doc(db,artLoversWall,idPost);
         const querySnapshot = await getDoc(docRef);
-       // console.log(querySnapshot.data());
         return querySnapshot.data().post;
       }
       catch (error){
@@ -246,17 +237,13 @@ export const getDataPostByIdPost = async (idPost) => {
 /* ------------------------------FUNCIONES NO USADAS------------------------------------- */
 /* ------------------------------Concatena los posts dentro de un objeto------------------------ */
 // const convertSnapshotToJSON = (docsSnapshot) => {
-//   console.log(docsSnapshot);
-
 //   let postOnJSON = '{ "posts": [';
 //   let objJSONPost = '';
 //   const muroUsuario = "wall_1"+userEmail;
-
 //   Se recorre la lista de documentos que se obtuvo de la consulta a la coleccion artLoversWall
 //   docsSnapshot.forEach((doc) => {
 //     doc.data() is never undefined for query doc snapshots
 //     let postJSON = '';
-//     console.log(doc.id, " => ", doc.data());
 //  postJSON='{'+`"idPost":"${doc.id}",`+`"post":"${doc.data().post}",`+
 //  `"uidUser":"${doc.data().uidUser}",`+
 //     `"comments":"${doc.data().comments
@@ -277,7 +264,6 @@ export const getDataPostByIdPost = async (idPost) => {
 // ---------------------------------------------Obtener posts por usuarios--------------------
 /* -----------------Obtenemos todos los posts de el usuario que inicio sesion------------------ */
 // export const getPostsByUser = async () => {
-//   console.log(auth.currentUser.uid);
 //   currentUid = auth.currentUser.uid;
 //   const postOnJSON = '{';
 //   // const muroUsuario = "wall_1"+userEmail;
@@ -286,14 +272,11 @@ export const getDataPostByIdPost = async (idPost) => {
 //     const querySnapshot = await getDocs(q);
 //     querySnapshot.forEach((doc) => {
 //       // doc.data() is never undefined for query doc snapshots
-//       // console.log(doc.id, " => ", doc.data());
 //       postOnJSON.concat(doc.data());
 //       postOnJSON.concat(',');
 //     });
 //     postOnJSON.concat('}');
-//     //   console.log(postOnJSON);
 //   } catch (error) {
-//     console.log(error);
 //   }
 // };
 
@@ -305,14 +288,12 @@ export const getDataPostByIdPost = async (idPost) => {
   //objJSONPost = convertSnapshotToJSON(querySnapshot);
 }
 catch (error){
-  console.log(error);
 }
 return objJSONPost;
   }; */
 
 // ---------------------------------Obtener post-------------------------
 // export const getAllPosts = async () => {
-//   // console.log(uidUserSesion);
 //   // let objJSONPost = "";
 //   try {
 //   // Se inicializa la busqueda de todos los documentos en firestore en la coleccion artLoversWall
@@ -322,7 +303,6 @@ return objJSONPost;
 //     // objJSONPost = convertSnapshotToJSON(docsSnapshot);
 //     return docsSnapshot;
 //   } catch (error) {
-//     console.log(error);
 //   }
 //   // return docsSnapshot;
 // };
