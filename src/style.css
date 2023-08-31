@@ -277,14 +277,11 @@ button#logOut {
     top: 15px;
     right: 15px;
 }
-button#logOut:hover {
+button#logOut:hover, button#buttonPublish:hover {
     transform: scale(1.1);
+    box-shadow: 5px 5px 5px -2px rgba(255,102,196,0.44);
   }
   
-button#logOut:active {
-    transform: scale(0.9);
-  }
-
 #allPosts {
     display: flex;
     position: relative;
@@ -320,6 +317,7 @@ div.postHeader {
     flex-direction: row;
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
+    gap: 15px;
 }
 div.postHeaderUserInfo {
     padding: 5px;
@@ -343,6 +341,7 @@ p.postContent {
     position: relative;
     justify-content: flex-start; /* Justificar contenido hacia la derecha */
     align-items: flex-start;
+    width: 35px;
 }
 
 #newPostArea {
@@ -353,14 +352,13 @@ p.postContent {
     background-color: var(--wall-color);
     width: 340px;
     margin: 0 auto; /* Centrar horizontalmente */
-    gap: 10px;
+    gap: 15px;
 }
   
 div#newPostAreaTop {
     padding: 5px;
     display: flex; /* Añadido */
     flex-direction: row; /* Asegura que los elementos estén en fila */
-    position: relative;
     top: 5.5px;
     height: 80px;
     background: white;
@@ -369,6 +367,7 @@ div#newPostAreaTop {
     align-items: center; /* Centrar verticalmente */
     justify-content: center;
     box-shadow: var(--shadow-boxes);
+    border-radius: 5px;
 }
   
 #newPost {
@@ -383,15 +382,19 @@ div#newPostAreaTop {
 }
   
 #buttonPublish {
-    height: 60px;
-    width: 58px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center; /* Centrar verticalmente */
     justify-content: center; /* Centrar horizontalmente */
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 25px;
     border: var(--wall-color);
-    font-size: 0.9em;
+    font-family: var(--font-button);
+    font-size: 0.75em;
+    cursor: pointer;
+    box-shadow: var(--shadow-boxes);
+    
 }
 
 
@@ -453,6 +456,53 @@ div.likes {
 .sendIcon {
     width: 20px;
 }
+/* -------------Footer---------------- */
+footer {
+    background: linear-gradient(216deg, rgba(56,182,255,0.7850467289719626) 27%, rgba(126,217,87,0.6822429906542056) 100%);
+    width: 100%;
+    height: fit-content;
+    margin: 1px;
+    display: flex;
+    flex-direction:row;
+    text-align: center;
+}
+section#teamSection  {
+    width: 60%;
+    border-right: #CB6CE6 solid 1px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+h5{
+    font-family: var(--font-button);
+    text-align: center;
+    font-weight: 800;
+    color: #672F76;
+    margin-top: 5px;
+
+}
+/* ul{
+    display: block;
+} */
+ul{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+li{
+    display: flex;
+    font-family: var(--font-button);
+    font-size: .7em;
+    font-weight: 600;
+    color: #672F76;
+    margin-left: 10px;
+}
+#contact{
+    width: 40%;
+}
+#githubLogo {
+    width: 30px;
+    align-items: center;
+    margin-top: 10px;
+}
 /* -------------Media querys-------------- */ 
 @media (min-width:640px){
 
@@ -502,11 +552,13 @@ div.likes {
     
     #newPostArea {
         width: 800px;
+        border-radius: 5px;
     }
       
     div#newPostAreaTop {
-        min-width: 650px; /* Ancho mínimo */
+        min-width: 658px; /* Ancho mínimo */
         gap: 15px;
+        border-radius: 5px;
     }
       
     #newPost {
@@ -550,6 +602,12 @@ div.likes {
     #buttonLogin {
         margin-left: 50px;
         margin-right: 50px;
+    }
+    ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
     }
 }
 /*----------Estilos Ventana Modal----------------*/

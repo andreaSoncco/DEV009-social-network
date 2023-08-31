@@ -1,7 +1,8 @@
 import { toggleSignIn, loginEmailPassword } from '../lib/index';
+/* eslint-disable */
 import img_logo from '../img/logo.png';
 import img_google from '../img/google.png';
-
+/* eslint-enable */
 export function login(navigateTo) {
   const logIn = document.createElement('div');
   logIn.classList.add('login');
@@ -62,6 +63,7 @@ export function login(navigateTo) {
   const divContentButtonGoogle = document.createElement('div');
   divContentButtonGoogle.textContent = 'Entrar con Google';
   const logoGoogle = document.createElement('img');
+  // eslint-disable-next-line
   logoGoogle.src = img_google;
   logoGoogle.id = 'logoGoogle';
   // ---------------------Evento iniciar sesion con google--------------

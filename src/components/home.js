@@ -1,5 +1,5 @@
+// eslint-disable-next-line
 import img_logo from '../img/logo.png';
-
 
 function home(navigateTo) {
   const divHome = document.createElement('div');
@@ -12,6 +12,7 @@ function home(navigateTo) {
   // Logo
   const logo = document.createElement('img');
   logo.id = 'logoBienvenida';
+  // eslint-disable-next-line
   logo.src = img_logo;
   // section caja de bienvenida
   const sectionBienvenida = document.createElement('section');
