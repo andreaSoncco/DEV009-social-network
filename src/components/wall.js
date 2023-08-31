@@ -220,7 +220,7 @@ githubProyect.id = 'githubLogo';
 githubProyect.src = img_githubLogo;
 githubProyect.title = 'Enlace que te lleva al archivo de nuestro proyecto';
 const enlaceGithub = document.createElement('a');
-enlaceGithub.href = 'https://github.com/AstridABG/DEV009-social-network';
+enlaceGithub.href = 'https://github.com/andreaSoncco/DEV009-social-network';
   /* ---------------------Se adjuntan los elementos en sus secciones------- */
   teamSection.append(footerTitle, ulMembers);
   ulMembers.append(li1, li2, li3);
