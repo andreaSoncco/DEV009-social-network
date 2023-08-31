@@ -1,5 +1,5 @@
 import { auth } from '../firebase/initializeFirebase';
-import { registrarUsuario, validarUsuario } from '../lib/index';
+import { registrarUsuario, validarUsuario, mostrarEstadoDeRegistro } from '../lib/index';
 
 function newAccount(navigateTo) {
   const divNewAccount = document.createElement('div');
@@ -53,8 +53,24 @@ function newAccount(navigateTo) {
     if (password !== confirmPassword) {
       alert('Las contraseñas no coinciden.');
     } else {
-      registrarUsuario(email, password).then(() => validarUsuario(auth));
-      navigateTo('/login');
+      registrarUsuario(email, password).then(() => {
+        if (auth.currentUser) {
+          validarUsuario(auth);
+          navigateTo('/login');
+        } else {
+          console.log('no se creo usuario y no se envio correo de verificacion');
+        }
+      }).catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          mostrarEstadoDeRegistro('El correo electrónico ya está en uso. Por favor, intente con otro.');
+        } else if (error.code === 'auth/invalid-email') {
+          mostrarEstadoDeRegistro('El correo electrónico proporcionado no es válido.');
+        } else if (error.code === 'auth/weak-password') {
+          mostrarEstadoDeRegistro('La contraseña es demasiado débil. Debe contener al menos 6 caracteres.');
+        } else {
+          mostrarEstadoDeRegistro('Error desconocido: ');
+        }
+      });
     }
   });
 

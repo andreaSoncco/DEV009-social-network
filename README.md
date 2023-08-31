@@ -6,6 +6,7 @@
 * [2. Herramientas utilizadas.](#2-herramientas-utilizadas)
 * [3. Historias de usuario.](#3-historias-de-usuario)
 * [4. Prototipos.](#4-prototipos)
+* [5. Interfaz.](#5-interfaz)
 
 
 ## 1. Definición del producto.

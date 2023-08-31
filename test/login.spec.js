@@ -6,6 +6,10 @@ jest.mock('../src/firebase/initializeFirebase', () => ({
   auth: jest.fn(),
   sendPasswordResetEmail: jest.fn(),
 }));
+// jest.mock('../src/lib/index.js', () => ({
+//   mostrarEstadoDeRegistro: jest.fn(),
+// }));
+
 const email = 'test@test.com';
 const password = 'password';
 describe('registrarUsuario', () => {

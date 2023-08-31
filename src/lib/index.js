@@ -31,7 +31,7 @@ const artLoversWall = 'artLoversWall';
 
 /* ---------------------------------Nuevo Usuario----------------------------------- */
 
-function mostrarEstadoDeRegistro(mensaje) {
+export function mostrarEstadoDeRegistro(mensaje) {
   const errorMessageElement = document.getElementById('error-message');
   errorMessageElement.textContent = mensaje;
 }
@@ -41,38 +41,18 @@ function registroExitoso(mensaje) {
 }
 
 // eslint-disable-next-line
-export const validarUsuario = async (auth) => {
-  try {
-    await sendEmailVerification(auth.currentUser).then(() => {
+export const validarUsuario = (auth) => {
+  if (auth) {
+    sendEmailVerification(auth.currentUser).then(() => {
       registroExitoso('Se envió correo de verificación. Revisa en la carpeta de correo no deseado.');
     });
-  } catch (error) {
-    if (error.code === 'auth/email-already-in-use') {
-      mostrarEstadoDeRegistro('El correo electrónico ya está en uso. Por favor, intente con otro.');
-    } else {
-      mostrarEstadoDeRegistro('Error desconocido: ');
-    }
+  } else {
+    console.log('no se creo usuario y no se envio correo de verificacion');
   }
 };
+// eslint-disable-next-line
+export const registrarUsuario = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
-export const registrarUsuario = async (email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    console.log(user.email);
-    registroExitoso('Usuario Creado exitosamente');
-  } catch (error) {
-    if (error.code === 'auth/email-already-in-use') {
-      mostrarEstadoDeRegistro('El correo electrónico ya está en uso. Por favor, intente con otro.');
-    } else if (error.code === 'auth/invalid-email') {
-      mostrarEstadoDeRegistro('El correo electrónico proporcionado no es válido.');
-    } else if (error.code === 'auth/weak-password') {
-      mostrarEstadoDeRegistro('La contraseña es demasiado débil. Debe contener al menos 6 caracteres.');
-    } else {
-      mostrarEstadoDeRegistro('Error desconocido: ');
-    }
-  }
-};
 /* ---------------------------------Info del usuario----------------------------- */
 export const initSessionVariables = () => {
   userEmailSesion = auth.currentUser.email;
