@@ -30,55 +30,49 @@ let userDisplayNameSesion = 'noDisplayUserName';
 const artLoversWall = 'artLoversWall';
 
 /* ---------------------------------Nuevo Usuario----------------------------------- */
-// eslint-disable-next-line
-export const validarUsuario = (auth) => { 
-  sendEmailVerification(auth.currentUser).then(() => {
-    alert('Se envió correo de verificación. Revisa en la carpeta de correo no deseado.');
-  });
-};
 
 function mostrarEstadoDeRegistro(mensaje) {
   const errorMessageElement = document.getElementById('error-message');
   errorMessageElement.textContent = mensaje;
+}
+function registroExitoso(mensaje) {
+  const succesMessage = document.getElementById('succesMessage');
+  succesMessage.textContent = mensaje;
+}
+
+// eslint-disable-next-line
+export const validarUsuario = async (auth) => {
+  try {
+    await sendEmailVerification(auth.currentUser).then(() => {
+      registroExitoso('Se envió correo de verificación. Revisa en la carpeta de correo no deseado.');
+    });
+  } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      mostrarEstadoDeRegistro('El correo electrónico ya está en uso. Por favor, intente con otro.');
+    } else {
+      mostrarEstadoDeRegistro('Error desconocido: ');
+    }
+  }
 };
 
 export const registrarUsuario = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    mostrarEstadoDeRegistro('Usuario Creado exitosamente');
+    console.log(user.email);
+    registroExitoso('Usuario Creado exitosamente');
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
-      errorMessageElement.textContent = 'El correo electrónico ya está en uso. Por favor, intente con otro.';
+      mostrarEstadoDeRegistro('El correo electrónico ya está en uso. Por favor, intente con otro.');
     } else if (error.code === 'auth/invalid-email') {
-      errorMessageElement.textContent = 'El correo electrónico proporcionado no es válido.';
+      mostrarEstadoDeRegistro('El correo electrónico proporcionado no es válido.');
     } else if (error.code === 'auth/weak-password') {
-      errorMessageElement.textContent = 'La contraseña es demasiado débil. Debe contener al menos 6 caracteres.';
+      mostrarEstadoDeRegistro('La contraseña es demasiado débil. Debe contener al menos 6 caracteres.');
     } else {
-      errorMessageElement.textContent = 'Ha ocurrido un error durante el registro. Por favor, inténtelo de nuevo más tarde.';
+      mostrarEstadoDeRegistro('Error desconocido: ');
     }
   }
 };
-// export const registrarUsuario = async (email, password) => {
-//   try {
-//     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-//     const user = userCredential.user;
-//     console.log(user);
-//   } catch (error) {
-//     const errorMessageElement = document.getElementById('error-message');
-//     if (errorMessageElement) { // Check if the element exists
-//       if (error.code === 'auth/email-already-in-use') {
-//         errorMessageElement.textContent = "El correo electrónico ya está en uso. Por favor, intente con otro.";
-//       } else if (error.code === 'auth/invalid-email') {
-//         errorMessageElement.textContent = "El correo electrónico proporcionado no es válido.";
-//       } else if (error.code === 'auth/weak-password') {
-//         errorMessageElement.textContent = "La contraseña es demasiado débil. Debe contener al menos 6 caracteres.";
-//       } else {
-//         errorMessageElement.textContent = "Ha ocurrido un error durante el registro. Por favor, inténtelo de nuevo más tarde.";
-//       }
-//     }
-//   }
-// };
 /* ---------------------------------Info del usuario----------------------------- */
 export const initSessionVariables = () => {
   userEmailSesion = auth.currentUser.email;

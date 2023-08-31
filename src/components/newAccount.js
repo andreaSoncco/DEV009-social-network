@@ -26,46 +26,54 @@ function newAccount(navigateTo) {
   inputEmail.id = 'email';
   inputEmail.classList = 'inputsNewAccount';
   inputEmail.placeholder = 'Correo electrónico';
-  inputEmail.setAttribute('required', '');
+  inputEmail.setAttribute('required', true);
 
   const inputPassword = document.createElement('input');
   inputPassword.id = 'Contraseña';
   inputPassword.classList = 'inputsNewAccount';
   inputPassword.type = 'password';
   inputPassword.placeholder = 'Contraseña';
-  inputPassword.setAttribute('required', '');
+  inputPassword.setAttribute('required', true);
+  inputPassword.setAttribute('autocomplete', 'off');
 
   const inputConfirmPassword = document.createElement('input');
   inputConfirmPassword.id = 'confirmar';
   inputConfirmPassword.classList = 'inputsNewAccount';
   inputConfirmPassword.type = 'password';
   inputConfirmPassword.placeholder = 'Confirmar contraseña';
-  inputConfirmPassword.setAttribute('required', '');
+  inputConfirmPassword.setAttribute('required', true);
+  inputConfirmPassword.setAttribute('autocomplete', 'off');
 
-  // botón de entrar
-  const buttonLogin = document.createElement('button');
-  buttonLogin.id = 'buttonLogin';
-  buttonLogin.innerText = 'Registrarse';
-  buttonLogin.addEventListener('click', () => {
+  // ----------------Evento formulario-----------
+  formNewAccount.addEventListener('submit', (event) => {
+    event.preventDefault();
     const email = inputEmail.value;
     const password = inputPassword.value;
     const confirmPassword = inputConfirmPassword.value;
     if (password !== confirmPassword) {
       alert('Las contraseñas no coinciden.');
     } else {
-      // agregar condicion para que haya una contraseña o muestre un alert en caso de que no exista
-      // Corregir alerta en caso de error
       registrarUsuario(email, password).then(() => validarUsuario(auth));
-      // navigateTo('/login');
+      navigateTo('/login');
     }
   });
-  const divError = document.createElement('div');
+
+  const buttonLogin = document.createElement('button');
+  buttonLogin.type = 'submit';
+  buttonLogin.id = 'buttonLogin';
+  buttonLogin.innerText = 'Registrarse';
+
+  const divError = document.createElement('p');
   divError.id = 'error-message';
   divError.style.color = 'red';
+  const divSucces = document.createElement('p');
+  divSucces.id = 'succesMessage';
+  divSucces.style.color = 'green';
 
   divNewAccount.appendChild(sectionNewAccount);
   sectionNewAccount.append(title, title3, formNewAccount);
-  formNewAccount.append(inputEmail, inputPassword, inputConfirmPassword, divError, buttonLogin);
+  // eslint-disable-next-line
+  formNewAccount.append(inputEmail, inputPassword, inputConfirmPassword, divError, divSucces, buttonLogin);
   return divNewAccount;
 }
 export default newAccount;
