@@ -1,4 +1,6 @@
 import { toggleSignIn, loginEmailPassword } from '../lib/index';
+import img_logo from '../img/logo.png';
+import img_google from '../img/google.png';
 
 export function login(navigateTo) {
   const logIn = document.createElement('div');
@@ -9,7 +11,7 @@ export function login(navigateTo) {
   logintitle.innerHTML = 'Inicia Sesión';
   const img = document.createElement('img');
   img.setAttribute('id', 'logoLogin');
-  img.setAttribute('src', 'img/Logo.png');
+  img.setAttribute('src', img_logo);
 
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('type', 'email');
@@ -60,7 +62,7 @@ export function login(navigateTo) {
   const divContentButtonGoogle = document.createElement('div');
   divContentButtonGoogle.textContent = 'Entrar con Google';
   const logoGoogle = document.createElement('img');
-  logoGoogle.src = 'img/google.png';
+  logoGoogle.src = img_google;
   logoGoogle.id = 'logoGoogle';
   // ---------------------Evento iniciar sesion con google--------------
   btnGoogle.addEventListener('click', (event) => {

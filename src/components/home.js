@@ -1,3 +1,6 @@
+import img_logo from '../img/logo.png';
+
+
 function home(navigateTo) {
   const divHome = document.createElement('div');
   // Cambio de nombre homePage a Page
@@ -9,7 +12,7 @@ function home(navigateTo) {
   // Logo
   const logo = document.createElement('img');
   logo.id = 'logoBienvenida';
-  logo.src = 'img/logo.png';
+  logo.src = img_logo;
   // section caja de bienvenida
   const sectionBienvenida = document.createElement('section');
   sectionBienvenida.id = 'sectionBienvenida';

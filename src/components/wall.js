@@ -1,7 +1,11 @@
 /* eslint-disable */
 import { logOut, createPost, addLike, dismissLikesbyUid, getPostsOrderByDateTime, editPost, deletePost, getDataPostByIdPost } from '../lib/index';
 import { auth } from '../firebase/initializeFirebase';
-
+import img_logo from '../img/logo.png';
+import img_enviar from '../img/enviar.png';
+import img_user from '../img/user.png';
+import img_edit from '../img/edit.png';
+import img_delete from '../img/delete.png';
 
 function wall(navigateTo) {
   const sectionWall = document.createElement('section');
@@ -12,7 +16,7 @@ function wall(navigateTo) {
 
   const logoWall = document.createElement('img');
   logoWall.id = 'logoWall';
-  logoWall.src = 'img/logo.png';
+  logoWall.src = img_logo;
   /* -------------------------------menu desplegable------------------------------- */
   const logOutButton = document.createElement('button');
   logOutButton.id = 'logOut';
@@ -38,7 +42,7 @@ function wall(navigateTo) {
   buttonPublishNewPost.innerText = 'Publicar';
   const imgSend = document.createElement('img');
   imgSend.classList = 'sendIcon';
-  imgSend.src = 'img/enviar.png';
+  imgSend.src = img_enviar;
   buttonPublishNewPost.appendChild(imgSend);
   // con esta instrucción, publica y de inmediato se muestra en el muro la publicación
   buttonPublishNewPost.addEventListener('click', async () => {
@@ -98,7 +102,7 @@ modalContainer.appendChild(modalContent);
 
       content.innerHTML = `  
       <div class="postHeader" id = ${doc.id}>
-        <img src="./img/user.png" id="iconoLogo" alt="user-img" class="user-img">
+        <img src=${img_user} id="iconoLogo" alt="user-img" class="user-img">
         <div class="postHeaderUserInfo">
         <p class="userEmail">${doc.data().userEmail}</p>
         <p class="postContent">${doc.data().post}</p>
@@ -107,11 +111,11 @@ modalContainer.appendChild(modalContent);
       <div class="iconBar">
 
         <div class="edit" title="Editar">
-          <svg class="editIcon" viewBox="0 0 50 50" width="20px" height="20px"><path d="M 43.125 2 C 41.878906 2 40.636719 2.488281 39.6875 3.4375 L 38.875 4.25 L 45.75 11.125 C 45.746094 11.128906 46.5625 10.3125 46.5625 10.3125 C 48.464844 8.410156 48.460938 5.335938 46.5625 3.4375 C 45.609375 2.488281 44.371094 2 43.125 2 Z M 37.34375 6.03125 C 37.117188 6.0625 36.90625 6.175781 36.75 6.34375 L 4.3125 38.8125 C 4.183594 38.929688 4.085938 39.082031 4.03125 39.25 L 2.03125 46.75 C 1.941406 47.09375 2.042969 47.457031 2.292969 47.707031 C 2.542969 47.957031 2.90625 48.058594 3.25 47.96875 L 10.75 45.96875 C 10.917969 45.914063 11.070313 45.816406 11.1875 45.6875 L 43.65625 13.25 C 44.054688 12.863281 44.058594 12.226563 43.671875 11.828125 C 43.285156 11.429688 42.648438 11.425781 42.25 11.8125 L 9.96875 44.09375 L 5.90625 40.03125 L 38.1875 7.75 C 38.488281 7.460938 38.578125 7.011719 38.410156 6.628906 C 38.242188 6.246094 37.855469 6.007813 37.4375 6.03125 C 37.40625 6.03125 37.375 6.03125 37.34375 6.03125 Z"/></svg>
+          <img src=${img_edit} width="20px height="20px">
         </div>
 
-        <div class="delete" title="Borrar">
-          <svg class="deleteIcon" viewBox="0 0 50 50" width="20px" height="20px"><path d="M 42 5 L 32 5 L 32 3 C 32 1.347656 30.652344 0 29 0 L 21 0 C 19.347656 0 18 1.347656 18 3 L 18 5 L 8 5 C 7.449219 5 7 5.449219 7 6 C 7 6.550781 7.449219 7 8 7 L 9.085938 7 L 12.695313 47.515625 C 12.820313 48.90625 14.003906 50 15.390625 50 L 34.605469 50 C 35.992188 50 37.175781 48.90625 37.300781 47.515625 L 40.914063 7 L 42 7 C 42.554688 7 43 6.550781 43 6 C 43 5.449219 42.554688 5 42 5 Z M 20 44 C 20 44.554688 19.550781 45 19 45 C 18.449219 45 18 44.554688 18 44 L 18 11 C 18 10.449219 18.449219 10 19 10 C 19.550781 10 20 10.449219 20 11 Z M 20 3 C 20 2.449219 20.449219 2 21 2 L 29 2 C 29.550781 2 30 2.449219 30 3 L 30 5 L 20 5 Z M 26 44 C 26 44.554688 25.550781 45 25 45 C 24.449219 45 24 44.554688 24 44 L 24 11 C 24 10.449219 24.449219 10 25 10 C 25.550781 10 26 10.449219 26 11 Z M 32 44 C 32 44.554688 31.554688 45 31 45 C 30.445313 45 30 44.554688 30 44 L 30 11 C 30 10.449219 30.445313 10 31 10 C 31.554688 10 32 10.449219 32 11 Z"/></svg>
+        <div class="trash" title="Borrar">
+        <img src=${img_delete} width="20px height="20px">
         </div>
 
         <div class="likes" title="Likes">
