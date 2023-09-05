@@ -1,13 +1,15 @@
 # SOCIAL NETWORK 📱💜🎨 - Red Social "Art Lovers" 📲
 
-Link Proyecto: [Ir a la Página Web](https://art-lovers-6da8d.web.app)
+Link de la Red Social: [Ir a la Aplicación](https://art-lovers-6da8d.web.app)
+
+Link del Github Project donde nos organizamos: [Ir a Github Project](https://github.com/users/andreaSoncco/projects/7/views/1)
 
 ## Índice
 
 * [1. Definición del producto](#1-definición-del-producto)
 * [2. Herramientas utilizadas](#2-herramientas-utilizadas)
 * [3. Historias de usuario](#3-historias-de-usuario)
-* [4. Prototipos](#4-prototipos)
+* [4. Diseño UI](#4-diseño-ui)
 * [5. Interfaz](#5-interfaz)
 
 ## 1. Definición del producto.
@@ -166,15 +168,15 @@ historias:
 - Botón que abra un input text donde permita dejar comentarios
 - CSS. Despliegue de los comentarios y que se deslice el contenido de la página hacia abajo.
 
-## 4. Prototipos.
+## 4. Diseño UI.
 
-- **Prototipo de baja fidelidad** 📏🖍🖼
+### 4.1. Prototipo de Baja Fidelidad 📏🖍🖼
 
 Realizamos prototipo de baja fidelidad en Figma.
 
 ![Prototipo de Baja Fidelidad](src/img/Prototipo1.png)
 
-- **Prototipo de alta fidelidad** 💻
+### 4.2. Prototipo de Alta Fidelidad 💻
   
 Realizamos prototipo de alta fidelidad en Figma
 
@@ -182,8 +184,8 @@ Realizamos prototipo de alta fidelidad en Figma
 
 ![prototipo de baja](src/img/Prototipo2.jpg) para difetentes dispositivos.
 
-### 4.1 . Test de usabilidad de prototipos.
-💡
+### 4.3 . Testeo de Usabilidad 💡
+
 Realizamos el test de usabilidad desde los prototipos para las historias de usuario y estos fueron los 
 resultados:
 
@@ -191,6 +193,7 @@ resultados:
 
 Teniendo en cuenta los resultados del test de usabilidad, se llegó a la conclusión de que era necesario dar estilo mas adecuado al tipo de letra y tamaño. 
 
-## 5. Interfaz. 🌐
+## 5. Interfaz.
 
+🌐
 En la interfaz, el usuario puede interactuar con las diferentes paginas para iniciar sesion, crear usuario, reestablecer contraseña e ingresar con el correo de google, al ingresar al aplicativo puede postear, editar o borrar comentarios, dar like y ver el contador de los mismos. 
