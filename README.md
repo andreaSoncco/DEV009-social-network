@@ -1,14 +1,14 @@
-# Art Lovers 
+# SOCIAL NETWORK 📱💜🎨 - Red Social "Art Lovers" 📲
 
 Link Proyecto: [Ir a la Página Web](https://art-lovers-6da8d.web.app)
 
 ## Índice
 
-* [1. Definición del producto.](#1-definicion-del-producto)
-* [2. Herramientas utilizadas.](#2-herramientas-utilizadas)
-* [3. Historias de usuario.](#3-historias-de-usuario)
-* [4. Prototipos.](#4-prototipos)
-* [5. Interfaz.](#5-interfaz)
+* [1. Definición del producto](#1-definición-del-producto)
+* [2. Herramientas utilizadas](#2-herramientas-utilizadas)
+* [3. Historias de usuario](#3-historias-de-usuario)
+* [4. Prototipos](#4-prototipos)
+* [5. Interfaz](#5-interfaz)
 
 
 ## 1. Definición del producto.
