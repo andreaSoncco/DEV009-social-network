@@ -1,656 +1,751 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
+
 /*------------------Colores frecuentes------------------*/
 :root {
-    --color-background:  rgba(252, 250, 250, 0.7);
-    --color-button: linear-gradient(90deg, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
-    --color-hover: radial-gradient(circle, rgba(61,84,194,1) 2%, rgba(255,102,196,1) 100%);
-    --font-button: 'Roboto', sans-serif;
-    --wall-color: #f1f1f1;
-    --shadow-boxes: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
+  --color-background: rgba(252, 250, 250, 0.7);
+  --color-button: linear-gradient(90deg, rgba(61, 84, 194, 1) 2%, rgba(255, 102, 196, 1) 100%);
+  --color-hover: radial-gradient(circle, rgba(61, 84, 194, 1) 2%, rgba(255, 102, 196, 1) 100%);
+  --font-button: 'Roboto', sans-serif;
+  --wall-color: #f1f1f1;
+  --shadow-boxes: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
 /*---------------------HOME------------------------*/
 
 .page {
-    width: 100vw;
-    height: 100dvh;
-    background-image: url('/img/blureado.png' );
-    background-size: cover;
-    
+  width: 100vw;
+  height: 100dvh;
+  background-image: url('/img/blureado.png');
+  background-size: cover;
 }
+
 section#bienvenida {
-    position: relative;
-    height: 60vh;
-    top: 55px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+  position: relative;
+  height: 60vh;
+  top: 55px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
 }
+
 #logoBienvenida {
-    width: 300px;
-    height: 300px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+  width: 300px;
+  height: 300px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 #sectionBienvenida {
-    display: grid;
-    background-color: var(--color-background);
-    padding: 5px;
-    row-gap: 15px;
-    border-radius: 25px;
-    justify-items: center;
-    align-self: center;
+  display: grid;
+  background-color: var(--color-background);
+  padding: 5px;
+  row-gap: 15px;
+  border-radius: 25px;
+  justify-items: center;
 }
 
 #titleBienvenida {
-    font-family: var(--font-button);
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-    
+  font-family: var(--font-button);
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
 }
+
 p#textoBienvenida {
-    font-family: var(--font-button);
-    font-size: 1.5em;
-    text-align: justify;
-    margin: 5px;
-    align-items: center;
-    display: grid;
-    justify-content: space-around;
-    align-content: center;
+  font-family: var(--font-button);
+  font-size: 1.5em;
+  text-align: justify;
+  margin: 5px;
+  align-items: center;
+  display: grid;
+  justify-content: space-around;
+  align-content: center;
 }
+
 #buttonLogin {
-    margin: 20px 20px 45px 20px;
-    width: 130px;
-    height: 40px;
-    border-radius: 25px;
-    border: 1px solid white;
-    font-size: 1.2em;
-    font-family: var(--font-button);
-    color: white;
-    background: var(--color-button);
-    cursor: pointer;
+  margin: 20px 20px 45px 20px;
+  width: 130px;
+  height: 40px;
+  border-radius: 25px;
+  border: 1px solid white;
+  font-size: 1.2em;
+  font-family: var(--font-button);
+  color: white;
+  background: var(--color-button);
+  cursor: pointer;
 }
+
 #buttonLogin:hover {
- background: var(--color-hover);
+  background: var(--color-hover);
 }
 
 /*-----------------------------Ventana login----------------------------------------------------*/
 div.login {
-    background-image: url(img/fondoInicio.png);
-    background-size: cover;
-    display: grid;
-    justify-items: center; 
-    width: 100vw;
-    height: 100dvh;
-   
+  background-image: url(img/fondoInicio.png);
+  background-size: cover;
+  display: grid;
+  justify-items: center;
+  width: 100vw;
+  height: 100dvh;
+
 }
 
 .formLogin {
-    display: grid;
-    width: 320px;
-    background-color: var(--color-background);
-    padding: 5px;
-    row-gap: 15px;
-    border-radius: 25px;
-    justify-items: center;
-    align-self: center;
+  display: grid;
+  width: 320px;
+  background-color: var(--color-background);
+  padding: 5px;
+  row-gap: 15px;
+  border-radius: 25px;
+  justify-items: center;
+  align-self: center;
 
 }
 
 #logoLogin {
-    width: 180px;
-    height: 180px;
+  width: 180px;
+  height: 180px;
 }
+
 h2 {
-    font-family: var(--font-button);
-    font-size: 1.5em;
+  font-family: var(--font-button);
+  font-size: 1.5em;
 }
-p#forgPassLink, p#ntcuenta, p#textoPass {
-    font-family: var(--font-button);
-    font-size: 1.2em;
-    text-align: justify;
+
+p#forgPassLink,
+p#ntcuenta,
+p#textoPass {
+  font-family: var(--font-button);
+  font-size: 1.2em;
+  text-align: justify;
 }
+
 input {
-    width: 90%;
-    height: 30px;
-    border-radius: 10px;
-    font-family: var(--font-button);
-    font-size: 1.2em;
-    background: white; 
+  width: 90%;
+  height: 30px;
+  border-radius: 10px;
+  font-family: var(--font-button);
+  font-size: 1.2em;
+  background: white;
 }
-#btnlogin, #crear, #btnGoogle, #botonMail {
-    width: 200px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-    border: 1px solid white;
-    font-size: 1.2em;
-    font-family: var(--font-button);
-    color: white;
-    background: var(--color-button);
-    cursor: pointer;
+
+#btnlogin,
+#crear,
+#btnGoogle,
+#botonMail {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  border: 1px solid white;
+  font-size: 1.2em;
+  font-family: var(--font-button);
+  color: white;
+  background: var(--color-button);
+  cursor: pointer;
 }
-#btnlogin:hover, #crear:hover, #btnGoogle:hover, #botonMail:hover {
-    background: var(--color-hover);
+
+#btnlogin:hover,
+#crear:hover,
+#btnGoogle:hover,
+#botonMail:hover {
+  background: var(--color-hover);
 }
+
 #logoGoogle {
-    width: 20px;
-    height: 20px;
-    margin: 5px;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
 }
+
 /*------------------------Contrasena olvidada --------------------------------*/
 div#forgotPage {
-    background-image: url(img/fondoInicio.png);
-    background-size: cover;
-    display: grid;
-    justify-items: center; 
-    width: 100vw;
-    height: 100dvh;
+  background-image: url(img/fondoInicio.png);
+  background-size: cover;
+  display: grid;
+  justify-items: center;
+  width: 100vw;
+  height: 100dvh;
 }
+
 div#formPass {
-    display: grid;
-    width: 320px;
-    height: 400px;
-    background-color: var(--color-background);
-    padding: 5px;
-    row-gap: 15px;
-    border-radius: 25px;
-    justify-items: center;
-    align-self: center;
+  display: grid;
+  width: 320px;
+  height: 400px;
+  background-color: var(--color-background);
+  padding: 5px;
+  row-gap: 15px;
+  border-radius: 25px;
+  justify-items: center;
+  align-self: center;
 }
+
 h1#tituloPass {
-    font-family: var(--font-button);
-    font-size: 1.7em;
-    margin: 15px;
+  font-family: var(--font-button);
+  font-size: 1.7em;
+  margin: 15px;
 }
+
 /*----------------------Crear Cuenta---------*/
 
 #newAccountTitle {
-    position: relative;
-    text-align: center;
-    top: 10%;
-    font-family: var(--font-button);
-    font-size: 2em;
-    color: black;
+  position: relative;
+  text-align: center;
+  top: 10%;
+  font-family: var(--font-button);
+  font-size: 2em;
+  color: black;
 }
 
 #newAccountTitle2 {
-    position: relative;
-    text-align: center;
-    top: 14%;
-    font-family: var(--font-button);
-    font-size: 1.3em;
-    margin: 15px;
+  position: relative;
+  text-align: center;
+  top: 14%;
+  font-family: var(--font-button);
+  font-size: 1.3em;
+  margin: 15px;
 }
 
 #sectionNewAccount {
-    height: 80%;
-    width: 80%;
-    max-width: 350px;
-    position: absolute;
-    top: 50%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Centra horizontal y verticalmente */
-    text-align: center;
-    background-color: rgba(252, 250, 250, 0.7);
-    border-radius: 25px;
+  height: 80%;
+  width: 80%;
+  max-width: 350px;
+  position: absolute;
+  top: 50%;
+  /* Centra verticalmente */
+  left: 50%;
+  /* Centra horizontalmente */
+  transform: translate(-50%, -50%);
+  /* Centra horizontal y verticalmente */
+  text-align: center;
+  background-color: rgba(252, 250, 250, 0.7);
+  border-radius: 25px;
 }
 
 .pNewAccount {
-    color: black;
-    font-family: var(--font-button);
+  color: black;
+  font-family: var(--font-button);
 }
-#user, #email, #Contraseña, #confirmar {
-    margin-top: 15px;
-    min-width: 250px;
-    max-width: 265px;
+
+#user,
+#email,
+#Contraseña,
+#confirmar {
+  margin-top: 15px;
+  min-width: 250px;
+  max-width: 265px;
 }
+
 #formNewAccount {
   margin-top: 150px;
 }
+
 /*----------------------Wall--------------*/
 
 #timeLine {
-    background-color: var(--wall-color);
-    min-height: 740px;
+  background-color: var(--wall-color);
+  min-height: 740px;
 }
-  
+
 #containerWall {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-width: 360px;
-    max-width: 100vh;
-    margin: 0 auto; /* Alinear horizontalmente al centro */
-    justify-content: center;
-    background-color: var(--wall-color);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 360px;
+  max-width: 100vh;
+  margin: 0 auto;
+  /* Alinear horizontalmente al centro */
+  justify-content: center;
+  background-color: var(--wall-color);
 }
-  
+
 #headerWall {
-    display: flex;
-    background-color: rgba(241, 241, 241, 0.5); /* Fondo semi-transparente */
-    height: 150px;
-    position: relative;
-    min-width: 360px; /* Ancho mínimo */
-    justify-content: center;
-    z-index: 1; /* Ajusta el valor según sea necesario */
+  display: flex;
+  background-color: rgba(241, 241, 241, 0.5);
+  /* Fondo semi-transparente */
+  height: 150px;
+  position: relative;
+  min-width: 360px;
+  /* Ancho mínimo */
+  justify-content: center;
+  z-index: 1;
+  /* Ajusta el valor según sea necesario */
 }
 
 #headerWall::before {
-    content: "";
-    background-image: url(img/encabezado1Mobile.png);
-    background-size: contain;
-    background-repeat: repeat-x; /* Repetición solo horizontal */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  content: "";
+  background-image: url(img/encabezado1Mobile.png);
+  background-size: contain;
+  background-repeat: repeat-x;
+  /* Repetición solo horizontal */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 img#logoWall {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 120px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 120px;
 }
 
 button#logOut {
-    background-image: url(img/cerrar-sesion.png);
-    background-size: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    border: 0px;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 15px;
+  background-image: url(img/cerrar-sesion.png);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 0px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
-button#logOut:hover, button#buttonPublish:hover {
-    transform: scale(1.1);
-    box-shadow: 5px 5px 5px -2px rgba(255,102,196,0.44);
-  }
-  
+
+button#logOut:hover,
+button#buttonPublish:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 5px -2px rgba(255, 102, 196, 0.44);
+}
+
 #allPosts {
-    display: flex;
-    position: relative;
-    background-color: var(--wall-color);
-    top: 0px;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    min-width: 360px; /* Ancho mínimo */
-    max-width: 100vh;
-    justify-content: center;
-    margin-top: 10px;
-    
-    /* Esto es opcional, ajusta la altura según tu diseño */
+  display: flex;
+  position: relative;
+  background-color: var(--wall-color);
+  top: 0px;
+  flex-direction: column;
+  align-items: center;
+  /* Centrar horizontalmente */
+  min-width: 360px;
+  /* Ancho mínimo */
+  max-width: 100vh;
+  justify-content: center;
+  margin-top: 10px;
+
+  /* Esto es opcional, ajusta la altura según tu diseño */
 }
-  
+
 div.postContent {
-    background-color: white;
-    margin-bottom: 11px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    min-width: 340px; /* Ancho mínimo */
-    max-width: 340px;
-    justify-content: center;
-    box-shadow: var(--shadow-boxes);
-    border-radius: 5px;
+  background-color: white;
+  margin-bottom: 11px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centrar horizontalmente */
+  min-width: 340px;
+  /* Ancho mínimo */
+  max-width: 340px;
+  justify-content: center;
+  box-shadow: var(--shadow-boxes);
+  border-radius: 5px;
 }
 
 div.postHeader {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
-    gap: 15px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* Centrar horizontalmente */
+  justify-content: center;
+  /* Centrar verticalmente */
+  gap: 15px;
 }
+
 div.postHeaderUserInfo {
-    padding: 5px;
-    margin: 5px;
+  padding: 5px;
+  margin: 5px;
 }
+
 p.userEmail {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 1.1em;
-    text-align: left;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 1.1em;
+  text-align: left;
 }
+
 p.postContent {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: 1em;
-    text-align: left;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  text-align: left;
 }
+
 #iconoLogo {
-    margin: 3px 3px 3px 5px;
-    display: flex;
-    position: relative;
-    justify-content: flex-start; /* Justificar contenido hacia la derecha */
-    align-items: flex-start;
-    width: 35px;
+  margin: 3px 3px 3px 5px;
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  /* Justificar contenido hacia la derecha */
+  align-items: flex-start;
+  width: 35px;
 }
 
 #newPostArea {
-    padding: 0px;
-    display: flex;
-    justify-content: space-around;
-    height: 100px;
-    background-color: var(--wall-color);
-    width: 340px;
-    margin: 0 auto; /* Centrar horizontalmente */
-    gap: 15px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+  height: 100px;
+  background-color: var(--wall-color);
+  width: 340px;
+  margin: 0 auto;
+  /* Centrar horizontalmente */
+  gap: 15px;
 }
-  
+
 div#newPostAreaTop {
-    padding: 5px;
-    display: flex; /* Añadido */
-    flex-direction: row; /* Asegura que los elementos estén en fila */
-    top: 5.5px;
-    height: 80px;
-    background: white;
-    width: 340px; /* Ancho mínimo */
-    gap: 10px;
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center;
-    box-shadow: var(--shadow-boxes);
-    border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  /* Añadido */
+  flex-direction: row;
+  /* Asegura que los elementos estén en fila */
+  top: 5.5px;
+  height: 80px;
+  background: white;
+  width: 340px;
+  /* Ancho mínimo */
+  gap: 10px;
+  align-items: center;
+  /* Centrar verticalmente */
+  justify-content: center;
+  box-shadow: var(--shadow-boxes);
+  border-radius: 5px;
 }
-  
+
 #newPost {
-    background-color: var(--wall-color);
-    height: 50px;
-    width: 250px;
-    font-size: 1.1em;
-    border: var(--wall-color);
-    border-radius: 25px;
-    display: flex;
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
+  background-color: var(--wall-color);
+  height: 50px;
+  width: 250px;
+  font-size: 1.1em;
+  border: var(--wall-color);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  /* Centrar verticalmente */
+  justify-content: center;
+  /* Centrar horizontalmente */
 }
-  
+
 #buttonPublish {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
-    flex-direction: column;
-    border-radius: 25px;
-    border: var(--wall-color);
-    font-family: var(--font-button);
-    font-size: 0.75em;
-    cursor: pointer;
-    box-shadow: var(--shadow-boxes);
-    
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  /* Centrar verticalmente */
+  justify-content: center;
+  /* Centrar horizontalmente */
+  flex-direction: column;
+  border-radius: 25px;
+  border: var(--wall-color);
+  font-family: var(--font-button);
+  font-size: 0.75em;
+  cursor: pointer;
+  box-shadow: var(--shadow-boxes);
+
 }
 
-
-#sectionWall{
-    background: var(--wall-color);
-    padding: 20px;
+#sectionWall {
+  background: var(--wall-color);
+  padding: 20px;
 }
+
 div#divPost {
-    width: 60%;
-    height: 100px;
-    background-color: pink;
-    margin: 2px;
-    justify-self: center;
+  width: 60%;
+  height: 100px;
+  background-color: pink;
+  margin: 2px;
+  justify-self: center;
 }
 
 .iconBar {
-    background-color: white;
-    border-top: black solid 1px;
-    margin: 5px;
-    padding: 0px;
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
-    min-width: 340px; /* Ancho mínimo */
-    gap: 100px; /* Espacio entre elementos */
+  background-color: white;
+  border-top: black solid 1px;
+  margin: 5px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* Centrar horizontalmente */
+  justify-content: center;
+  /* Centrar verticalmente */
+  min-width: 340px;
+  /* Ancho mínimo */
+  gap: 100px;
+  /* Espacio entre elementos */
 }
 
 div.edit {
-    display: flex;
-    justify-content: right; /* Justificar contenido hacia la derecha */
-    align-items: start; /* Alinear contenido hacia abajo */
-    cursor: pointer;
-    margin-top: 5px;
+  display: flex;
+  justify-content: right;
+  /* Justificar contenido hacia la derecha */
+  align-items: start;
+  /* Alinear contenido hacia abajo */
+  cursor: pointer;
+  margin-top: 5px;
 }
 
 div.delete {
-    display: flex;
-    justify-content: start; /* Justificar contenido hacia la derecha */
-    align-items: start; /* Alinear contenido hacia abajo */
-    cursor: pointer;
-    margin-top: 5px;
+  display: flex;
+  justify-content: start;
+  /* Justificar contenido hacia la derecha */
+  align-items: start;
+  /* Alinear contenido hacia abajo */
+  cursor: pointer;
+  margin-top: 5px;
 }
 
-
 div.likes {
-    display: flex;
-    flex-direction: row; /* Dos columnas automáticas */
-    justify-content: end; /* Justificar contenido hacia la derecha */
-    align-items: flex-end; /* Alinear contenido hacia abajo */
-    gap: 3px;
-    margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  /* Dos columnas automáticas */
+  justify-content: end;
+  /* Justificar contenido hacia la derecha */
+  align-items: flex-end;
+  /* Alinear contenido hacia abajo */
+  gap: 3px;
+  margin-top: 5px;
 }
 
 .likeIcon {
-    cursor: pointer;
+  cursor: pointer;
 }
-  
+
 .sendIcon {
-    width: 20px;
+  width: 20px;
 }
+
 /* -------------Footer---------------- */
 footer {
-    background: linear-gradient(216deg, rgba(56,182,255,0.7850467289719626) 27%, rgba(126,217,87,0.6822429906542056) 100%);
-    width: 100%;
-    height: fit-content;
-    margin: 1px;
-    display: flex;
-    flex-direction:row;
-    text-align: center;
+  background: linear-gradient(216deg, rgba(56, 182, 255, 0.7850467289719626) 27%, rgba(126, 217, 87, 0.6822429906542056) 100%);
+  width: 100%;
+  height: fit-content;
+  margin: 1px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
-section#teamSection  {
-    width: 60%;
-    border-right: #CB6CE6 solid 1px;
-    padding-left: 12px;
-    padding-right: 12px;
+
+section#teamSection {
+  width: 60%;
+  border-right: #CB6CE6 solid 1px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
-h5{
-    font-family: var(--font-button);
-    text-align: center;
-    font-weight: 800;
-    color: #672F76;
-    margin-top: 5px;
+
+h5 {
+  font-family: var(--font-button);
+  text-align: center;
+  font-weight: 800;
+  color: #672F76;
+  margin-top: 5px;
 
 }
-/* ul{
-    display: block;
-} */
-ul{
-    margin-top: 10px;
-    margin-bottom: 5px;
+
+ul {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
-li{
-    display: flex;
-    font-family: var(--font-button);
-    font-size: .7em;
-    font-weight: 600;
-    color: #672F76;
-    margin-left: 10px;
+
+li {
+  display: flex;
+  font-family: var(--font-button);
+  font-size: .7em;
+  font-weight: 600;
+  color: #672F76;
+  margin-left: 10px;
 }
-#contact{
-    width: 40%;
+
+#contact {
+  width: 40%;
 }
+
 #githubLogo {
-    width: 30px;
-    align-items: center;
-    margin-top: 10px;
+  width: 30px;
+  align-items: center;
+  margin-top: 10px;
 }
-/* -------------Media querys-------------- */ 
-@media (min-width:640px){
 
-    #timeLine {
-        background-color: var(--wall-color);
-        width: auto;
-        min-height: 100vh;
-    }
-    .formLogin {
-      margin: 0px 10px;
-      padding-bottom: 100px;
-     }
+/* -------------Media querys-------------- */
+@media (min-width:640px) {
 
-    #containerWall {
-        min-width: 400px;
-    }
+  #timeLine {
+    background-color: var(--wall-color);
+    width: auto;
+    min-height: 100vh;
+  }
 
-     #headerWall::before {
-        background-image: url(img/encabezadoAncho.png);
-        background-size: cover;
-        
-    }
-    
-    img#logoWall {
-        left: 10px;
-    }
-    
-    button#logOut {
-        right: 30px;
-    }
+  .formLogin {
+    margin: 0px 10px;
+    padding-bottom: 100px;
+  }
 
-    #allPosts {
-        min-width: 800px; /* Ancho mínimo */
-    }
-      
-    div.postContent {
-        min-width: 360px;
-        max-width: 660px; /* Ancho mínimo */
-        min-height: 80px;
-        max-height: auto;
-    }
-    
-    #iconoLogo {
-        margin-bottom: auto;
-        margin-top: 0;
-    }
-    
-    #newPostArea {
-        width: 800px;
-        border-radius: 5px;
-    }
-      
-    div#newPostAreaTop {
-        min-width: 658px; /* Ancho mínimo */
-        gap: 15px;
-        border-radius: 5px;
-    }
-      
-    #newPost {
-        width: 560px;
-    }
-      
-  
-    img#underConstruction{
-        width: 200px;
-    }
-    
-    .iconBar {
-        min-width: 650px; /* Ancho mínimo */
-        gap: 200px; /* Espacio entre elementos */
-    }
-    
-    div.edit {
-        display: flex;
-        justify-content: right; /* Justificar contenido hacia la derecha */
-        align-items: start; /* Alinear contenido hacia abajo */
-    }
-    
-    div.trash {
-        display: flex;
-        justify-content: start; /* Justificar contenido hacia la derecha */
-        align-items: start; /* Alinear contenido hacia abajo */
-    }
+  #containerWall {
+    min-width: 400px;
+  }
 
-    /*----------------------Crear Cuenta---------*/
-    #sectionNewAccount {
-        max-width: 300px;
-        height: 600px;
-    }
+  #headerWall::before {
+    background-image: url(img/encabezadoAncho.png);
+    background-size: cover;
 
-    #user, #email, #Contraseña, #confirmar {
-        margin-top: 15px;
-    }
-    #formNewAccount {
+  }
+
+  img#logoWall {
+    left: 10px;
+  }
+
+  button#logOut {
+    right: 30px;
+  }
+
+  #allPosts {
+    min-width: 800px;
+    /* Ancho mínimo */
+  }
+
+  div.postContent {
+    min-width: 360px;
+    max-width: 660px;
+    /* Ancho mínimo */
+    min-height: 80px;
+    max-height: auto;
+  }
+
+  #iconoLogo {
+    margin-bottom: auto;
+    margin-top: 0;
+  }
+
+  #newPostArea {
+    width: 800px;
+    border-radius: 5px;
+  }
+
+  div#newPostAreaTop {
+    min-width: 658px;
+    /* Ancho mínimo */
+    gap: 15px;
+    border-radius: 5px;
+  }
+
+  #newPost {
+    width: 560px;
+  }
+
+  img#underConstruction {
+    width: 200px;
+  }
+
+  .iconBar {
+    min-width: 650px;
+    /* Ancho mínimo */
+    gap: 200px;
+    /* Espacio entre elementos */
+  }
+
+  div.edit {
+    display: flex;
+    justify-content: right;
+    /* Justificar contenido hacia la derecha */
+    align-items: start;
+    /* Alinear contenido hacia abajo */
+  }
+
+  div.trash {
+    display: flex;
+    justify-content: start;
+    /* Justificar contenido hacia la derecha */
+    align-items: start;
+    /* Alinear contenido hacia abajo */
+  }
+
+  /*----------------------Crear Cuenta---------*/
+  #sectionNewAccount {
+    max-width: 300px;
+    height: 600px;
+  }
+
+  #user,
+  #email,
+  #Contraseña,
+  #confirmar {
+    margin-top: 15px;
+  }
+
+  #formNewAccount {
     margin-top: 150px;
-    }
-    #buttonLogin {
-        margin-left: 50px;
-        margin-right: 50px;
-    }
-    ul {
+  }
+
+  #buttonLogin {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  ul {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    }
+  }
 }
+
 /*----------Estilos Ventana Modal----------------*/
 .modalWindow {
-    display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
-  }
-  .modalContent {
-    background-color: #fefefe;
-      margin: 15% auto;
-      padding: 20px;
-      border-radius: 15px;
-      border: 1px solid #888;
-      width: 80%;
-      box-shadow: var(--shadow-boxes)
-  }
-  button#buttonUpdatedPost, button#buttonDiscardChange {
-    margin: 15px;
-    padding: 5px;
-    width: 100px;
-    height: 40px;
-    border-radius: 25px;
-    border: 1px solid white;
-    font-size: 1em;
-    font-family: var(--font-button);
-    color: white;
-    background: var(--color-button);
-    cursor: pointer;
-  }
-  button#buttonUpdatedPost:hover, button#buttonDiscardChange:hover {
-    background: var(--color-hover);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-  input#inputModal {
-    margin-top: 10px;
-    height: 50px;
-    font-size: 1em;
-    font-family: var(--font-button);
-  }
+
+.modalContent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: var(--shadow-boxes)
+}
+
+button#buttonUpdatedPost,
+button#buttonDiscardChange {
+  margin: 15px;
+  padding: 5px;
+  width: 100px;
+  height: 40px;
+  border-radius: 25px;
+  border: 1px solid white;
+  font-size: 1em;
+  font-family: var(--font-button);
+  color: white;
+  background: var(--color-button);
+  cursor: pointer;
+}
+
+button#buttonUpdatedPost:hover,
+button#buttonDiscardChange:hover {
+  background: var(--color-hover);
+}
+
+input#inputModal {
+  margin-top: 10px;
+  height: 50px;
+  font-size: 1em;
+  font-family: var(--font-button);
+}
