@@ -2,8 +2,6 @@
 
 Link de la Red Social: [Ir a la Aplicación](https://art-lovers-6da8d.web.app)
 
-Link del Github Project donde nos organizamos: [Ir a Github Project](https://github.com/users/andreaSoncco/projects/7/views/1)
-
 ## Índice
 
 * [1. Definición del producto](#1-definición-del-producto)
@@ -11,6 +9,8 @@ Link del Github Project donde nos organizamos: [Ir a Github Project](https://git
 * [3. Historias de usuario](#3-historias-de-usuario)
 * [4. Diseño UI](#4-diseño-ui)
 * [5. Interfaz](#5-interfaz)
+
+***
 
 ## 1. Definición del producto.
 
